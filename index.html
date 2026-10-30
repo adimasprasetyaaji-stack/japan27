@@ -1,0 +1,1698 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Japan Winter 2027</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#eceff4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f141c" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Japan 27">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+</head>
+<body>
+
+
+
+<style>
+
+:root{
+  --bg:#eceff4; --surface:#ffffff; --ink:#18212f; --muted:#5d6878; --line:#d6dbe4; --soft:#f4f6f9;
+  --torii:#c8412b; --torii-ink:#ffffff; --indigo:#253a66; --rail:#b9c2d0;
+  --ok:#2f7d4f; --ok-soft:#e1f1e7; --warn:#9a6a00; --warn-soft:#fbf1d3; --bad:#b3261e; --bad-soft:#f8dedb;
+  --info-soft:#e0e9f7; --lav-soft:#ebe6f5; --grey-soft:#e6e8ec;
+  --shadow:0 1px 2px rgba(24,33,47,.06),0 4px 14px rgba(24,33,47,.05);
+  --display:"Shippori Mincho B1","Hiragino Mincho ProN","Times New Roman",serif;
+  --body:"Zen Kaku Gothic New",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0f141c; --surface:#18202b; --ink:#e8ecf2; --muted:#9aa5b5; --line:#2a3442; --soft:#1e2733;
+    --torii:#e2603f; --torii-ink:#150a07; --indigo:#8fa8dc; --rail:#3a4657;
+    --ok:#6fcf97; --ok-soft:#173326; --warn:#e3b341; --warn-soft:#3a2f12; --bad:#ff8a80; --bad-soft:#3d1c1a;
+    --info-soft:#1c2c45; --lav-soft:#2a2440; --grey-soft:#262d38; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0f141c; --surface:#18202b; --ink:#e8ecf2; --muted:#9aa5b5; --line:#2a3442; --soft:#1e2733;
+  --torii:#e2603f; --torii-ink:#150a07; --indigo:#8fa8dc; --rail:#3a4657;
+  --ok:#6fcf97; --ok-soft:#173326; --warn:#e3b341; --warn-soft:#3a2f12; --bad:#ff8a80; --bad-soft:#3d1c1a;
+  --info-soft:#1c2c45; --lav-soft:#2a2440; --grey-soft:#262d38; --shadow:none;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--torii);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);padding:14px 16px 0}
+.brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.brand h1{margin:0;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.01em;text-wrap:balance}
+.brand .route{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.countdown{margin-left:auto;font-size:12px;color:var(--muted)}
+.days{display:flex;gap:6px;overflow-x:auto;padding:12px 0 12px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.day-chip{flex:0 0 auto;display:grid;justify-items:center;min-width:54px;padding:6px 8px 7px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.day-chip b{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.04em}
+.day-chip span{font-size:11px;color:var(--muted)}
+.day-chip i{font-style:normal;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.day-chip[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:var(--surface)}
+.day-chip[aria-pressed="true"] span,.day-chip[aria-pressed="true"] i{color:var(--surface);opacity:.85}
+.day-chip.is-today{box-shadow:inset 0 -3px 0 var(--torii)}
+
+main{padding-inline:16px;padding-block:4px calc(env(safe-area-inset-bottom,0px) + 90px);max-width:720px;margin:0 auto}
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar button{background:none;border:0;padding:10px 2px 12px;font-size:12px;color:var(--muted);display:grid;justify-items:center;gap:3px}
+.tabbar svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tabbar button[aria-current="page"]{color:var(--torii);font-weight:700}
+
+.dayhead{background:var(--surface);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow);display:grid;gap:8px}
+.dayhead .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--torii)}
+.dayhead h2{margin:0;font-family:var(--display);font-weight:800;font-size:20px;line-height:1.3;text-wrap:balance}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.note{font-size:13px;background:var(--warn-soft);border-radius:8px;padding:7px 10px}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.grow{flex:1}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--indigo);border-radius:9px;padding:6px 11px;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:5px;line-height:1.3}
+.btn.primary{background:var(--torii);border-color:var(--torii);color:var(--torii-ink);font-weight:700}
+.btn.ghost{border-color:transparent;padding-inline:6px}
+.switch{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);padding:12px 2px 6px}
+input[type=checkbox]{width:20px;height:20px;accent-color:var(--ok);margin:0}
+
+/* garis rel: jadwal sebagai stasiun-stasiun */
+.line{position:relative;margin-top:6px;display:grid;gap:10px}
+.line::before{content:"";position:absolute;left:61px;top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--rail)}
+.stop{display:grid;grid-template-columns:50px 24px 1fr;gap:0 0;align-items:start}
+.stop .time{font-family:var(--mono);font-size:13px;font-weight:600;padding-top:12px;text-align:right;padding-right:6px;font-variant-numeric:tabular-nums;line-height:1.25}
+.stop .time small{display:block;font-weight:500;color:var(--muted);font-size:11px}
+.stop .dot{justify-self:center;margin-top:15px;width:13px;height:13px;border-radius:50%;background:var(--surface);border:3px solid var(--indigo);position:relative;z-index:1}
+.stop.done .dot{background:var(--ok);border-color:var(--ok)}
+.stop.now .dot{background:var(--torii);border-color:var(--torii);box-shadow:0 0 0 5px color-mix(in srgb,var(--torii) 22%,transparent)}
+.stop.off .dot{border-color:var(--rail);border-style:dashed}
+.card{background:var(--surface);border-radius:12px;padding:11px 13px;box-shadow:var(--shadow);min-width:0}
+.stop.off .card{opacity:.6}
+.stop.off h3{text-decoration:line-through}
+.stop.now .card{outline:2px solid var(--torii)}
+.card h3{margin:0;font-size:15px;font-weight:700;line-height:1.35;overflow-wrap:anywhere}
+.stop.done h3{color:var(--ok)}
+.desc{color:var(--muted);font-size:13px;margin-top:3px;overflow-wrap:anywhere}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.tag{font-size:11.5px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}
+.tag.cat{color:var(--ink)}
+.st{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.04em;border-radius:5px;padding:1px 6px;white-space:nowrap}
+.st-KONFLIK{background:var(--bad-soft);color:var(--bad)} .st-CEK{background:var(--warn-soft);color:var(--warn)}
+.st-REVISI{background:var(--info-soft);color:var(--indigo)} .st-BARU{background:var(--ok-soft);color:var(--ok)}
+.st-DIPINDAH{background:var(--lav-soft);color:var(--indigo)} .st-USUL_HAPUS,.st-OPSIONAL,.st-BATAL{background:var(--grey-soft);color:var(--muted)}
+.st-FINAL,.st-BOOKED,.st-PAID,.st-DECIDED,.st-CLOSED,.st-SELESAI{background:var(--ok-soft);color:var(--ok)}
+.st-BELUM,.st-BELUM_BOOKING,.st-OPEN{background:var(--warn-soft);color:var(--warn)} .st-PROSES{background:var(--info-soft);color:var(--indigo)} .st-NA{background:var(--grey-soft);color:var(--muted)}
+.acts{display:flex;align-items:center;gap:8px;margin-top:9px;flex-wrap:wrap}
+.cost{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums}
+.check{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);margin-left:auto}
+details{margin-top:8px;font-size:13px}
+summary{color:var(--indigo);cursor:pointer}
+details p{margin:6px 0 0;white-space:pre-wrap}
+.mynote{margin-top:7px;font-size:13px;background:var(--soft);border-left:3px solid var(--torii);border-radius:6px;padding:6px 9px;white-space:pre-wrap}
+
+.sec{display:grid;gap:10px;margin-top:6px}
+.sec>h2{margin:10px 2px 0;font-family:var(--display);font-size:18px;font-weight:800}
+.progress{height:8px;border-radius:99px;background:var(--grey-soft);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--ok)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:7px 14px;font-size:14px}
+.kv .v{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.kv .tot{font-weight:700;border-top:1px solid var(--line);padding-top:8px}
+.big{font-family:var(--display);font-size:32px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.bars{display:grid;gap:5px}
+.bar{display:grid;grid-template-columns:62px 1fr 78px;gap:8px;align-items:center;font-size:12px}
+.bar .lab{font-family:var(--mono);color:var(--muted)}
+.bar .track{height:9px;border-radius:5px;background:var(--grey-soft);overflow:hidden}
+.bar .track i{display:block;height:100%;background:var(--indigo)}
+.bar .n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.filters{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.filters button{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 11px;font-size:13px}
+.filters button[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:var(--surface)}
+.prio{font-family:var(--mono);font-size:11px;font-weight:600;border-radius:5px;padding:1px 6px}
+.P1{background:var(--bad-soft);color:var(--bad)} .P2{background:var(--warn-soft);color:var(--warn)} .P3{background:var(--info-soft);color:var(--indigo)} .P4{background:var(--grey-soft);color:var(--muted)}
+.small{font-size:12.5px} .muted{color:var(--muted)}
+.banner{font-size:12.5px;color:var(--muted);padding:8px 2px 0}
+.empty{text-align:center;color:var(--muted);padding:28px 0}
+
+.sheet{position:fixed;inset:0;z-index:40;background:rgba(10,14,20,.45);display:flex;align-items:flex-end;justify-content:center}
+.sheet[hidden]{display:none!important}
+.panel{background:var(--surface);width:100%;max-width:720px;border-radius:16px 16px 0 0;padding:16px 16px calc(env(safe-area-inset-bottom,0px) + 16px);max-height:88vh;overflow:auto}
+.panel h3{margin:0 0 6px;font-family:var(--display);font-size:18px}
+.field{display:grid;gap:4px;margin-top:10px;font-size:12.5px;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;font-size:16px;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:9px 11px;color:var(--ink)}
+.field textarea{min-height:84px;resize:vertical}
+.field.inline{display:flex;align-items:center;gap:8px;color:var(--ink);font-size:14px}
+.field.inline input{width:22px;height:22px;flex:none;padding:0;accent-color:var(--torii)}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 80px);transform:translateX(-50%);background:var(--ink);color:var(--bg);border-radius:10px;padding:8px 14px;font-size:13px;z-index:50;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+
+
+/* ===== token tambahan: visual, peta, status ===== */
+:root{
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s0:#9aa3af;
+  --sea:#dde7f0; --land:#ffffff; --nb:#e9e6df; --coast:#8e99ab; --route:#c8412b; --pin-ink:#ffffff;
+  --crit:#d03b3b; --serious:#d9622b; --caution:#b98100; --good:#1d8a3a;
+  --day:#f7e6ad; --night:#e4e8ef;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#1f9a1f; --s0:#6b7584;
+    --sea:#0c1622; --land:#222c39; --nb:#171e27; --coast:#4b5a6e; --route:#ff7a57; --pin-ink:#0f141c;
+    --crit:#ff7b72; --serious:#f0884f; --caution:#e3b341; --good:#6fcf97;
+    --day:#3a3320; --night:#1b222c;
+  }
+}
+:root[data-theme="dark"]{
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#1f9a1f; --s0:#6b7584;
+  --sea:#0c1622; --land:#222c39; --nb:#171e27; --coast:#4b5a6e; --route:#ff7a57; --pin-ink:#0f141c;
+  --crit:#ff7b72; --serious:#f0884f; --caution:#e3b341; --good:#6fcf97;
+  --day:#3a3320; --night:#1b222c;
+}
+[hidden]{display:none!important}
+.r-kanto{--rc:var(--s1)} .r-kansai{--rc:var(--s2)} .r-hokkaido{--rc:var(--s3)} .r-chubu{--rc:var(--s4)} .r-id{--rc:var(--s0)}
+
+.tabbar{grid-template-columns:repeat(5,1fr)}
+.tabbar button{font-size:11.5px}
+.syncbar{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);padding:6px 0 0}
+.syncbar .led{width:8px;height:8px;border-radius:50%;background:var(--good);flex:none}
+.syncbar.off .led{background:var(--caution)} .syncbar.err .led{background:var(--crit)}
+.syncbar button{margin-left:auto}
+.loading{padding:48px 0;text-align:center;color:var(--muted)}
+
+/* ===== ringkasan ===== */
+.hero{background:var(--surface);border-radius:16px;padding:16px;box-shadow:var(--shadow);display:grid;gap:10px}
+.hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--torii)}
+.heroNum{font-family:var(--body);font-weight:700;font-size:48px;line-height:1;letter-spacing:-.01em}
+.heroNum small{font-size:18px;font-weight:500;color:var(--muted);margin-left:6px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;border-top:1px solid var(--line);padding-top:10px}
+.stats div{display:grid;gap:1px;min-width:0}
+.stats b{font-size:17px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stats span{font-size:11.5px;color:var(--muted);line-height:1.3}
+@media (max-width:440px){.stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:10px}}
+.today{border-left:4px solid var(--torii)}
+
+.sec>h2 .pct{font-family:var(--body);font-size:14px;font-weight:700;color:var(--muted);margin-left:6px}
+.sec>h2{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.sec>h2 small{font-family:var(--body);font-size:12.5px;font-weight:400;color:var(--muted)}
+.meters{display:grid;gap:12px}
+.meter{all:unset;box-sizing:border-box;display:grid;grid-template-columns:1fr auto;gap:5px 10px;cursor:pointer;width:100%}
+.meter:focus-visible{outline:2px solid var(--torii);outline-offset:3px;border-radius:6px}
+.meter .ml{font-size:13.5px}
+.meter .mv{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.meter .mt{grid-column:1/-1;height:10px;border-radius:99px;background:color-mix(in srgb,var(--lv) 18%,var(--surface));overflow:hidden}
+.meter .mt i{display:block;height:100%;border-radius:99px;background:var(--lv);min-width:0}
+.lv-crit{--lv:var(--crit)} .lv-warn{--lv:var(--caution)} .lv-good{--lv:var(--good)}
+
+.ins{background:var(--surface);border-radius:12px;padding:12px 13px;box-shadow:var(--shadow);display:grid;gap:6px;border-left:4px solid var(--sv)}
+.ins h3{margin:0;font-size:15px;line-height:1.35}
+.ins p{margin:0;font-size:13.5px;overflow-wrap:anywhere}
+.ins .body{color:var(--muted)}
+.ins .rec{background:var(--soft);border-radius:8px;padding:7px 9px}
+.ins .acts{margin-top:2px}
+.sev{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--sv)}
+.sev svg{width:13px;height:13px;fill:currentColor}
+.sv1{--sv:var(--crit)} .sv2{--sv:var(--serious)} .sv3{--sv:var(--caution)} .sv4{--sv:var(--indigo)}
+.sevsum{display:flex;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.sevsum b{color:var(--ink)}
+
+/* diagram blok rute */
+.flowcard{margin:0;background:var(--surface);border-radius:14px;padding:14px 12px 12px;box-shadow:var(--shadow)}
+.flow{list-style:none;margin:0;padding:0;display:grid}
+.flow li{position:relative;display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+.flow .rail{position:relative;align-self:stretch;display:flex;justify-content:center}
+.flow .rail::before{content:"";position:absolute;top:0;bottom:0;width:2px;background:var(--line)}
+.flow li:first-child .rail::before{top:14px} .flow li:last-child .rail::before{bottom:calc(100% - 14px)}
+.flow .home .pt{position:relative;margin-top:7px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--ink)}
+.flow .home .lbl{padding:4px 0 10px;font-size:13px}
+.flow .home .lbl b{font-size:14px}
+.flow .conn .ico{position:relative;margin:6px 0;width:28px;height:28px;border-radius:50%;background:var(--soft);border:1px solid var(--line);display:grid;place-items:center;color:var(--indigo)}
+.flow .conn .ico svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.flow .conn .lbl{padding:8px 0;display:grid;gap:4px;font-size:12.5px}
+.flow .conn .bk{all:unset;cursor:pointer;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;color:var(--ink)}
+.flow .conn .bk:focus-visible{outline:2px solid var(--torii);border-radius:4px}
+.flow .conn .bk .when{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.flow .conn .none{color:var(--muted);font-style:italic}
+.flow .stay .pt{position:relative;margin-top:12px;width:18px;height:18px;border-radius:5px;background:var(--rc);box-shadow:0 0 0 3px var(--surface)}
+.blk{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:5px;margin:4px 0 6px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);border-left:5px solid var(--rc);background:var(--surface);width:100%}
+.blk:focus-visible{outline:2px solid var(--torii);outline-offset:2px}
+.blk .bh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.blk .bh b{font-family:var(--display);font-size:18px;font-weight:800}
+.blk .bh .n{font-size:12.5px;color:var(--muted)}
+.blk .sub{font-size:12.5px;color:var(--muted)}
+.blk .hs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px}
+.trips{display:flex;flex-wrap:wrap;gap:5px}
+.trip{font-size:11.5px;border-radius:999px;padding:2px 8px;background:var(--soft);border:1px dashed var(--line);color:var(--ink)}
+.trip b{font-weight:600}
+.trip.far{border-color:var(--serious);color:var(--serious)}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.45}
+
+/* donut */
+.donutwrap{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:14px;align-items:center}
+@media (max-width:560px){.donutwrap{grid-template-columns:1fr}.donutwrap svg{max-width:220px;justify-self:center}}
+.donut{width:100%;height:auto;display:block}
+.donut path{stroke:var(--surface);stroke-width:2;cursor:pointer;transition:opacity .15s}
+.donut.hl path:not(.on){opacity:.28}
+.donut .c1{font:700 17px var(--body);fill:var(--ink)} .donut .c2{font:500 11px var(--body);fill:var(--muted)}
+.legend{width:100%;border-collapse:collapse;font-size:13px}
+.legend td{padding:5px 0;border-bottom:1px solid var(--line);vertical-align:middle}
+.legend tr:last-child td{border-bottom:0}
+.legend .sw{width:20px;padding-right:6px} .legend .sw i{display:block;width:10px;height:10px;border-radius:3px}
+.legend .v{text-align:right;font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:8px}
+.legend .p{text-align:right;color:var(--muted);font-size:12px;width:42px;font-variant-numeric:tabular-nums}
+.legend tr{cursor:pointer} .legend tr.on td{font-weight:700}
+.legend tfoot td{font-weight:700;border-top:1px solid var(--line);border-bottom:0}
+
+/* beban per hari (gantt 24 jam) */
+.load{display:grid;gap:4px}
+.load .axis,.lrow{display:grid;grid-template-columns:62px 1fr 92px;gap:8px;align-items:center}
+.load .axis .sc{position:relative;height:14px;font-family:var(--mono);font-size:10px;color:var(--muted)}
+.load .axis .sc span{position:absolute;transform:translateX(-50%)} .load .axis .sc span:first-child{transform:none} .load .axis .sc span:last-child{transform:translateX(-100%)}
+.lrow{all:unset;box-sizing:border-box;display:grid;grid-template-columns:62px 1fr 92px;gap:8px;align-items:center;cursor:pointer;width:100%;padding:2px 0;border-radius:6px}
+.lrow:hover{background:var(--soft)} .lrow:focus-visible{outline:2px solid var(--torii)}
+.lrow .lab{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+.lrow .tr{position:relative;height:16px;border-radius:4px;background:var(--night);overflow:hidden}
+.lrow .tr .dl{position:absolute;top:0;bottom:0;background:var(--day)}
+.lrow .tr .bar{position:absolute;top:4px;height:8px;border-radius:4px;background:var(--indigo)}
+.lrow.heavy .tr .bar{background:var(--serious)}
+.lrow .n{font-size:11.5px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.lrow.heavy .n{color:var(--serious);font-weight:700}
+.loadkey{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11.5px;color:var(--muted);margin-top:6px}
+.loadkey i{display:inline-block;width:14px;height:8px;border-radius:3px;vertical-align:middle;margin-right:5px}
+
+/* segmented */
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:var(--grey-soft);border-radius:10px;padding:3px;gap:3px;margin-top:4px}
+.seg button{border:0;background:transparent;border-radius:8px;padding:7px 4px;font-size:13.5px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:700;box-shadow:var(--shadow)}
+
+/* ===== peta ===== */
+.mapctl{display:flex;gap:6px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}
+.mapctl::-webkit-scrollbar{display:none}
+.mapctl button{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 11px;font-size:13px;display:inline-flex;align-items:center;gap:6px}
+.mapctl button i{width:9px;height:9px;border-radius:50%;background:var(--rc)}
+.mapctl button[aria-pressed="true"]{border-color:var(--ink);font-weight:700}
+.mapwrap{position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:var(--sea)}
+svg.map{display:block;width:100%;height:min(66vh,118vw);touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+svg.map:active{cursor:grabbing}
+.map .sea{fill:var(--sea)} .map .nb{fill:var(--nb)} .map .land{fill:var(--land);stroke:var(--coast);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.map .ln{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.map .ln.route{stroke:var(--route);stroke-width:2.5}
+.map .ln.air{stroke-dasharray:6 5}
+.map .ln.bb{stroke:var(--ink);stroke-opacity:.55;stroke-width:1.6}
+.map .ghost{fill:var(--muted);opacity:.35}
+.map .dot{stroke:var(--surface);vector-effect:non-scaling-stroke;stroke-width:1.5;fill:var(--rc)}
+.map .cl{fill:var(--rc);stroke:var(--surface);stroke-width:2;vector-effect:non-scaling-stroke}
+.map .cl-t{fill:var(--pin-ink);font-family:var(--body);font-weight:700;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.map .pin{fill:var(--route);stroke:var(--surface);stroke-width:2;vector-effect:non-scaling-stroke}
+.map .pin.sel{fill:var(--ink)}
+.map .pin-t{fill:var(--pin-ink);font-family:var(--mono);font-weight:600;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.map .htl{fill:var(--surface);stroke:var(--rc,var(--indigo));stroke-width:2.5;vector-effect:non-scaling-stroke}
+.map .htl-t{fill:var(--ink);font-family:var(--body);font-weight:700;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.map .lbl{font-family:var(--body);font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--sea);stroke-linejoin:round;pointer-events:none}
+.map .lbl.sm{font-weight:500;fill:var(--muted)}
+.map .hit{fill:transparent;cursor:pointer}
+.zoom{position:absolute;right:10px;top:10px;display:grid;gap:6px}
+.zoom button{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;line-height:1;display:grid;place-items:center;box-shadow:var(--shadow)}
+.maphint{position:absolute;left:10px;bottom:8px;font-size:11px;color:var(--muted);background:color-mix(in srgb,var(--surface) 80%,transparent);padding:2px 7px;border-radius:6px;pointer-events:none}
+.mapkey{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);padding:8px 2px 0}
+.mapkey span{display:inline-flex;align-items:center;gap:6px}
+.mapkey i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--rc)}
+.mapkey i.sq{border-radius:3px;background:var(--surface);border:2px solid var(--indigo)}
+.mapkey i.ln{width:18px;height:0;border-radius:0;border-top:2.5px solid var(--route);background:none}
+.mapkey i.ln.air{border-top-style:dashed}
+.pininfo{margin-top:10px}
+.pininfo .card{border-left:4px solid var(--route)}
+.pininfo .src{font-size:11.5px;color:var(--muted)}
+.stops{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.stops button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:28px 44px 1fr auto;gap:8px;align-items:center;background:var(--surface);border-radius:10px;padding:8px 10px;box-shadow:var(--shadow)}
+.stops button:focus-visible{outline:2px solid var(--torii)}
+.stops button[aria-pressed="true"]{outline:2px solid var(--route)}
+.stops .no{width:24px;height:24px;border-radius:50%;background:var(--route);color:var(--pin-ink);font-family:var(--mono);font-size:11px;font-weight:600;display:grid;place-items:center}
+.stops .no.h{background:var(--surface);color:var(--ink);border:2px solid var(--indigo);border-radius:6px}
+.stops .tm{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.stops .ti{font-size:13.5px;overflow-wrap:anywhere}
+.stops .km{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+.daysum{display:grid;gap:6px}
+.daysum button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:62px 1fr auto;gap:8px;align-items:center;background:var(--surface);border-radius:10px;padding:8px 10px;box-shadow:var(--shadow);width:100%}
+.daysum .lab{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.daysum .t{font-size:13.5px;overflow-wrap:anywhere}
+.daysum .k{font-family:var(--mono);font-size:11.5px;white-space:nowrap}
+.warnline{font-size:12.5px;color:var(--muted);margin-top:8px}
+.help{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45}
+
+</style>
+
+<header class="top">
+  <div class="brand">
+    <h1>Japan Winter 2027</h1>
+    <span class="route" id="route"></span>
+    <span class="countdown" id="countdown"></span>
+  </div>
+  <div class="syncbar" id="sync" hidden></div>
+  <nav class="days" id="days" aria-label="Pilih hari"></nav>
+</header>
+
+<main id="view"><p class="loading">Memuat…</p></main>
+
+<nav class="tabbar" id="tabbar" aria-label="Menu">
+  <button data-tab="ringkasan"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="9" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="5" rx="1.5"/><rect x="13.5" y="11.5" width="7" height="9" rx="1.5"/><rect x="3.5" y="15.5" width="7" height="5" rx="1.5"/></svg>Ringkasan</button>
+  <button data-tab="peta"><svg viewBox="0 0 24 24"><path d="M9 4.5L3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/></svg>Peta</button>
+  <button data-tab="jadwal"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Jadwal</button>
+  <button data-tab="persiapan"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.5 1.5L7.5 5M3.5 12l1.5 1.5L7.5 11M3.5 18l1.5 1.5L7.5 17"/></svg>Persiapan</button>
+  <button data-tab="budget"><svg viewBox="0 0 24 24"><path d="M6 4l6 8 6-8M12 12v8M7.5 13h9M7.5 16.5h9"/></svg>Budget</button>
+</nav>
+
+<div class="sheet" id="sheet" hidden><div class="panel" id="panel" role="dialog" aria-modal="true"></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="pwa.js"></script>
+<script id="db" type="application/json"></script>
+<script>
+window.JPMAP={"lon0":127.5,"latTop":46.3,"k":100,"w":1931,"h":2089,"jp":"M228.3 1878.8l-1.5 4.8l-1.3 1.8l-2.3 0.8l-1.3 0.8l-2.9 3.6l-1.5 3.9l-1.8 0.8l0.4 2.2l1.8 1.3l1.7 1l2.3-1.9l1-0.8l1.5-3.8l3.2-6.2l1-0.9l1.5-1l-0.3-2.2l-0.7-2.4l-0.8-1.8zM415.9 1798.8l2.1 0.5l1.5 0.6l2.1-0.6l2.2-2.2l-1.8-2l-0.7-0.5l-1.8 0.3l-1.1-1.4l0-1.5l1.4-3.6l0.8-1.9l0.3-0.6l2.2 0.3l1.4-0.6l2.2-3.8l0.3-1.4l0-0.8l-0.3-0.6l0.7-1.2l1.4-1l1.1-2.2l1.8-1l0.4-1.6l1.4 0.6l1.5 2l0.7-0.6l0-1.8l0.4-2l1-1l0.4-1l0-3.2l0.7-2.4l4.7 0.6l1.7-1.8l1.5 0l1.8-0.9l1.8-1.4l0.8-1.6l-0.8-0.6l-2.8 0.4l-1.5-0.1l1.8-2.1l1-0.4l0.8-0.8l1-2l-0.3-0.8l-1-0.4l-0.5-0.8l1.2-1.8l3.2-2.4l1.8-0.4l2.1-1.1l1.8 0.5l-0.3-1.2l-4.7-1l-1 1.7l-0.8 0.3l-0.3-0.6l0-0.6l-1.5 0.6l-0.7-0.3l-0.3-0.7l-0.8-0.3l-1 0.3l-1.1 0.4l-0.7-1.9l-1.5 0l-2.1-2l-1.1-0.8l0.3-3.4l1.5-2l0.7-2.2l1.7 0l3.6 0.2l2.6-0.6l0.7-1.6l-1.8-3.2l-0.7 2.6l-0.3 0.8l-1.1 0.4l-0.7-0.2l-1.1-0.8l-0.7-1.1l-0.8-2l-0.7 0.3l-0.7 2.8l-1.4-0.2l-0.8-1l-1.8-0.3l-0.7 0.7l-1.8-1l0.4-1.5l1.8-1.8l2.5-1.8l-1.1-0.4l-3.2 0l-2.5 1.8l-3.3-1.6l1.8-3l0.4-2.1l1.8-2.2l1.4-0.6l0.7-0.7l0-1.9l1.1-2.6l2.2-3.4l-1.8-0.5l-3.6 2.1l-2.9 1l-5.8-1.2l-5.4-2l-1.1 2l-4.3-2.3l-4.3 2.3l-6.5-0.2l-1.8-0.6l-1.8-1.7l-1.5-7.8l1.1-2.9l2.5-0.4l1.5 1.9l1.1 0.6l1.8 0l2.1-0.4l0.4-1.8l0.7-0.5l2.5-0.6l0.4-1.6l0-1.8l0.4-1.7l1.8-0.7l1.4 0.7l2.5 1.3l0.8-0.4l0.3-2.8l1.8-3.7l1.1-2.6l-0.7-3.3l1.1-3.2l-0.4-2.6l-0.7-2.3l-1.8-3l-2.2-4.5l-2.5-3l-1.8-0.2l-2.2 0.2l-1.8-1.2l-1.8-0.6l-1.8 0.2l-2.2 0l-2.8 0.6l-2.2 1l-1.8 1.8l-0.7 2.4l-1.5 1.8l-3.6 3.3l-0.7 1l-5 0.8l-4.3-0.8l-3.9-0.2l-2.9-2.6l-3.6-0.4l-3.3-1.1l-3.9-0.6l-2.9-0.6l-1.4 0.5l-2.2-1.5l-1.8-2.2l-1.5-3.4l-2.8-5.3l-1.1-2.5l-0.4-3l-0.3-0.8l0.3-4.1l-2.1 0.4l-1.8-0.4l-0.8-0.4l0.4-2l2.2-1.8l0.3-1.1l0-1l-0.3-1l1.4 0l0.4-1.6l-1.1-1.2l1.1-1.7l0-0.8l1-2.2l0.4-2.4l-1.1-1.3l-2.9 1l-2.8 2.5l-0.8 2.4l-1.8 2.3l-1.1 0.8l-1.8 0.4l-1.4-0.9l-1.8-3.6l-2.9 0l-1.4 0.6l0.7-2.3l-3.6-0.6l-3.6 0l-2.5 1.5l-1.5-0.6l-1.1-0.3l-1 0.3l-1.1 0.4l-2.8 4.5l-2.3 1.8l-2.1 0.2l-4.6-0.4l-1.5 0.4l-0.8 0.4l-0.3 0.8l-0.7 1l-2.6 1.4l-1 0.3l-0.8-0.9l-1 3.7l-1.4 1.6l-1.2 0.4l-0.3 0.6l0 1.5l0.8 1l1 0.2l0.3 2l-0.3 2.4l-1.5 1.9l-0.6 1.2l-1.8 0.6l-2.5 2.8l-1.5 1.5l-4.3 1.8l-2.2-0.4l-1-0.8l-0.8-1.8l-1.1-0.3l-0.3 1.1l0.3 2l1.5 1l1.1-0.4l0.3 0.8l1.5 0.6l1.1 0.8l1.4-0.6l1.8-1.6l1.8-1.2l0.7 2.2l-0.3 2.4l-0.4 1.6l-0.7 1.5l-1.8 0.2l-1.5 0.8l-2.8-0.2l-1.5 0l-1.4 2.2l-0.8 0l-0.3 0.6l-1.8-1l-0.7-0.6l1-1.8l-0.3-1l-2.2 0.4l-1.8-1.2l-0.7-2.1l1.1-1l-0.4-1.2l-2.5-1.4l-0.4 3l-0.7 0.9l-1.4 0.6l-1.1 0l-1.1-0.3l-0.7 1.5l0.3 1.4l-1.8 1.4l-1 0.4l-1.1 0l-0.7 0.2l-1.1 1l-0.7 1l0 0.9l0.3 0.6l2.2 0.4l0.3 1.8l0.8 0.2l3.2-0.6l1.4-0.2l-0.7 1.6l-1.1 1l-1.4 0.6l-1.4 0.2l-1.5 1.3l-1.1-0.5l-1.8 0.6l-2.8 1.5l-1.1 1.2l-0.8 2.8l-1 1.2l-1.1 0.7l-2.9-0.5l-1.4-0.6l-0.8-1l0-1.2l-0.3-1.2l-1.1 1.2l-1.1-0.8l0.4-1.2l1.1-1.6l0.3-1.1l-1.8-2.4l-3.2-1.8l-2.2 1.4l-1.8-0.4l-1.8-1.6l0.4 2.4l-1.8 2.2l0.8 3.9l2.1 3l0.7 1.6l-1 0.6l-1.5-0.6l-0.8-1.4l-0.3-1.4l-1.8-2.2l-1.5 0.4l-0.6 1.6l-1.2 1.6l1.2 1.2l1.7 2.3l5.4 3.4l-0.6 0.8l0.6 1.4l-1.1 1.4l-1 2.2l-0.8 3.9l0.8 2.7l0.3 1.6l-1.4-0.7l-1-0.9l-0.8-1.3l-0.4-3.2l-0.6-2.1l-6.5-1.9l-4.3 1.3l-2.6-1l0.4-3.4l-0.7-1l-2.9 4.4l-2.2 0.3l-2.8-2.5l-1.1 1.3l-0.4 2.5l-0.7 3.3l1.4 2.4l0.4 1.5l0.4 0.6l-1.1 1l-0.7-0.3l-0.8 0.6l-0.3 2.1l-1.1 3.6l1.1 1.6l2.5 0l1.1 0.4l1.8 1.7l1.1 0.4l1-0.3l0.8-0.6l1 1.6l0 0.6l-0.3 1.1l2.1 1.2l0.8 1l0.3 1.2l-0.3 1.4l-2.2 0.4l0.7 3.1l0.7-0.3l0.8-1.4l2.1 0.4l0.4-0.8l0.3-2.6l0-2.6l1.1 0.4l0 3.2l0.7 1.2l1.8-2l1.1 0l0.4 1l-1.5 0.6l0 1l0.3 2.2l-1-0.3l-0.8 0l1.2 2.9l0.3 1.2l1.5 1.1l1.4 0l1-1.7l1.2-0.7l2.4 1.8l0 2.4l1.1 0l1.8-1.4l3-1l3.1 3.2l3.3 2.4l0.3 2.4l-1 2.9l-0.8 1.6l0 3.4l5.4 7.8l1.8 2.2l-1.4 0.5l-5.3-2.3l-5.1-1.8l-1.1 1.8l-0.4 0.8l-1.4 0.8l-0.4 0.7l-0.6 0.3l-0.5-0.8l-1-0.6l-0.8-1l-0.7-0.6l-2.1-1.4l1.5-1.2l-0.5-2l-1.3-1.2l-0.5-4.2l0.8 0l0.7 2.8l0.8 1.2l0.6-1l0-5.8l0.7-1l-1-1.9l-1.4-1.8l-3.3-0.8l-1.5 2.6l-1 0.6l-0.3-1.6l0.3-1.8l1.5-2.6l0.3-0.8l-0.8-1.2l-1.3 1.4l-0.5-0.4l0.5-1.2l-1.5-2.5l-3.9-1.6l-1.8 2.9l-0.4 3.6l-0.7 0.6l-0.4 2l0.4 1.6l-0.7 1.6l-1.5 1.4l0 2.7l0.7 3.6l1.5 0.4l1.4 2.2l0.7 1.4l0 1.4l0.4 1.2l0.7 1.8l1 1.8l2.6 1.6l1 2.5l1.2-0.4l1.1-1.1l1.8 0.5l0.7 2.8l0.3 0.7l1.1 0.4l1 1.1l1.8 4.4l0 1.6l3.6-0.4l-1.3 2.8l-1.2 0.8l-0.6-1.2l-1.2 0.4l-0.6 0.8l-1.1 0.4l0 0.8l0.6 0.8l1.1-0.6l0.4 0.6l-0.4 1.8l-2.1 3.6l-1.1 3l-0.7 0.9l-2.6 0.9l-1.8 1.3l0.8 1.6l1-0.6l1.2-0.9l1.4 0.4l0.7 0.5l0.3-1.3l2.3-1.6l2.4-2.2l0.4-2l0.3-0.8l1.5-0.2l1.8-1l2.1-1.6l0.8-2.2l5.4-7.6l-0.8-1.5l1.1-0.7l0.4 0.2l0 1.2l0.7 0.9l2.2-0.3l1.8-0.8l2.1-0.6l1.8-1.6l1.5-1.5l2.9-1.2l3.2 0.6l1.4 0l0.8-0.7l3.2 0.4l1.1 0.9l-0.4 1.3l-0.3 0.6l0.3 0.8l2.2 1.2l0.4 2.2l-2.2 2.4l-1.1 1l-1.1 0.8l-1.4 1.4l-1.1 0.6l-1.4-0.4l0 5.2l1.8 0.8l0.7 1l1.4 0.8l0.4 1.8l-0.7 1.2l1.8 0.2l1.4-1.4l2.5-0.2l1.1-0.6l0.4-1.4l1.8-0.4l0.3-0.8l0-1.4l1.1-0.8l3.6 0l3.6-2l1.8-2.4l-0.7-1.8l0.4-1.6l1.8-2.6l0.3-1l-0.3-4.1l0-1.3l-2.2-4.9l-1.1-2.8l-3.2-2.2l-6.5 0l-5 3.6l-1.5 0.5l-2.5 0l-2.2-1.7l-1.1-1.6l-1.4-0.8l0.7-0.6l2.2-1l1.4-0.8l1.5-1.6l2.5-0.8l1.4-1.6l0-2.6l1.5-0.5l0.3-2.4l-1.8-2l-4.3-7.4l-1.4-3.7l-1.5-1.9l-0.3-2.3l2.1 1l2.9-2.8l4-2.8l2.1-3.5l1.8 1l3.3 3.7l2.5 0l2.2 0.6l2.9 0.4l0 1.6l0.7 1.4l0.7 0.8l1.8 1.6l1.8 0.5l0.7 1l-0.3 1.6l0.7 2.2l0 5.2l0.7 7.8l0.7 2.1l2.8 1.8l4.8 4.8l7.5 6.2l1.4 3.2l0.7 1l-0.3 0.6l-1.5 1.7l-0.3 0.8l0 2l0.8 1.4l1 1.2l1.4 0.6l0 1l-1.1 0l-2.1 0.8l-1.8-0.2l-1 0.6l-2.3 2l-6.7 3.4l-1.8 1.4l-0.8 1.6l1.1 0.8l1.8-0.8l16.2-3l2.8-0.2l-1 3l-1.8 2l-6.9 6.3l-0.6 1l0.3 1.3l2.1 1.9l1.2 1.6l-3 0l-1.4 0.3l-0.7 1.3l1.8 1.7l0.3 3.1l-1.1 2.9l-2.1 1.3l-2.5 3.5l-0.3 0.9l0.3 3.3l0 1.5l-1.1 1.4l-2.5-2.6l-0.8 0.1l-1 2.5l0 1l0.4 0.9l-0.4 1.3l-0.3 0.6l-1.1 0.7l-0.4 0.6l-1.1 3l-7.2 8l0 2l-1 0.8l-0.4 0.6l-1.1 3l-0.3 0.8l-1.1 1.2l-2.2 1.6l-1.8 0.6l-3.2-4l-4 1.6l-2.9 3.2l2.5 2.4l0 3l-1.8 2.6l-1.4 1l0.3 2.2l1.5 1.6l0.4 0.5l1 1l1.1 2.6l0.4 2.4l-0.4 5.2l-1.8 3.2l1.1 1.8l2.9 2.7l-1.5-0.5l-3.2-1.3l-0.7 1l-1.1 4.4l1.1 2.6l0 1l1.8 0.6l4.7 2.9l1 1l4 6l2.9 3.2l1.1 2l0 2.1l-1.5 2.4l1.1 3l-0.7 3.8l-1.1 4.3l-1.1 1.8l-1.1 3.8l-5 4.7l-1.4 2.8l-1.5-1.2l-1.8-2.4l-1.4-0.6l-0.8 0l-1.4-0.6l-1.4 0.2l-2.9 1.4l2.1 1.2l3.3 2.4l2.5 2.8l1.1 1.9l0 1.4l-1.8-0.2l-1.1 0l1.5 1.4l1 2.5l0.4 1.6l0.4 2.2l1 1.8l2.6 0.2l2.8-1l2.2-0.2l15.4 0.6l4.4 2.6l1 1.8l1.2 2.5l0 1.8l0.3 0.8l1.5 0.8l1.4-0.3l1.5-0.3l1 0l1.1 1.3l1.8-1.9l1.8-0.8l1.8-1l0.7-2.3l0.3-2l1.1-4l0-1.6l-3.9-0.6l-1.8-2.9l-1.5-0.6l-1.4-1l-1-2.2l-1.5-4.8l-2.9-6.6l-0.3-2.6l0-2.2l1.1-4.8l1.3-3.3l1.5-3l1.1-4l0.7-1.1l2.9-3.2l0.3-1l0.4-3l0.3-1.2l2.9-4l4.3-1.1l5.1 2l3.9-0.3l2.9 2.8l0.4 4.2l-1.1 4.5l-2.2 3.8l-1.8 2l-1 0.4l-1.1 0l-1.5-0.4l-0.3-0.8l0.3-3.1l-1-2l-2.6-0.6l-2.5 0.2l-2.4-0.6l-2.3 1.1l-2.5 3.2l0.7 1.4l4.1 2.2l5.7 1l1 2.2l-1 4.9l1 3.1l4.4 2.9l2.1 3.7l1.5 3.6l1 3.3l0.4 2.2l-0.7 6l-1.1 3.7l-2.5 4.5l1.1 2l-2.2 7.7l-1.4 1.2l-4 2.4l-2.5 2.5l-0.7 7.7l2.1-0.2l1.5-1.6l3.2-3.3l4-1.2l0.7-1l1.8-1.4l2.9-1.2l2.5-0.3l2.5-0.6l3.6-1.4l1.8-0.6l1.8-1l1.5-1.2l1.1-1.2l1-1.7l1.8-3.6l1.1-1.6l0-2.3l2.5-0.8l2.9 0.2l7.2-6.4l-0.7-0.9l-3.2 1.3l-1.8-0.6l0.7-1.7l2.2-1.6l0.3-0.8l-0.3-1.4l-2.2-1.2l-2.2-0.8l-3.6-0.9l-1.1-1l1.5-4.6l1.8-2.9l1.1-1.6l1.4-1.3l3.6-1.5l2.2-0.6l2.1-0.2l2.9 2.2l2.2-0.6l1.1 0.2l0.7 1l2.4 2.9l0 3l0.5 1l1.8 0.8l1.8-0.2l3.9-0.6l0 0.8l-0.8 0.7l0.8 0.3l0.7 0.6l0.8-0.6l0.3-0.8l0-0.8l0.3-1l1.5-1.8l0.3-1.2l1.2-5.5l0.3-0.8l1.5-2l0-2.9l-0.8-1.3l0-1.6l0.8-0.9l1-2.4l0.3-0.2l0.5-1.8l1.3-1.6l3.3-2.6l-0.7-3.5l2.5-13.1l0.3-1l1.5-1.8l0.3-1.2l-2.8-1l-1.1-2l-1.1-2.9l0.4-1.4l-0.4-2.2l5-15.9l3.3-11.2l2.1-7.4l1.1-5.8l1.8-4.2l1.5-5.7l0.7-2.5l1.4-0.9l0.4-0.7l0.4-2.8l0.7-3.1l0.3-1.1l0.8-0.4l1-0.1l1.1-0.6l2.6-1.8l-1.5-2.4l-1.8-1.8l0.4-2.5zM719 1637.5l0-0.8l0.7-0.3l1.1-0.6l1.1 0l0-0.7l-5.8 0.1l-1.4-0.7l1.4-2.7l1.1-0.8l1.4-0.6l0.4-1.1l1.4-1.2l-0.3-1.8l0.3-2l-1.4-0.6l0.7-1l-3.6-2.3l-2.5-4.9l-1.1 0.2l0 1.2l-1.4 0.3l-0.8-0.6l-0.3-1.1l-0.4-2.4l-0.3-1.1l0.3-0.7l0.7-2.3l0.4-0.4l-0.4-2.1l0-3.2l1.8-2.9l0-0.6l0.4-1.2l1.1-1.8l0.7-1.7l-1.4 0.2l-1.1-0.6l1.1-0.6l-0.4-0.8l0-0.8l0.4-1.1l1-1.8l0.8-1.8l-1.8 0.8l-1.8 2.1l-1.8 0.1l0.7-1.6l1.1-1.4l-0.4-1.4l-1.4 2.4l-1.1 0.2l-2.2 1l-6.5-0.4l-2.5 2l-2.9 0l-2.4-2l-1.2-1.2l-0.6-1.9l-1.5 0l-2.6 0.5l-1.3-0.5l-2.3-2.2l-1.3-0.6l-1.1-0.2l-4-2.3l1.5-3.4l-1.1-1.5l-2.5-0.8l-1.8-1.6l-2.9 3.4l-0.7 0.7l-1.5-0.5l-0.7-1.2l0-3.4l-0.7-2.7l-1.1-0.8l-1.4 0.2l-0.4 1l-0.4 1.8l-0.3 0.9l-1.8-2.1l-1.1 2.7l-0.7 0.8l-3.6-0.8l-0.8 0l-1.8 0.6l-0.7 0l-1.1-0.4l-1.4-1.1l-1.8-0.4l-2.2-1.4l-1 0.2l-1.9 0.6l-0.7 0l-1.4 0.6l-0.7 1.5l-0.8 1.8l-1 1.3l-2.9 1.8l-6.2 2.8l-2.8 2.3l-2.2 2.3l-3.2 2.4l-2.9 1l-1.8-1.8l-1.5 0.6l-2.8-0.6l-2.9-1.5l-2.1-1.2l1.4 2.3l1.5 1.2l1.3 1l1.8 1.5l2.3 3.2l0.3 2.1l0.3 5.1l-0.6 5.5l-0.8 2.2l-1.5 1.9l-3.1 3l-1.5 1.6l-1.1 1.6l-1.5 1.5l-1.8 1.2l-1.8 0.8l-2.4-0.2l-5.1-1.8l-2.1-0.6l-5.4 0.4l-2.2-0.8l-1.8 0l-2.1 1l-2.2-0.2l-2.9 1l-0.7 2.3l-3.3 1l-3.6 0.8l-2.9 1.2l-1.8-0.2l-1.8-1l-2.1-1.1l-1.1-1.2l-0.7-1.8l-1.1-2l-2.9-7.4l-5.4-6.7l-1.1-0.8l-0.3-0.8l-0.8-0.4l-1-2.1l-1.5 2.7l-1.4 0l-1.8-0.5l0 1.3l1.1 0l1.8 0.2l0.3 2l-0.6 1.2l-0.5 2.1l-5.7 1.4l-1.5 1.9l-7.5 5.3l0 4.9l-1.5 2.6l0 2.8l-4.2 0.8l-1.5 6.5l-1 4.3l0.7 3.5l0 3.4l-1.8 4.9l-3.3 3.2l-2.5 1.9l-1.8 1.6l-10.1 4.3l-2.1 2l-1.1 0.8l-2.9 3.4l-1.1 3.1l-1.8 1.4l-11.9 6.1l-2.9 2.4l-2.1 0l-2.2 1.2l-2.2 0l-2.8 1.1l-1.5 0.9l0 1l1.2 1.1l-1.5 0.5l-1.8-0.3l-3.9 1.2l-4.4 4l-2.1 1.3l-1.8 1.9l1.4 0.5l4.6-2.7l3.6-2.4l-0.7 2.1l1.5 0.7l1.5 0l1-1.2l0.8-1.8l3.1-2.2l7.2-4l2.6-0.9l2.9-2l1.4 0.8l2.5-1l1.8-0.2l1.8 0.2l4 2.6l-1.8 0.8l-0.7 0.9l-0.4 1l1.4 0l0 0.7l-1.8 2.3l0 2.6l1.5 1.6l1.8-1.6l-0.4 3.5l-0.3 0.6l-0.8 0.6l-1.4 0.1l-0.7 0.5l-0.7 1.4l1 0.4l1.1 0.8l1.8 0.6l6.9-1.4l3.9 0.2l-0.3 0.8l-1.8 0.4l-2.2 1.6l0 1.6l0.7 0.9l1.1 0.4l0.7 1.2l1.5-0.9l1.8 0.3l-1.8 1.4l1.4 1l1.1 1.8l-1.1 1l-2.1 0.6l-1.5 1.8l0.4 2.1l-1.8 1.3l-0.7-1.3l-1.8-1.2l-0.4-1.6l-1.1 0l-2.9-0.7l-2.5 0.8l0.7 1.8l1.5-0.2l0.7-1.1l1.4 1l1.5 0.7l0.7 1.2l-2.2 0.9l0 1.4l0.4 1.6l1.1 0.6l2.9 0.2l1 0.4l-0.3 0.8l-1.1 1.2l-0.4 0.2l-2.1-0.2l0 0.8l1.1 0.4l0.7 1.2l0 1.5l-0.7 1.8l2.1 0l-1.1 1.4l-2.1 0.3l-4.4-1.9l-1 1.4l0.3 1.6l-1.8 3l1.5 0.2l2.1-4l2.2 0.8l3.2 0.4l1.1 2l1.8 3.6l-0.3 1.1l-1.5 1.7l1.1 2.4l-2.2 2.1l1.8 3.8l1.5 1l1.4 0.4l1.8-0.8l-1.4-1.4l-0.4-0.2l0.4-2.4l1.4-0.2l1.5 0.8l2.1 0.2l-1.4-1.7l1.8 0.7l4.3 2.8l0.7 0.2l1.5-0.4l6.8 0l-0.3 1.4l-4.4 4.8l-1.8 3.6l-2.1 3.2l-0.4 3.3l0.7 2.4l3.6-3.2l4.7-1.3l1.8 1.9l2.8 2.6l1.5 0.8l2.1 0.6l1.8 0l1.8-1l1.5-1.4l1.4-1l1.5 0l1 2l1.1-2.6l2.2-0.4l2.5 0.7l1.8 1.5l0.4 1l1.4 3l0.7 0.6l1.8 1l2.5-1l0-2.4l-1-2.1l-1.1-1.7l-2.2-1.8l-0.7-0.9l-0.7-1.3l-1.5-1l0.4-2.5l-0.4-2l0.8-1.4l2.8 0.2l1.1-0.8l0.7-4.2l-1.4-5.5l0.7-4.4l1.8-4.4l3.3-1.8l2.1 1.2l1.8 1.2l0.8-0.6l0-2.8l0.7-1.6l2.5-3.2l3.2-5.9l2.6-3l1.4 0l0.7 1.4l1.5-1l-0.7-0.8l-0.4-2.7l1.4-0.7l1.5-1.5l1.1-1.4l0.3-2.8l1.1-1.2l0.4-0.9l-0.8-0.9l0-0.7l-0.3-0.8l-0.7-0.8l0-0.9l0.3-1.5l-0.3-2.4l1.4-2.4l2.5-2.2l1.8-1.3l1.5 0.8l-0.4 2.1l0.7-0.3l1.8-2.6l1.1-1l0.7-0.4l5.1-0.8l2.4-1l1.5-1.4l-0.3-2l1.4-2.9l7.9-3.8l4.4-1.9l1.8-1.6l6.4-1.6l6.8-1l2.5 2l9.1 2.5l7.2 0.8l1.4 4l2.9 2.9l2.5 1.3l2.9 1l1.4 3.9l6.9 8.3l0 2.5l2.2 0.6l1.4-0.5l1.4 2.8l1.8 3.9l1.5-1.4l0-2.6l0.6-3.3l0-1.6l1.2-3.4l0.6-4.5l3-10.1l2.9-5.6l2.5-2.7l1.4-1.4l0.3-1.6l-0.3-2.1l1.5-0.8l1.3 0.5l1.1-0.7l0.7-0.8l0.5-1.6l2.4-2.6l-1.1-1.5l2.9-2.2l5.1-2l8.2-5.5l0.8-2.1l2.5-0.3l0.7-3.3l2.9-0.2l1.1-2l3.2-0.4l1.5-1.6l3.6-1.9l3.2-1.4l1.8-1l-1.1-0.6l-1.8 0.6l-3.2 0.8zM562 1359.1l-2.5 0.8l-1.4 2.7l-0.4 3.8l0.4 3.5l1.8-2l2.5-3.2l1.1-3.1l-1.5-2.5zM557.3 1356.8l-1.8 0.4l-1.8-0.8l-2.1 2.4l-4.7 3.6l-1.8 2.5l1.4 1.7l1.5 1l1.4 0.3l1.1-1.3l-1.1-2.3l-0.4-1.3l1.1-0.6l1.5 0.2l0 1.9l0.3 0.6l1.8 0.9l0.7-0.2l1.1-0.9l0-1.7l-0.3-1.2l0.7-2.1l1.4-0.6l1.5-0.5l0-2l-1.5 0zM592.3 1562.8l-0.7-0.6l0.3-2.1l1.1-0.6l2.5 0l1.5-0.3l2.1-1.7l1.1-0.2l2.2 1l-1.5 2.5l-3.9 4.7l6-2.7l0.8-0.4l1-1l2.3-0.2l0.6-0.4l0.7-0.8l0-0.8l1.1-0.9l4.8-2.2l2.8-1.1l1.4-1.2l1.5-0.6l1.8 0.6l0.7-0.8l0 1.2l0.3 1.3l0.8 0.6l0.7-0.6l2.5 2.2l1.1 3.1l1.4 2.4l3.3 0.6l-0.4-3l3.6 0l8 1.4l1.8-2.9l1-3.8l1.8-2.7l2.9 1l-0.7-1.6l1.1-1.3l1.8-1l1.1-1.4l0-2.1l-1.1-1.4l-1.5-0.4l-1.8 0.2l-1.8 0.6l-2.5 3.1l-1.8 1l-1.1-0.6l-0.3-2.1l1.1-1.2l1.8-0.6l2.5-1.7l1.4-0.2l3.3-0.1l2.1 0.6l2.2 2.2l1.4 0.6l2.9-0.6l3.3-1.4l3.2-2l1.1-2.7l-1.1 0.6l-1.8 0l-0.7-0.6l1.8-1.3l2.4-0.6l1.5-1.2l1.1-0.2l0.4-0.4l1.8-2.9l0.6-0.4l2.3-0.3l0.7-0.1l-5.4-1.3l-0.7-0.6l-1.1-1.8l1.4 0l2.5 1.2l2.9 0.2l5.1 1.5l2.8-0.3l-0.4-1.2l0.7-1.4l1.1-1.1l1.2-0.3l1 0.1l0.8 0.9l1 0.6l1.4 0l0.7-0.6l2.6-3.5l1.4-0.2l0-1.1l0.7-1.4l1.5-0.6l0 1.6l0.3 1l1.1 0.5l1.8 0.2l1.4-0.8l1.1-0.9l1.1 0.6l0.7 0.3l13-1.3l4.7 1.3l1.8 1.2l4 3.1l3.2 1.2l5.4 3.7l1.8 1.7l3.3 1.2l2.1 2.8l1.8 0.3l4 0l2.9 2l3.2-0.4l3.2-1.4l7.2-1.5l0.4-2.9l1.8-0.1l0.7 2.6l2.9 0.6l-2.2-4.9l3.6-1.3l0 3l3.2-0.5l0-3.1l5.4-0.4l2.2 2.5l1.8 1l1.8-0.6l1.4-0.8l-1 4.1l0.3 2.9l1.1 3.1l-0.4 3.7l0 2.6l-0.3 2l-1.1 0.9l-0.7 1.2l-1.8 0.6l0 4.1l-2.2 2l-3.2 4.8l-6.5 6.3l-4.7 4.1l-10.4 3.1l-3.3 3.9l-1 2.2l3.2 0.8l4.4 3.9l1 5.1l1.8-0.2l1.4 2.7l1.1 1.8l-0.3 1.8l-4-0.4l-2.5 0.2l0.7 1.9l0 1.6l-1.4 0.8l-2.2 4.1l1.8 0.2l4.4 2l0.6 1.2l0 1.7l-0.6 1.8l-2.6 1.4l-1.4 0.6l-2.2 0.3l-1.8 1.6l0.4 2.2l1.8 0l0.4 0.6l-1.5 1.5l-1.8 1.4l1.1 1.4l0 1.6l-1.4 0l-0.8 0.5l1.1 0.6l-0.7 0.7l0.4 0.7l3.6-0.7l1.8-0.3l3.6 2.2l1.8 4.5l2.4 2.8l3.3 1.9l0.3 2l3.3 0.2l2.9 2l1.8-0.2l0.7 1.4l2.1 1.1l5.1 3.8l1.1 1.4l-2.6 0.4l-3.6 0.4l-1.4 2.9l1.4 1.6l1.8 0.4l2.2 2l1.1 2.3l-0.4 1.2l0 1.6l1.1 1.4l1.1 1l3.6 2.9l4.3 1.2l14.8 5.5l3.2 0.6l9.8 1l0.3 1.6l-1.4 2l0.3 2.3l1.5-1.5l1.4 0.5l0.4-1.5l-0.7-2.4l1.4-2.6l1.1-1.3l1.7-1l5.8-1.8l1.1-1.6l1.8-0.6l3.2-3.7l1.5-1.8l-2.2-1.2l-0.4-1.7l2.2-0.9l0.4-2.1l2.1-1.2l0.7-3.6l0.4-0.4l2.5-5.8l5.1-13.6l3.6-5.4l2.1 0.1l1.1 0l0.7-0.3l0.7-1.5l0.8-1l0.7-0.2l3.2-0.6l0.8-0.8l0.7-2.1l1.4 0.9l0.7-1.2l-0.7-1.7l-2.1-0.4l0-0.8l1.4-1.2l1.1-1.5l0.7 1.3l1.1 1.4l1.1 0.6l1.4-0.6l0-4.3l0.7-1.2l-1.1-1.5l-1.8-1.8l-0.7-2.4l-1.1-0.4l-1.4 0l0-0.8l1.1-1.1l1.4-2.4l0.7-0.6l0.8 0.4l1.4 2.3l1.1 0.6l2.5-1.1l1.1-2.2l-0.4-0.8l-2.1-1.2l0.3-3.5l3.6-3.7l5.1-2.5l3.2 0l1.1-1.2l4.3-2.8l3.3 1l1 0l-1-2l0.7-0.6l0.7-1.3l0.4-1.4l1 0.2l2.9 1.4l0-1l0.7-0.6l0.4-0.8l1.8 2l1.8-0.2l1.4-1.2l3.2-1.2l1.2-1.4l0-1.5l-1.8-0.6l2.8-1.5l2.9-1l1.8 0.4l-1.5 2.5l-0.7 1.8l2.5 0.6l2.9-0.6l1.8-1.4l3.3 2.5l0-0.9l0.3-0.8l-0.3-0.8l2.1-0.6l1.8 0.6l1.1 1.6l-0.7 2.5l-1.1-0.2l0 1l0.4 0.8l-1.5-0.8l-1.8-0.8l-2.1-0.4l-1.5 0.4l0 1.4l2.2 1l2.1 0.6l1.8 0.3l1.5-0.5l3.6-1.2l1.1-0.8l0.3-1.8l-0.3-2.3l-0.8-2l-0.7-1.2l0.7-1.1l0.4-0.8l1.8-1.4l-1.4 0l-1.1-0.2l-0.7-0.8l-0.4-0.9l0.7-1l1.1-0.4l1.1 0l1.4 0.6l0.8-4.3l0-1.4l-1.1-1.2l-1.8 0l-1.5-0.5l-0.7-1.2l-0.7-2.5l-0.7-1.4l-0.8-0.8l-1.4-0.4l-1.4 0l-1.1 0.4l-1.1-1l-5-2.3l-7.6-4.9l-1.4-1.4l-1.4-1.6l-1.5-1.5l-2.1-0.6l-4.4 0l-1.8-0.6l-1-1.9l0-1.2l0.7-3.1l-1.1-0.6l-0.4-0.4l-1.4-2.5l0.7-4.9l0.7-5.4l3.2-4.3l5.1-6.4l2.1-4.3l1.2-2.9l-0.4-2.2l1.8-1.2l-1.8-0.3l-0.4-0.6l0.4-0.6l0.4-1.2l0-0.9l1-1.8l2.2-2.1l4.3-3l2.1 0.3l0.8-0.3l2.5 0.8l2.1-0.5l0-3l1.1 0l0.4 2.7l2.5-0.7l-1.1-5.7l1.5 0.4l0 1.8l0.7 2.5l0.7-2.7l1.4-3.7l1.5 0.4l-0.4 2.3l-0.3 3.3l-1.5 2.2l-0.7 2.1l-1.4 2.3l-1.1 2.1l-0.7 2.2l-0.4 1.8l0 5.4l0.7 2.9l1.5 0l1.4 1.9l0.7 2.4l0 1.9l-0.7 1.8l-0.4 2.3l-1 2.2l0.3 1.9l1.1 1.7l2.2 1.4l3.6 2l3.2 1.5l2.5 0.3l0-2l-1-2.6l-2.6-1.5l-1-2.1l-1.1-1.4l1.1-6.4l0.7-2.2l0.7-1.8l1.8-3l1.1-3.3l1.1-1.4l0.3 3.1l-2.1 4.9l-0.4 3.1l1.8 0.8l2.5 2.9l1.8 2.3l1.1 0.4l2.2 0.4l2.1-1l1.5 1l1.4-1l1.8-0.4l2.2 0l1.4 0.8l1.5-0.2l0 2.4l1.8-0.8l0.7-4.5l1.1 0.6l1.8-1.6l2.1 0.8l2.2 0.6l1.1-0.6l1.8 1.5l2.4 2.8l0.4 0.9l-0.4 1.4l-1 2.2l2.8 1.3l-0.6 0.6l-2.2-0.6l0 2.4l-0.7 2.1l-0.7-0.2l0.3-2.1l0-2.4l-1.8-0.4l-2.1 3.3l-1.8 0.8l-4.4 2.8l-3.2 2.1l-1.4 0.6l-1.5 0.8l-1.8 0.8l0 0.6l-1.1 1.1l-0.7-1.7l-2.9-3.2l-2.1 2.2l-1.1 3.5l-1.1 2.5l-0.7 0.8l-0.7 1.5l1.4 0l1.5-0.3l5-1.4l4.7 0.4l19.7-7l8.7-2.4l12.2-1.2l4.7 0l9 0.7l10.8 3.8l10.1-3.3l7.2 0l8.3 1.4l14 6.6l4.3 0.8l0.7-1l-1.4-1.7l-2.5-0.6l-0.7-2.4l0.7-2.3l1.4-6.4l3.6-3.2l4.3-3.2l2.2-4.1l1.1-1l1.4-2.3l-1.1-2.4l0-1.1l0.8-2.4l1-1.7l0.8-1.8l1-1.7l6.5-3.3l4-1.8l4.3-2.5l1.8-4.5l-1.1-0.4l-1.4 1l0 2.4l-1.1-1.2l0.4-3.7l2.9-2.3l2.5-5.5l3.2-2.3l5.1-0.2l6.1-2.7l4.7 0.4l6.1 1.7l3.2 2.6l1.8 2.6l5.4 5.9l-1.4 1.3l-1.8 0l-2.2 0.1l-2.8-0.6l-4-0.3l-1.1 2.8l-1.4 2.9l0.3 2.9l0.8 2.9l1.8 3l-1.5 0.3l-1.4 1.4l-0.7 1.6l0.7 1.3l0 2.9l-0.4 2.1l-1.1 1.8l1.1 3.9l1.8 3.7l-1.4 0.4l-0.4 1.2l-1.4 1.1l0.3 2.4l0 2.3l0.4 1l1.4 0.8l1.5 1.5l-0.7 2l2.1 2.5l1.1 1.6l1.4 1.3l1.4 0.8l3-2.1l3.2-1.8l4.6-3.9l2.2 1l1.1 0.8l0.7 0l1.1-0.6l-0.7-4.1l0.3-2.1l0.7-1.6l0.8-0.8l-0.4-1.5l1.8-2.6l1.1-1.3l1.4-0.4l1.1-1.2l0.7-1.6l1.5-2.1l1-2.4l0.4-1.7l1.1-1.6l1.8-1.5l2.1-0.4l0.8-4.1l-0.4-4.6l-1.1-2.8l-3.2-1.1l-1.5-2.9l1.1-1.6l0.4-2.3l0.7-2.2l-3.2-0.6l0.3-2.7l1.1-4.2l3.2-4.9l3.7 1.6l-1.5-5.8l0.4-6.2l3.6-3.5l5-2.7l5.1-1.4l4.7-0.8l8.2-1.9l5.4 0.6l1.8 1.7l2.2-0.4l2.2 0.2l1.4-0.8l0.7 2.4l1.1 0.2l0.7 1.3l0 1l2.9 3.5l0.7 1.9l1.5 0.6l0.6 0.8l-2.4 1.3l1.4 3.5l0 2.4l-0.4 1.5l0.4 0.8l1 0.4l1.5-1l2.5 0.6l1.1-0.2l1.1-0.4l-0.8-1.2l-1-1.2l-0.8-2.3l0.4-1.9l2.5-1.8l3.6 0.1l0.7-1.8l-0.7-1.2l1.8-2.1l-1.1-1.9l-3.9-0.4l-1.8-2.9l-1.1-0.8l-0.7 1.4l-1.1-1.4l0.4-1.5l0-2.1l0.4-1.4l0.3-4.6l-1.5-1.4l-0.6-1.6l1.4-1.1l2.5 1.1l1.1 0.2l-0.4-2.3l0.4-1.7l-0.8-0.8l-1.8-1l-1.8-0.9l0.8-1.2l1.4-0.4l2.2 0.8l2.8-0.4l2.9-2.5l3.3-2l1-1.3l0-1.9l1.1-1.6l-1.4-3.5l0-1.5l-1.5-2.5l-1-3.7l0.7-2.7l1.1 1.4l-0.4 2.9l1.4 1.9l1.5-2.1l0.3-2.3l1.5 0l0.3 1.9l1.5 1l0.3-1.8l0.8-1.1l1.4 0.9l0.7 0l1.1 0.8l1.1 0.2l0.3 1l1.9-1.2l2.5-1.5l-1.8-3.1l2.9-1.3l3.2 0.5l1.4 1.4l1.1-0.4l4 3.6l3.2 3.3l0.8 4.5l1.4 0l-0.4 1.5l-0.7 1.9l-1.8-0.5l-2.9 3.8l-2.1 2.7l-1.5 2.1l-2.5 1.8l-2.2 0.4l-1.8 1.7l-2.8 1l-1.5 1.3l0.7 3.7l0 1.8l-1.4 1.7l-4.7-1.5l-0.7 2.1l-1.5 1.5l0 2.3l-2.1 1.4l-2.2-0.2l0 0.6l6.9 2.5l0 2.7l1.8 3.1l0 2.7l-1.5 1.2l-2.9 1.9l-0.3 1.6l0.3 1.9l-0.3 1.4l1.8 2.9l-0.4 4.3l0.4 1.5l1.1 2.3l0 1.2l-0.4 1.5l-1.1 1.2l0 1.3l2.2 0.6l1.1 1l0.3 1.7l-0.3 0.9l-0.8 0.7l-1.8-0.7l-1.4 0.3l-0.7 1l-1.1 0.6l-1.4 0.5l-2.9-0.5l-1.5 0l0 1.5l0.4 1l2.5 0.2l2.9 1.2l1.4 1.1l0 2.8l1.5 0.9l0.3 0.6l1.5-0.2l1.4-0.4l1.1 0.4l4.7-0.7l1.4-1.4l1.1-1.2l0.7-1.4l0.4-2.3l0-2.1l1.1-1.6l0.7-2.3l0.7-1.4l3.3-2.3l3.2-2.5l2.2 0l2.5-2l0.4-2.7l2.8-3.1l2.2 0.6l4.7 0.4l3.6 0.2l1.4-2.7l2.5 0.4l1.8-1.8l0.8 1.7l1.8 0.4l1.4-1.5l-0.4-2.1l1.8-2.7l2.9 0.5l1.5-2.5l0.6-3.1l0.4-4.5l1.1-5.2l-0.7-3.3l-2.2-6.5l4-13.4l5.7-9.2l11.5-10.6l6.5-4.5l5.4-1.3l0.4 2.1l5-1.9l3.3-1.4l2.5-0.6l1.1 1.2l0.7 1l1.5 1.1l0.7-1.3l1.1-2.8l-0.4-1.1l-1.4-0.9l-0.8-0.1l-1-0.7l-1.1-2.2l-4.3-5.9l-14.5-25.2l-6.5-18.4l-1.4-10.5l0-4.6l1.4-2.7l3.6-4l1.1-3.3l-0.3-2l-1.1-4.7l-0.4-2l1.5-9l1.4-4.1l5.8-9.8l4.7-18.7l1-2.1l4-6.5l0.4-1.3l0.7-1.2l0-3.7l1.8-1l1.4-1.7l2.6-0.8l3.2-2.2l3.2-0.8l3.6-3.6l1.5-4.5l1.1-10.9l1.8-4l0.3-1.5l0-11.7l0.7-1.7l0-3.8l2.2-9.3l0.4-4.1l-1.1-34.1l-0.4-1.2l-1.4-1.9l-0.4-1.5l1.1-1.7l0.4-1.1l0-2.6l-0.4-1.7l-1.1-1.3l-0.3-1.7l-1.1-4.5l-3.6-6.4l-2.5-4.9l0-0.4l-1.5-9.2l0-5.4l0.7-5.4l4.4-15.4l1.8-4.5l3.2-4.9l3.2-4.4l2.2-1.2l0.7-0.7l0.3-1.1l-0.3-1l-1.1-0.5l-1 0l-1.1 0.7l0.7-2.6l1-2.2l1.5-1.9l1.8-1.3l0.7 0.7l1.1 0.2l0.7-0.2l0.8-0.7l1.8 5.4l0.3 0.8l1.8 0l0.3-0.2l0-3l0.8-3l2.1-1.7l2.9-1.1l7.2-1.7l2.9-0.2l2.1 0.9l2.2 2.1l1.1 0.7l1.1 0.3l2.1-0.3l1.1 0l1.1 1l-1.4 3.7l3.2 1.4l1.1 1.1l0 0.7l-0.7 0.7l0 1.7l0.7 0.4l1.4 0l0.7 0.4l2.9 2.8l0.7 0.5l1.1-3.7l0.7-0.9l-1.4-1.9l0-2.8l-0.4-2.6l-2.5-1.5l0.8-1.7l1-0.7l1.5 0l1.4 0.7l-1.1-1.8l-1.8-0.3l-2.1 0.3l-1.1 0.9l-1.1-1.2l0-2.2l-0.7-1.3l0.3-0.9l1.1-0.6l2.6-0.7l-0.8-1.5l-0.7-0.4l0.7-1.1l1.5-4.9l0.7 2.3l0.7 0.9l1.4 0.2l0.4-2.6l0-2.1l-0.7-2l-1.1-1.9l-1.4 1.7l-1.8-0.9l-1.5-1.9l-1.4-1.5l5-4.3l1.5-3.7l0-0.9l-4.7-0.2l-1.5-0.7l-1-1.2l0-0.7l1.8-1.5l1-0.7l2.6-0.8l1-0.6l1.1-2l1.1-0.5l1.1 1.1l0.7-0.4l0.7-2l-0.7-1.2l-1.8-1.8l-1.1-2l-0.3-0.8l-1.1-0.6l0.7-1.6l4.3-3.2l1.5-1.8l0-1.9l-0.4-2.6l0-2.4l0.4-1l1.1-0.5l1.8 0l2.1-0.9l0.7 1.1l0.4 1.7l0.4 0.7l2.1 1.7l-0.3-2.8l-2.6-6.3l-0.3-5.4l-0.4-2.6l1.5-1.5l3.9 0.2l-0.7 1.1l-1.1 0.6l0.7 1.4l1.1 1.4l1.1 1.1l1.4 0.5l1.5-0.5l0.3-1.3l-0.7-1l-1.4-0.7l1.4-1.7l0.7-0.3l1.5 0.3l-2.2-4.4l0-1.9l1.8 1.3l2.2 0.1l3.9-0.3l4 0.8l0.7-0.5l-0.7-1.2l-1.4-1.1l-1.2-0.7l0-1.1l1.5 0.3l2.5-0.5l1.1-0.4l-1.1-1.3l-4.3-2.4l1.8-1.7l5.4 1.9l2.1-1.1l-0.3-1.5l-4.7-3.7l-1.8-1.7l2.6-0.2l2.4-0.7l2.2-1.5l1.1-2.2l-3.3 0l-1-0.7l-0.4-1.9l2.2 0.4l2.8-1.1l1.8-2l0-2.8l-1.4 0.3l-3.2 0l-0.4-1.8l0.4-1.7l3.2 0l-0.4-1.1l-1.4-1.6l4.7-2.2l2.1-1.9l-0.3-3l-1.5 1.2l-1.8 1.3l-2.1 0.9l-2.1-0.9l2.1-1.9l2.9-2l1-1.8l-2.5-1.2l1.1-0.9l2.9-2.6l1.1-0.2l3.9-0.5l0.7-0.9l0-2.1l0.4-1.8l0.4-0.9l1.4-0.6l-0.7-1.6l-1.5-0.8l-0.7 0.8l-1.1 2.5l-2.1 1.7l-2.9 0.2l-1.8-2.2l1.4-1.3l3.3-1.3l1.8-0.9l3.9-5l0.4-0.9l1.1-0.9l0-1.3l-0.4-0.8l-3.6-3.5l-0.3-1.4l1-2.1l-0.7-0.9l0-1.6l0.7-1l-2.5 0.2l-4.7 5l-0.3-1.7l0.3-2l1.5-2.9l0-1.8l0.3-5.9l0.8-3l1.4-1.8l0.4-1.1l-0.4-0.9l0-1.8l-0.4-0.6l-2.1-7.9l-0.4-1.7l-0.3-4l-2.2-3.1l-0.7-2.4l0-0.9l1.4-1.6l0.4-1.3l-0.7-2.6l-0.4-2.8l-1.1-0.8l-2.1-0.8l-6.5-6.2l-1.1-2l-0.7-3l1.1-2.7l1.8-1.8l1-1.5l-1-2.7l-1.1-0.8l-2.9-1.1l-1-1.2l-0.4-1.1l0.4-1.3l1-1.1l1.1-0.4l0.7-1.6l-1.4-3.3l-2.5-5.1l-1.8-2.2l-0.7-1.2l-0.4-1.5l-1.8-4.2l-0.4-1.3l-1-2l-1.8-1.1l-0.4-2.7l-2.9-3.8l-1.1-1.1l-5.7-6.6l-3.6-2.7l-1.1-2.6l-1.8 0.2l-1.1 1.1l-1.4 0l-1.5-0.9l-2.9-3.1l-0.7-1.6l-1.4-2.7l-3.3-10l-1.4-7.3l-1.8-12.1l-1.1-13.8l-0.4-1.6l0-5.8l-0.3-6.9l1.1-8.3l-0.4-1.3l0-1.8l0.4-1.6l-0.4-1.3l-0.4-3.2l1.5-7.8l0-1.4l0.4-3.4l1.4-7.6l1.1-2.2l0.7-2.7l0.4-2l1.4-1.6l0.4-1.4l-0.8-0.6l0-0.5l1.1-1.1l-0.3-1.2l0.3-0.8l0-1l-0.3-0.4l-2.9 3.2l-2.2 2l-2.9 2.4l-3.2 1.6l-3.3 0.9l-4.3 0l-3.9-1.8l-4-2.7l-1-1.3l-0.4-1.1l-2.2-1.4l-5-6.3l-4.4-2.3l-4.2-0.5l-1.8-0.4l-1.1-0.4l-1.5-1l-1.4-1.5l-1.4-1.8l-2.6-1.4l-1-1.8l-0.8 1.1l-0.3 1.4l-0.4 0.4l0.7 1.6l0 1.6l-0.7 2.7l-0.3 0.7l-1.1 1.1l-3.3 5l-1.8 1.6l-0.7 4l-0.3 3.2l-1.1 3.5l-1.1 1l0 1.1l-0.4 2.5l-0.7 3.3l-1.1 3.4l0.4 2.3l-0.7 3.7l-1.1 1.4l0 6.9l3.2 2.1l1.5 0l1.4-2.2l3.6-2.5l1.1-0.3l1.4 0.5l1.8-1.3l4 0l1.8-2.3l1.4-0.9l1.5 0.4l1.1-0.2l2.8 1.2l2.6 0.4l1.4-1.8l2.2-1.8l1.8-0.4l3.6-2.9l1-2.3l-0.4-0.2l-0.6 0.7l-0.4 0.8l-0.8 0l0-0.6l2.6-4.1l2.2 0l2.1 1.8l2.9 3.6l2.1 3.4l1.5 3.6l0.7 4l-0.7 2.5l-0.8 1.3l-1 0.9l-0.8 1.6l0.4 1.1l-0.7 2.2l-0.7 8.8l-0.8 3.8l-4.2 10l-2.2 2.7l-1.4 1.6l-2.2 0.9l-1.4 0l-3-1.8l-1-1.8l-0.4-1.6l-1-0.6l-1.1 0.2l-1.5-0.4l-2.1-1.6l-2.2-0.7l-1.1 0l-0.3-0.4l0-1.2l0.7-0.8l0-1l-1.8-1.1l-0.7-1.1l-0.7-1.8l-1.1-0.4l-2.5-0.3l-1.1-1.7l-1.5-0.2l-0.7 0.4l-1.4 3.1l0.3 0.9l-1 0.7l0 2l-1.1 0l-1.1 0.5l0.7 0.8l0.7 0.3l1.1-0.3l0.4 0.7l-0.4 1.1l0 1.6l0.7 0.9l-1.8 4l-2.1 2.3l-3.3 3.7l-4.7 0.5l-5-2.5l-2.9-5.5l-1.8-14.8l-1.4-4.5l-0.4-4l-0.7-2.9l0-1.6l0.4-1.3l0.3-3.9l0.7-3.5l-1-3.2l-4-3.3l-4.7-0.7l-2.2 0.7l-1.4 2.9l-2.9 2l-2.1 0l-2.6-2l-2.4-3.6l-1.8-2l-1.5-0.5l-1.8-1.3l-1.8-1.6l-0.3 0.9l0.3 1.8l-1.1 1.1l0 3.4l-0.4 1.3l0.4 1.4l-0.4 2.7l-0.6 2.9l-1.8 1.8l-2.2-0.7l-2.5 0.2l-1.1 0.7l0.4 1.4l3.2 0.6l1.8 1.2l2.2 3.5l0.3 1.8l0 3.4l0.3 0.4l1.5-1.1l0.7 1.6l2.9 0l2.1-0.2l0.8 1.8l-1.1 0l-1.1-0.5l-0.7 0.2l-0.7 0.9l0.4 1.2l0.6 3.1l-1 0.4l-0.8-0.9l-1.4-0.7l-0.7-0.9l-1.8-3.1l-0.3 0l0 3.8l-0.4 2.7l0 3.4l-0.7 2.2l-1.5 8.2l-2.5 8.3l-1.1 2.2l-1.8 1.6l-2.1 0.7l-2.2-1.1l-4.3 3.3l-1.4 1.5l-1.8 0.8l-1.5 0l-1.4-0.8l-2.5-2.1l-2.2-0.3l-5.1 3.4l-1 3.3l-1.5 3.1l-1.1 2l-2.1 1.1l-1.5 3.1l-2.5 0.5l-1.8 2.2l-2.2 2.3l-0.3 2.4l2.1 0.9l3.7-0.2l1.4 1.9l0.4 2.1l1 1.3l0 3.1l0.4 5.8l-0.4 5.6l0.4 2.1l1.8 2.1l3.6 3.2l2.5 3.2l-0.3 2.6l-1.1 12.9l-0.7 1.7l-1.5 4.2l0.4 2.7l-1.5 5.8l-7.5 14.1l-3.6 4.4l-4.4 3.1l-2.1-0.3l-5.8-2.6l-4.3-3.1l-0.4 2.4l0.4 3.6l1.8 1l-1.4 0.9l0.3 2.9l2.2 2.6l2.1 4.9l0.8 1.1l6.8 0l1.8-0.4l1.1-1.3l0.7-1.6l1.4-1.3l4.4-0.7l4.7 2.4l3.6 3.8l2.5 3.5l1.1 3.9l0 3.1l1.8 5.5l0 3.9l-1.1 25l-2.5 12.7l-2.6 10.3l-3.2 3.7l-3.2 1.5l-1.5 3.3l-1.4 4.8l-0.4 3.9l-0.4 5.5l-0.3 2.3l-1.1 2.4l-0.7 2.2l-0.7 4.6l-1.1 3.9l-4 11.7l-4.3 15.9l-2.5 5l-3.3 4.3l-9 8.2l-2.4 4.1l-2.2 5.4l-5 12.6l-3.6 6.9l-1.8 5.3l-1.1 4.8l-3.3 26.2l-0.7 2.4l-1.4 2.3l-10.5 11.4l-6.5 5l-2.5 1.7l-8.3 4l-3.9 0.5l-2.6 0l-0.7 1l-12.9 9l-7.2 6l-3.2 3.9l-1.8 4.7l-4.4 15.9l-1.8 4.8l-2.8 4l-5.8 5.1l-4 5.9l-2.5 5.4l-1.8 4l-2.9 3.2l-11.1 7l-11.2 11.5l-8.3 5.9l-3.6 1.7l-4.3 1.1l-6.5-1.3l-2.2 2.7l-2.4 2.4l-5.4 2.5l-10.1 6.6l-9 3.4l-12.6 5.5l-9.4 2.1l-9 1.9l-5.1 2.7l-2.1 1.5l-1.1 3l0.4 2.5l-0.8 1.9l-0.3 2.1l-1.5 2.4l-1 3.3l-3.2 2.1l-1.8 2.6l-3.3 0.6l-5.7-0.9l-4.7 0.9l-4-0.5l-2.9-1.8l-4.6-1.7l-2.9-2.8l-4.7-2.9l-1.8-4.4l3.9-5.5l0-3l2.9-3.6l-0.7-7l0.7-7.2l-0.7-2.3l-1.1-0.4l-1.4 0.9l-1.8 5l-2.5 1l-1.8-0.6l-2.9-3.6l-1.8-0.1l-2.2 1l-1.8 0.4l-1.4-0.8l0.7-1.5l0-2.8l1.8 0l0.7-0.8l0.4-2.8l-1.8-0.6l1.4-3.6l2.2-3.2l1.1-1.9l0.3-1.1l1.5-0.4l0.7-1l1.1-0.3l-0.4 0.9l-1.1 1.5l1.5 1.3l1.8 1.2l3.6 1.5l1-0.8l0.8-1.7l2.1-0.7l1.5-1l0-2.6l2.1-2.7l1.8-2.8l5.8-2.3l4.3 1l2.2 0l0.7-1l1.8-1.7l0.7-1.5l0-1.7l0.4-2l-1.8-0.1l-1.1-3l0.7-4.3l0.7-1.9l1.5-0.9l1.8-0.8l2.1 0.5l1.8 0l2.6-0.9l0.6-0.8l0-1.7l-1-1.1l-0.4-1.5l0.8-2.3l-1.2-1.6l-4.2-1.7l-4 0.9l-14.4 4.7l-2.2 1.7l-1.8 2.6l-2.8 0.6l-10.9 6.2l-3.2 0l-2.2-1.1l-3.9 1.1l-5.8 3.1l-3.6 2l-2.9 4.2l0.4 3.4l1.1 1.7l-0.8 1.9l-1.4 2.3l-1.4 1.5l0.7 1.3l-1.5 1.7l-1 2.1l-0.8 2.7l-0.3 3.4l0.7 1.5l1.8 0.3l0.4-1.5l1-0.3l1.1 0.9l0.7 1.9l-1 6.4l0.3 2.7l1.1 0.9l1.1 4.2l1.8 1.7l0.7 2.5l-0.7 3.6l-1.1 3.2l1.1 0.8l0.7 0.9l0 3l-0.7 2.3l-7.2 17.4l-4.7 8.5l-21.2 28.5l-4.7 5.3l-3.6 3.1l-4.7 2.4l-2.1 3.1l-8 7.1l-3.6 1.5l-1.8-0.2l-2.1 0.2l-0.4 0.8l1.4 2.7l-1.4 3l-1.1 1.9l-1.4 2.9l-5.1 6.2l-1 3.8l-1.5 3l-1.8 3.9l-1.4 1.7l-2.2 1.4l-0.7 3.4l1.4 1.4l2.2 3.2l0.4 2.7l-0.4 3.5l1.8 1.7l3.6 3.9l2.2 1.7l0.7 1.7l1.1 2.1l1.4 2.3l0 2l-0.7 2.1l0 3.4l-1.1 1.4l0 2.5l-0.7 0.6l-0.7 2.1l-2.2 0.4l-0.4-1.4l-1.8-1.3l0.8-1.4l1 0l0.4-1.5l-0.7-2.3l-0.7-1.8l0-1.1l-1.5-2.3l-3.6 3.1l-2.5 1.3l0 3.5l1.4-0.2l0.4 1.4l-0.4 1.7l-0.7 2.7l1.8 1.5l0 1.5l-1.1 0.6l-2.1-0.4l-1.1 1.4l-1.8 1.3l-1-0.9l-0.8-1.2l-3.6 0.8l-1.4-0.8l-1.1-1.1l-1.8-1.4l-1.1 0.2l0.4 1.5l1.4 1.6l0.4 0.6l0.4 1.7l1.4 1.7l0.4 0.8l-1.8 0.6l-1.2 0.7l-1-1.1l-1.1 0.2l-0.3 0.9l1.4 2.6l0.7 1l1.1 0.5l-2.5 1l-1.5-0.6l-1.8-2.3l-2.1 0.2l-0.7-1.8l-1.1-0.9l-3.3 1.1l-1.4 2l1.8 0.7l1.1 2.2l2.9-1.4l0 2.5l-1.1 1.6l-1.5 1.1l-2.5 0l-5.4 1.2l-2.1-0.6l1-0.9l0.8-3.5l2.5-1l0.3-0.6l-2.1-1.1l-2.2 1.5l-2.1 1.8l-0.8 1.5l-2.8 1.4l-1.1 0.3l-2.9-0.3l-1.8-0.6l-0.4-1.6l0.4-2.3l0-2.3l-0.7 2.1l-0.8 1.1l-0.7 0.1l-1.1-0.1l0.4-1.3l-0.4-1.3l0.4-1.8l-1.1-0.9l-1.8-0.8l0.4-1.9l0.7-1.8l-2.5 1.5l-0.4 1.2l-1.1 1.2l-0.7 1.1l-1.4 0.4l-2.9 0.2l-1.5 0.4l-2.1 2.1l1.1 3.3l2.5 1.1l2.9-0.7l0 2.9l-0.8 0.8l-2.5-1.2l-1.8-0.2l-2.1 4.1l-1.1 0.9l-0.7-1.5l1-3.3l0.8-1l0.3-1.7l-1.1-2.1l-0.7 0.9l-1.4 0.6l-6.5-3.5l0.4-2.1l1 0.2l1.1 0l0.7-0.8l-0.3-0.5l-1.1-0.4l-0.7-2.7l-1.5 1.1l-1 1.9l-1.5 1.2l0 2.1l-1.1 0.2l-1-0.7l0-2.5l1.8-2.7l2.8-3.3l0.8-1l1.8-4.2l2.1-1.4l1.8 1.2l0.7-1.7l0-2l-1.4-3l-1.4-2.2l-1.5-1.1l-1.1-2.3l-2.5-1.8l-1.8 1.2l-2.5 0.4l-5 1.1l-5 1.4l0.3 1.7l-3.9 2.9l-1.8 1.1l-1.8 0.3l-2.3 0l-2.8 2.1l0.4 1.5l-1.8 0.8l-1.8 1.7l-2.9-1.1l-1.4 0.5l-0.4-1.3l-1.8-0.2l-2.2 1.7l-0.7-1.5l-3.6-1l-3.2-0.2l-7.6 0.4l-4.3-0.2l-5.8 0.6l-5.1-1.5l-7.2 4.2l-5.4 2.1l-3.6 1.2l-1.3 1.9l-1.8 0.2l-5.1 1.1l-1.1 2.4l-2.1 1.5l-2.5 0.8l-6.2 1.3l-14 2l-2.5-2l-9.8 2.7l-18 1.4l-10.1-2.3l-5-1.4l-5.4 1.3l-8.7 3.9l-2.1 4.1l-1.8 0.4l-2.1-0.2l-1.8-0.6l-3.3-0.6l-3.6-1.9l-2.9-1.8l-0.3-1.7l-0.7-1.5l0-1.4l1.8-2.1l1.4-0.4l2.5-1l1.5-0.8l-1.8-1.1l-4 0.4l-2.2 0.8l-0.7 0.5l-1.1-0.3l-0.3-0.3l0.7-1.3l-0.7-0.5l-1.8 1.3l-1.8 0l-3.3 1.3l-1.4-1.1l-2.2-1.8l-1.4-1.5l-1.5-0.4l0 1.6l-1 1.5l-1.5-0.6l-1.4 0.8l-1.1 1.5l-0.7 1.8l-1.8 0.9l-2.6-0.7l-1.8 0.5l-0.3 3l-2.2-0.1l-2.4 0.6l-5.9 0.2l-2.8 0.6l-3.2 1.5l-3 1.6l-2.1 0.4l-1.8 0.7l-1 0.1l2.1 0.9l0.7 1l-0.3 0.5l-1.5 0.3l-5.4 0l-2.5 0.7l-2.1 0.4l-1.1 1.2l0.7 1.3l2.2 1.7l1.8 0.8l0.3 1.9l0 1.4l-0.3 2.2l-0.8 3.2l-1 2l-1.5 2.1l-1.8 1.2l-4.3 1.5l-2.5 1.2l-1.8 0.7l-0.4 1.6l-3.2 1.5l-2.9 2.4l-6.2 4.6l-0.3 1.9l-1.8 1.8l0.3 1.2l-1 1.3l-5.1 3.9l-1.1 3.7l-2.5 1.7l-2.2 1l-3.6 0.6l-1.8 2.7l-5.7 4.5l-2.8 2.1l-1.8 2l-5.1 4.3l0 2.7l-0.8 1.5l-2.1-0.4l-1 1.2l-2.6 3.5l-3.9 3.1l-5.8 5.1l-0.3 0.8l-2.2 0.5l-1.1 2.6l-0.7 2.9l-1.4 1l-1.8 1.1l-3.3 1.4l-4.7 1.2l-3.2 0.5l-3.3-0.5l-0.7 0.6l-0.4 1.1l-1.4 1l-2.5-0.6l-1.5-0.8l-1.8 0.6l-0.3 2.3l0 2l0.3 1l-1-0.2l-2.2-0.2l-0.7 0.7l-0.4 2.6l-0.4 1.4l-1.4 1.9l-1.4 1.6l-4 3.1l-2.2 0.4l-0.7 0.6l0.7 2.3l-0.3 1.2l-3.3 2.9l-1 1.4l0 3.7l-5.1 1l-2.9 0l-1 2.7l-3.9 1.2l-4.7 0.2l-0.7 0.2l-1.5 1l-0.8 0.2l0.8-3.3l0.7-1.3l0.8-1.1l1-0.4l1.1 0.2l1.5 1.3l1.3 0l-1.3-2.4l-1.5-1.2l-4.4 1.1l-1.3 0.4l-2.2-0.4l-0.4 1.4l0.4 0.8l1.7 2.1l-1.7 3.1l-1.8-0.3l-1.4-1l-0.8-4.1l-1.8 0.2l-1.4-0.4l-2.5-1.4l-1.5 0.6l-1.1 0.6l-1.4 0.6l-1.4 0.3l-1.1-0.3l-1.1-0.6l0.4-1.2l-1.5-1.2l-1.4-0.4l-2.5 2.4l-1.1 1.4l-0.4 1.5l1.1 0.4l1.1-1.4l0.7 0.3l4 0.9l1.4 0l1.4 1.4l-2.1 0.6l-1.5 0.8l-4.3 1l-1.1 1.3l-1.4 0.2l-1.8-0.2l-1.1-0.4l-0.7 1.4l-0.4 1.4l-0.3 3.7l-0.4 0.8l-0.7 0.9l-0.4 1l0.7 1l1.8 1.7l0 1.4l1.5 2.4l0.7 3.1l0.7 1.8l-0.3 1.7l-1.1 2l-1.1 1l-1.4 0.8l-1.1 1.2l-1.1 1.9l0 1.4l0.7 1.3l0.7 2.8l2.6 0.2l1 1.4l-0.7 3l0.7 0.9l0.4 1.4l-0.4 1.2l-0.7 1.9l0.4 1.4l-1.1 2.8l-1.8-0.1l0 1.6l1.4 0.6l0.4 1l1.8 1.2l1.1-1l0.4-2.8l3.6-3.1l4.6-5.3l2.2-3.9l3.6 1.3l3.3 0.8l1.8 3.6l3.6 2.7l0.7 0.2l-0.4 1.4l0 1.4l0.7 1.3l0.4 1l0.7 0.4l0.7-0.2l1.5-1.2l0-0.3l1.4-0.7l0.4 0l0.6 2l0.8 0.2l1.5-0.6l1 1.6l1.5-0.4l4.7-3.1l1-1.2l2.6-3.2l2.4-5.4l0.7-0.6l1.1 0.9l0.4 1.8l0 2l-1 1.7l1 0.6l0.8-0.2l1-2.1l0.8 1.7l0.6 0.8l0.7 0.2l0.8-0.4l0.7-1.5l0-0.8l1.1-0.8l0.7-0.8l0-0.6l-0.7-1l1.4-0.6l1.1 0.3l1.8 2.1l0.7 0.4l3.2 1l1.1-0.6l0.4 1.1l0 0.8l0.7 0.6l2.2-0.8l0.3-1.5l-0.3-1.4l-0.7-1.4l0.7-1.2l0.3 0.2l0.8 1l2.8 0l1.1-0.3l3.3-1.3l1.1-0.9l1.4 0.4l4-1.4l5.7 2.3l1.5 0.9l1.1 0.3l0 0.8l-1.8 1.8l-2.9 2.3l0.3 2l1.1 0.6l3.6 0l0-0.8l-1.4 0l2.1-2.9l1.8-0.4l1.8 1.3l2.2 2l1.1 0.6l2.9 1.3l1 0.6l2.6 3.6l0.3 0.4l2.2 0.4l6.5 2.2l1.8 1.1l1 1l1.1 0.8l1 1l0.5 2.3l-0.5 1.8l-1 0.6l-1.1 0l-0.7-1.2l-1.1 2.8l-0.4 0.4l-2.1 1.7l-0.3 2.2l1.3-0.2l2.3-1.3l2.8-2.6l4.4-2.4l1.3-1.5l-0.3-1.8l-2.2-4.7l-0.3-2.2l0-2.8l0.7-1l1.4-0.5l2.5-1l3.3-3.8l-0.4-4.3l-1.1-4.7l0.4-5.3l1.1-2l1.4-0.9l1.1-1.2l0.4-3l0-2.7l-0.4-1.9l-0.7-2.4l-0.7-1.6l9-10.8l3.2-2.7l3.6-2.1l2.2-0.1l3.6 2.2l2.2 0l1.8-0.6l1.8-1l2.1 1.2l0.7 0.8l0.4 1.4l-0.7 0l-1.1 0.6l-0.7 0.3l0.3 1.4l0 0.8l-0.3 1l0 1.7l1.8 2l1.1 3.1l1.8 1.6l0.7 1.6l-1.5 1.6l1.1 1.5l1.1 0l2.9-1.5l0.4-1l1.4-0.6l0.4 0.3l1 2.2l2.9-0.2l4.6-3.3l2.6-0.6l2.8-0.2l1.5-0.2l0.8-1l-1.5-2.5l0-0.8l1.5-0.4l2.1-1.2l1.8-2.5l1.8-0.8l1.8 2.9l2.8-2.1l2.9-1.2l10.8-1l4-1.2l2.5-2.3l-0.3-3.7l1-1l1.1 0.6l1.1 0.2l1.1-0.2l1.1 0.4l1.8 1.1l1.4 1.2l0 1l-1.8 0.4l-1.4 4.1l-2.2 0.4l0.4-1.5l0-2l-0.4-1l-1.1 0.8l-1.4 2.2l-1.1 1.1l-0.4 0l-0.3 4.9l0.7 2l1.4 0.8l1.1-0.3l2.2-2.5l2.1-0.6l1.1-1.2l1.1 0l1.1 1.2l0.7 0.2l1.8-1.1l0.7-2.2l-0.7-2.4l-2.1-1.7l1.4-1.4l1.8-1.2l1.4-1.7l1.8-6.2l2.2 0.9l0.7 2.2l-1.8 1.5l0 1l2.5-0.2l2.2 0.6l1.1 1.4l-1.1 2.1l-0.7 0.6l-1.5 0.2l-1 0.4l-0.8 1l0.8 1.1l1 0.2l1.5-0.5l2.9-1.4l1.4-1.4l7.2-9.2l1.1-2.7zM1639.5 304.1l-1.4-1.2l-2.2-0.7l-2.1-0.4l-2.2 0l-0.3 0.9l8.2 3.1l4.7 0.9l3.3-1.2l-1.8-0.5l-4.4 0l-1.8-0.9zM1826.8 411l-1.2-0.9l-1.1 0.2l-1.3 1.4l-0.8 0.2l-4.6-0.2l-1.5 0.2l-1.4 0.9l-0.7 1.9l-0.8 0.9l-1.5 0.7l-2.4 0.7l-1.2 1l-4.2 4.6l-3.6 3.5l-0.7 0.9l0.3 1.8l2.2 2.2l-0.4 1.5l-2.5-2l-2.5-1.2l-8.7-0.7l-3.2-0.9l-2.9-1.6l-1.8-2.1l1.8-0.4l-0.7-1l-1.5-0.9l-3.6-1l-0.3-1.6l0-1.4l1-1.2l2.9 0.7l6.2 5.7l3.2-0.8l-4.7-3.7l-3.6-4.6l-1.8-5.4l-2.9-11.6l-1.8-5.6l-1.4-1.4l-0.4-0.9l0-3l-0.7-2.8l-1.1-2.4l-0.7-0.9l-0.7-1l-6.5-7.1l-1.5-2.2l-3.9-9.1l-0.4-1.1l0-1.9l0.4-1.4l1.4-2.1l0.7-3.1l1.1-2.8l0.7-2.8l-1-2.3l1.8-5.2l2.1-4.9l2.6-4.5l9-11.7l1-2.4l0.8-6.5l1.4-3.1l5.8-7.8l2.1-5.2l0.4-6.1l-2.5-4.7l-0.7-2.9l-1.1 0l-0.7 0.5l-0.8 0.9l-0.7 2.9l-2.1 2.4l-4 3.8l-4.7 9.1l-1.8 1.5l-1.8 0.7l-4.7 4.9l-7.1 4.7l-1.2 1.4l-9 10.8l-11.5 12.7l-4.3 2.8l-4.7 0.9l-16.9-1.4l-14-2.3l-3.7-1.2l-1.8-0.7l-3.9-3.3l-1.1-0.7l-0.7-0.9l-1.8-4.5l-0.7-1.2l-1.8-0.7l-0.8-1.6l-1.4-4.2l0.7-4l-1.8-1.6l-2.9 1.1l-1.4 4l-0.4 2.1l-0.7 2.4l-2.5 3.5l-1 0.7l-1.5 0l-3.6-1.7l2.1-6.8l1.5-1.6l1.8-1.2l1.5-0.2l0-0.5l-1.8-1.6l-3.6-1.7l-11.9-0.4l-1.8 0.4l-1.5 1.5l-2.8 3.2l-0.8-0.5l-14.7-0.2l-1.5-0.4l-1-0.7l-1.5-1.7l-1.4 1.2l-1.5-5.5l-0.7-0.9l-2.2-2.3l-0.7-0.9l1.5-1.2l8.2 1.2l0-1l-22.3-9l-14.8-9l-1-0.7l-2.6-3.3l0-0.6l-1.8-4.3l-1-0.7l-4.3-1.2l-1.8-1.7l-4-4.2l-1.4-0.7l-2.2-0.8l-8.6-6.8l-7.6-8.3l-6.1-4.3l-4-6.8l-3.2-1.9l-19.5-22.4l-5-8.3l-3.3-2.4l-1.8-2.8l-7.5-16.3l-31.7-40l-3.9-3.6l-8.7-6.7l-4-4.1l-3.9-7.7l-1.5-1.2l-1.4-0.7l-1.1-1.7l-1.4-4.1l-1.8-1.6l-2.5 0.7l-2.6 2.1l-1.4 2.4l-0.4 1.5l0 3.6l-0.6 0.7l-1.2 0.5l-3.6 2.4l-4.6 1.5l-4.7 0.7l-2.5 0.9l-1.1-0.2l-0.7-3.1l0-1.8l-0.7-0.9l-1.1-1l-1.8 1.9l-1.1 2.3l0 4.5l1.1 4.6l0 2.4l-2.2 3.6l-0.3 1.4l0 1.2l-0.7 1.7l-0.8 1.2l-2.5 3.6l-1.1 6.3l1.5 5.9l13.3 29.7l3.2 10l2.9 16.9l1.5 17.3l-0.4 6.2l-4.7 24.4l-7.9 15.6l-1.1 5l1.5 29.1l-0.4 5.9l-0.7 5.6l-1.8 6.6l-2.5 4.7l-3.3 3.9l-5.8 4.8l-1.7 1.1l-1.9 0.7l-4.3 0.7l-4.7 2.6l-1.4 1.7l-2.9 5.1l-1.4 3.2l-0.8 2.6l0.8 3l2.5 6.1l-0.4 2.6l0.7 1.4l1.8 5.3l-1.4 2.6l-1.4 2.3l0 2.9l1 3.7l5.5 8.6l1.4 3.7l0 6.3l-1.8 6l-2.5 5.1l-2.6 4.2l-6.8 7.2l-7.6 6l-2.5 1.4l-3.2 0.4l-1.5-0.4l-2.1-1.2l-2.1-0.4l-4.4-1.9l-3.6-0.5l-1-0.4l-1.8-2.3l0.7-2.5l1.1-1.7l-1.1-1l-2.2 0.5l-7.9 3l-10.1 1.7l-1.4-0.5l-1.1-0.7l-1.5-2.1l-1-0.9l-7.2-3.5l-1.9-1.6l-3.2-4l-1.8-1.5l-8.3-6.6l-1.8-0.7l-0.7-0.4l-1.1-1.2l-1.4-0.9l-1.5-0.3l-0.7 0.7l-1.1 4l-1.8 1.6l-2.4 0.5l-5.1 0l-3.3 10.2l1.2 5.4l2.8 3.9l4 3l3.2 3.7l4.7 6.9l0.7 2.1l0.7 3l1.8 2.1l0.7 2l-0.3 2.6l-1.8 2.3l-4.3 2.8l-6.8 6.9l-1.5 2l-2.5 5.6l-1.4 2.6l-1.8 1l-0.8 1.5l-0.3 3.2l-0.7 3l-2.2 1.8l-2.2-0.5l-1.4-1.5l-2.2-4l-2.1-1.8l-1.8 0.7l-1.5 1.8l-2.5 5.3l-0.7 1.4l-3.2 1.1l-0.8 0.7l-4.3 5.3l-1.4 1.2l-2.6 0.7l-9.7 0.4l-4 1.9l-3.2 5l-1.1 5.3l1.5 10l0 6l-1.1 6.2l-1.1 3l-4.3 7.1l-1.1 2.7l-0.7 2.5l1.1 5.5l1 3.2l1.1 1.5l4.7 3.8l2.9 1l1.1 0.8l1.8 3.8l0.7 0.7l0 0.7l1.8 2.3l10.1 4.6l3.2 3.3l5.1 9.4l3.2 3.8l-0.7 2l0.7 5.1l0.7 2l-0.3 0.9l0 2.2l-0.4 1.7l-1.1 0.4l-1 1.4l0.7 1.8l0 3.9l-0.4 1.1l-0.7 1.4l-1.1 0.2l-2.1-0.2l-0.4 0.4l-1.1 5.4l-5.4 8.6l-1.4 8.4l-1.8 4.1l-0.8 2.9l0.4 2.9l3.2 7.7l1.5 5.4l1.1 2.5l1.1 1.1l1 0.5l2.9 2l1.1 0.4l2.5-0.8l1.1-0.3l4.7 2.3l2.5 0.4l1.1-2.2l0.7-2.7l1.4-2.5l1.8-2l1.5-1.4l12.5-4.1l3.3-2.4l1.1-4.3l-1.1-10.8l2.1-5.1l1.8-0.6l5.1-1.6l1.4-0.9l0.7-0.9l6.2-3.2l1-2.5l1.5-5.9l1.1-2.2l1.8-1.6l2.5-0.5l2.5 0.7l1.8 1.8l0.7 2.5l-1 1.4l-1.8 1.1l-0.8 2.1l1.1 1.8l2.2-0.7l4.3-2.7l5.1 0l5 1.6l8.6 4.9l4.7 1.4l3.6-1.6l6.1-6.3l1.8-1.2l2.2-0.9l4.6-0.6l0.8-1.2l-1.4-2.5l-8-7.2l-2.2-1.4l-2.4-0.7l-2.6-0.2l-2.1-0.7l-1.8-1.1l-1.8-1.6l-8.3-10.4l-4-2.5l-1.4-1.8l-5-6.9l-1.5-3.6l-6.1-4.4l-1.8 1.2l-2.2 0.5l-6.5 0.6l-3.6 1.2l-2.5 0.5l-1.8-1l-7.2-8.2l-3.2-2.7l-10.4-5.5l-2.9-3.4l-1.1-6.2l0.7-6.1l1.5-5.8l2.1-5.5l5.7-9.8l3.6-4.3l4-3.7l4.3-2l2.5-0.3l7.2 1.3l6.5-1l2.6 0l4.6 2l16.6 19.5l1.1 5.4l1.4 2.1l2.2 1.6l2.9 0.9l1.1 0.9l-0.4 1.4l-0.7 0.4l-4-0.8l-0.3 0.6l0.3 1.2l1.8 2l2.2 0.7l1.4-0.2l1.1-0.5l1.4-1.6l5.8-8.2l1.8-2.1l7.9-5.5l1.1-0.6l2.1-0.5l1.5-0.4l1.8-1.9l2.8-1.4l16.6-13l11.9-5l9-1.9l8.7-0.2l9.3 2.3l6.9 4.1l2.1 0.5l1.8 1.1l5.4 6.4l8.3 5.5l10.4 1.4l5.4 6.4l6.2 6.2l17.6 13l8.6 2.7l21.2 12.6l20.2 7.1l15.5 10.4l2.5 2.3l2.6 2.7l0.7 2.5l1.1 1.4l2.1 2l2.2 1.8l1.4 0.7l1.5-1.8l1-6.2l2.9-2.4l1.1-2.8l2.5-10.9l0.7-3l0-5.9l-1-7.7l0.3-6.4l1.8-5.7l10.1-18.4l12.6-20.1l6.4-7.8l15.2-13.1l9.7-12l15.5-11l14-6.9l14-3.5l2.2-0.2l1.5 0.5l0.7 3l1.4 2.2l1.1 0.7l7.2 2.6l3.2 0.7l2.6-1.7l7.9-0.6l14 3.4l4.4-1.4l-4.4-4.1l-0.7-2.1l0.4-1.6l1.1-2.1l1-1.6l1.5-1.1l1.1-1.9l1.4-0.9l4 0.9l0.3 1.6l0 3l2.5 2.5l3.2 1.2l3.3 0.3l6.8-1.2l1.5-0.5l0.7-0.9l0.8-1.6l-0.8-1.6l-1.8-3.3l4.7 1.4l2.5 0l2.1-1.4l0.8-1.1l0.7-1.7l3.6-0.2l1.1-0.7l1.1-1.1l-1.8-0.7l-1.8 0l-1.1-0.5l-0.4-2.5l0.7-1.9l1.1-1.1l1.8-0.5l7.6-1.2l2.9-1.1l2.1-2.3l2.2-1.2l10.1-0.2l3.2-0.9l1.8-0.2l2.6 1.5l1.8 0.7l2.1 0.3l1.1-0.5l-1.1-0.9l2.5-3.7l0.8-0.9l0.7-1.7l0.6-3.4l1.5-2.6l2.6-2.6l1-1.3l0.3-1.4l1.2-0.7l1.4-0.5l2.8 0.7l1.2-0.5l1.4-1.6l1-0.4l3.6-1l1.5-0.4l1.8-2.8l1.1-0.5l2.1-0.2l0.7-0.5l0.8-1.2l-1.1-0.7l-3.3-1.1l-1.3 0zM317.6 2045.3l-3.6-3.4l-3.9-1l-3.3-2.7l-4.4-1.6l-2.4-2.1l-1.2 1.1l-2.1 0l-0.7 2l-1.8 2.2l-1.8 2.7l-3.6 0l-1.1 0.4l0.4 3.3l0.7 3.2l2.2 5.4l1.8 4.3l1.1 1.8l4.6 1.6l3.3-0.3l2.9-0.3l3.1-0.6l2.6-2l4.3-4.3l2.1-5.6l0.8-4.1zM355 1991.1l-1 1l-1.1 1.5l-2.2 3.4l0 2.6l-0.7 2.5l-1.4 0.6l0 1.3l-1.8 3.2l-1.5 2l-1.4 1.5l0.7 1l-0.4 1l0.8 1.6l0 5.5l-0.8 2.7l-1 3.6l-2.9 4.3l-2.6 2.5l-0.7 2l-0.7-0.2l-1.1-0.6l-0.3 1.1l0.3 2.4l1.1 2l0.4 3.1l-0.8 1.9l-0.3 1.6l1.1 1.4l0.3 1.1l1.5 0l0.7-1.3l1.4-1.2l1.8-0.4l1.8-0.5l2.2 0.1l0-1.5l1.4-1.6l-0.7-1.7l0-1.3l0.7-1.3l-0.3-1.4l-1.1-0.7l0.4-1l0-1.8l1.4-2l0-2.7l1.1-1.6l1.1-2.1l1.4 0.1l1.8-0.7l0-1.8l0.4-1.9l1-1l0.8-1.6l0-3.7l-0.4-2.2l2.5-4.3l-0.7-4.5l0-3.8l1.5-1.5l-1.5-2l-1.1-2.8l0-1.9l-1.1 0zM265.4 1831.2l-2.2-1l-1.1 0l-0.7 0.6l-0.3 1.6l0.3 2.2l0.7 1.8l1.1 1.2l-0.3 2l0.7 1.8l1.4 0.8l1.8-0.4l0.4-1.2l1.8-4.8l0.4-1.4l-0.8-2.4l-1.1-0.8l-2.1 0zM291 1794.6l-1.8 0.5l-0.7 0l-0.8-1.6l-0.7-0.6l-0.7 0l-2.2 1.6l-3.6 1.1l-1.4 0.9l-2.2 1.6l-2.1 2.2l-0.8 0.6l-2.1 0.4l-0.4 0.7l-0.3 1.6l2.8 4.8l2.6-1l1.8-0.3l3.9-0.3l2.2-1.3l1.1-0.4l0.3 1.3l0 3.9l0.4 0.6l2.9-2.6l4.3-11.2l3.2-2.5l-1-1.6l-1.5 0.3l-3.2 1.3zM266.1 1790.7l-2.2-0.3l-1.8 0.6l-1.8 0.9l-2.5 0.5l-2.1 1.2l-1.5 0.3l-1.1-0.4l-1.4-1.2l-1.5 0l2.2 3.5l0.7 2.5l-1.1 2.6l-1.4 1.7l-1.1 2.5l-0.7 2.3l0.7 1.9l-1.4 1.6l-0.7 2.3l0.7 2.6l1.1 2.2l1.8 1l2.1-0.7l2.2 0.7l1.1 0l-1.1 1.2l-1.1 0.3l-1.1 0l-1.4 0.1l-2.2 1.2l-2.9 3l-0.7 0.6l0 1.9l1.8-1l0.7 0.1l1.5 0l1.1-1l-1.5 6.2l0 1.2l1.8 0l4.7-2.6l1.5-1l2.1-2.9l1.1-0.9l2.2-1l0.3-0.6l2.5-5.2l2.6-0.9l0.7-0.7l1.1-1.2l0.3-0.5l0-1.1l0.4-3.2l0-0.7l-0.7-1.9l0-10l-1.1-4.9l-2.9-2.8zM138 1775.4l-2.5-1.6l-1.1-1.8l0.7-4.6l-0.7-2l-3.3-0.8l0-2l-0.3-2.1l-2.2 1.5l-0.7 1.3l-3.6 2.1l-2.2 0.6l-2.1 1.1l-1.5-3.2l-0.7-1.3l-1.8 0l-0.7 0.7l-1.1 1.9l0.7 1.9l-0.4 1.3l-0.3 0.6l0 0.8l0.7 1l0 0.4l0.7 2.6l-0.3 1.2l0 1.2l-1.5 3.2l-0.3-0.4l0-2.6l-0.4-0.4l-0.7 0.2l-0.7 1l-0.8 2l-0.7 1.4l-0.3 2.1l2.1 0.3l3.3 2.2l1-1.2l5.1-0.2l2.2 0l2.1 2.8l1.5 1l1.8-1.7l0.7-2.9l-2.5-2.6l0.3-1.2l0.4-0.6l1.1-0.2l0.3-0.4l2.2 0.6l0.4 1.6l3.9-1.2l2.2 0.2l1.8 0l0.3-0.6l-0.7-1.2l-1.4-2zM1229.1 1720.5l-2.5-1.8l-1.5 0.6l-1 1.4l0.3 1.8l3.3 4.6l1 2.7l1.5 1.2l1.8 0.8l1.4 0.2l1.1-0.8l2.5-3.4l0.7-1.6l-1.4-2.3l-2.5-1.2l-2.5-0.8l-2.2-1.4zM159.9 1738l-0.4-3.4l0.7-4.4l1.1-1.8l0.4-2.2l0.8-2.5l-0.8-0.6l-0.7-1l0.7-2.2l0-2.2l-0.7-0.8l-1.5 4.8l0.4 1.2l0.8 1.7l-0.5 2.2l-1.8 0.7l-0.3 2.5l0.3 1.6l0 2.2l-0.7 0.4l-1.1 0.2l0-3l-1.8 0.6l-0.6 4.6l1.4 2.5l-2.1 1.6l-1.5-1.6l-2.1 1.6l-1.8 0.7l0 1.5l0.7 0.4l3.6 0.8l1.1 0.6l1.3 2.8l-0.6 1.6l0 4l0.6 2.5l-0.3 2.3l2.1 0.4l0.5-1l0-1.6l-0.8-1l0.3-1.6l1.8 0.6l1.1 0l0.4-1.4l0-0.8l-0.7-1.8l0-1.8l0.7-1.6l1.8-2.1l2.1-0.1l1.8-2.4l1.8-1l0.8-2.2l-1.1-2.5l-6.1 2.6l-1.1-0.6zM205.7 1687.6l-3.3 0.6l0 1.8l1.4 1.4l-1.4 1.2l-0.7-1.2l-0.7-0.4l-1.5 2.8l-5.4 1.2l0 2.9l-0.3 3.4l-3.3 2.5l0.4 2.6l0.7 2l-2.2-0.4l-1.1 1.4l-0.7 1.6l0.7 1.3l1.1 0.1l1.1 1.1l-0.4 1l-1.8 0.3l-2.1-1.8l-1.1-1.8l-0.7 2.8l0 1.2l1.4 0.3l1.8 0.9l3.6-0.9l3.6-2.5l4.4-5.6l1-2.4l0-1.8l1.1-0.9l0-1.2l1.5-0.6l1-1.6l-1-0.8l1.4-1.6l1.5-2.1l0.7-1.6l-0.7-5.2zM474.2 1641.6l-1.5-0.6l-1.8-0.3l-1.4 0.9l-0.7 1.8l1.8-0.4l2.8 1.6l2.2 0.4l1.8-0.4l0-0.4l-2.2-1.6l-1-1zM227.6 1644l0-0.6l0.7-0.2l0.8-0.6l-2.6-2.1l-0.3-1.2l0-1.2l0.6-1.7l0-0.9l-6.7-2.1l-1.1-1.2l-0.4 1.4l-0.7 1.2l-0.7 2.1l0.7 2.2l-2.2-0.2l0 1.5l0.4 2.4l2.5 2.2l0 0.8l-0.7-0.2l-3.2-1.4l0.3 2.1l0.7 1.3l1.5-0.7l1.1 0.7l-0.4 1.7l1.1 1.6l2.1 1.8l1.1 0.4l0-2.2l1.5-2.4l2.5 0l2.1-0.3l1.8-1.6l0-1.6l-2.5-1zM473.4 1632.6l0.8 0.8l1.4-0.4l1.4 0.6l1.5-0.2l0.7-2l0.7-0.6l1.1 1l0.7-1l1.1 1l0 2.2l0.4 1.1l0.7 0.4l2.5 0l1.1 0.3l0.4-1.2l0-1.2l0.3-3l0.4-0.8l0.7-0.6l2.5-0.9l1.1 0.5l0.7-0.3l2.2-2.8l1.1-1.2l-1.5 0l-2.5-0.3l-1.4 0.3l-0.4 0.4l-0.4 1.4l-1 0.8l-2.2-0.2l-2.2 1.6l-1.4 0.9l-1.4 0l-2.6-4.1l-2.1-1.2l-2.6-1.1l-2.5-0.4l-2.5 1l-1.4 2.9l0.7 2.9l1.4 2.6l0.7 2.4l1.1-0.6l0.7-1zM1198.9 1609.4l1.8 3.1l2.9-0.2l2.5-2.5l1.4-3.9l-1.8-2.8l-3.2 0l-2.9 2.4l-0.7 3.9zM505.5 1608.2l1.5-0.6l1.1-2.9l-0.4-2.3l-2.5 1.3l-0.4-1.6l0-2.9l-1.1-1.4l0.7-0.3l0.8-1.3l-0.8-0.9l-1 0l-1.5 0.4l-1.1 0.9l-1 1.2l1 3l-1 1.9l-2.6 1.4l-1.8 2l2.6 0.9l5.4-0.3l2.1 1.5zM549.8 1591.6l3.6 0l1.8-1.8l0.3-2.4l-1.1-3.7l-1.4-2.7l-2.2 0.6l-2.1 2.1l-1.8 2.4l1.1 0.3l0.7 0.3l0.3 0.9l0 1.2l-0.3 0.6l-1.8 0.4l-0.7 0.6l-0.8 2.5l1.1 0.6l3.3-1.9zM181.1 1582.9l-1.1-1.1l0-2.2l-1-1.2l-1.1-0.6l-1.1 0l0.7 1.8l-1.4 0l-1.5 0.8l-0.7 0.2l-0.7 0.6l-0.7 0l0-2.2l0.3-1l-0.3-0.8l-1.8-0.3l-0.7 1.7l-0.4 5.1l-0.7 2.8l0 1.9l-0.7 0.8l-0.8 3.9l0.5 3.1l-0.8 2.8l0 4.9l0.8-0.2l1-0.8l1.1 0.4l1 1.4l0.4 0.2l0.7 1l1.1-0.6l0.4-0.8l1 0.2l0.4-1l1.1-0.8l0.3-1.1l1.1-0.6l0.7-2l0-1.4l0.4-1l0.7-0.2l0.4-0.4l0-1.5l0.7-3.3l-0.7-0.4l0-0.6l1.1-0.2l1.8-1.2l-0.4-1.4l-0.3-2.1l0.7-1.6l1.8-0.8l0.3-1l-0.3-0.9l-2.9 0l-0.4 1.7zM1176.9 1569l-0.3 0.8l-1.1 4.3l0 1.4l1.4 2.3l1.5-1.7l1.4-3.8l0.4-4l0-2l-1.1 0.4l-1.1 1.4l-1.1 0.9zM750.3 1543.1l-2.1 0.7l-4.3 6.3l-1.5 0.6l-3.9 1.9l-1.5 2.4l-0.3 1.3l-1.5 2.9l-1.1 0.8l-1.8 1l-2.5 1.6l-7.6 14.3l-1.8 0.9l-2.1-0.6l-1.5 3l-1.1 1.6l0.8 2.9l2.1 2.7l3.6-1.3l-0.7 1.7l-1.4 2.2l0.3 0.4l2.2 1l0.4 2.3l2.1-0.2l5.1-1l3.2-3.1l2.2-1.2l2.9-1l2.5-1.4l2.9-0.9l2.1-0.8l-1.1-2l-2.1-2.7l-0.7-1.4l-0.4-2.1l-1.8-1.4l0-1.5l-0.4-1.3l0.4-1.1l0.4-4.5l2.8-4.3l2.6-3.7l2.8-2.5l1.1-3l0.7-2.7l1.5-1.6l1.1-1.6l0-1.5l-2.6-2.1zM195.2 1541.7l1.1-0.2l1.1 0.6l0.7-0.4l0.7-1.8l0-1.5l-1.8-0.6l1.4-1.2l0.4-1.8l-1.8-1.9l-0.4-1.1l-1.4 0l-1.4 0.9l-1.5-0.3l-0.4 1.3l0.8 1.1l-1.8 0.1l-1.8 2.5l-1.1 1.2l-1.8-0.4l-4 0l-1.4 5.6l-0.4 1.8l-1.4 2.3l0 1.6l1.8-0.6l1.8 2.3l0 0.7l-2.2 1.9l-1.4 3.9l-1.5 3.1l0.4 1.4l1.4-0.2l1.5-1.6l0.3 0.6l-2.1 2.4l-0.4-0.2l-1.1 0.2l-0.7 1l0.7 2.3l-0.3 4.7l-1.1 0.6l-2.5 0.3l-0.8 1.4l1.8 0.6l2.6-0.6l1.4 1.4l0.7-0.6l-0.7-2.1l1.1-1.2l1.1-1l-0.4 1.5l0 3.6l1.1 0l1.8-2.3l1.4 0.7l-0.3 3.5l-2.2-0.9l-1.8 1.2l2.2 2.5l1.8 0.4l2.5-0.8l1.1-2.1l0.7-0.8l1.4-0.8l0.8-1.6l-1.1-0.4l-1.1-1.5l-0.4-2l1.1-2.4l0-0.9l-1.8 1.9l-1.8 0.6l0.4-1.9l2.1-2.2l-0.3-3.5l2.1-3.5l4.4-4.1l1.8-4.7l1.4-4.1l0-1.2l-1.4-1.4l-1.1-1.3zM1191.7 1522.2l-1.4-1l-4.7-1l-0.4 3.7l0 5.7l0.7 2.1l6.2 3.1l2.1 0l1.1-0.3l0.4-1.4l0.3-2.9l-0.3-2.9l-0.8-2.2l-1-1.8l-2.2-1.1zM551.2 1370.8l0 0.8l0.4 0.8l1 0.8l5.5 0l-1.5-1.4l-2.2-1.6l-2.1-0.9l-1.1 1.5zM586.9 1338.6l-1.1-1.7l-0.3-0.9l-2.6-1.2l-0.3-0.6l-0.4-1.5l-2.1-0.4l-0.8-0.7l0-1.4l-8.3 5.6l-1.4 2.3l-0.7 7.8l0.3 1.2l1.1 0.5l4.7 4.2l0.7 0.4l2.2 0l4 0.8l0.7 0l1.1-0.8l0.3-1.3l-0.3-1.2l-1.1-0.9l0.7-0.8l1.1-0.6l1.1 0l0.7 1.4l1.1-0.6l0.7-1.4l0.3-6.1l-1.4-2.1zM1095.9 1113.3l-0.7 2.1l-0.7 0l-0.7-1.5l0-2.3l0.7-2.4l4.3-10.1l1.8-7.7l1.4-8.4l0-1.3l-0.7-0.7l-2.5 0l-1.1 0.5l-0.7 0.9l-4.3 7l-2.6 2l-5.4 6.2l-1.8 1.3l-1.8 1.9l-1.8 4.1l-3.9 5.8l-1.1 2.4l-0.7 2.3l-0.4 2.8l0 3l1.5 3.6l6.8-2.3l2.9 3.9l-1.5 1.9l-3.2 3.6l-1.1 2.2l0 5.5l-0.3 1.7l-1.1 0.9l-4.7 0.8l-1.1 0.7l-0.3 1.3l0.3 1.3l0.7 0.8l1.1 0.7l1.1 0.2l2.2-0.2l10.4-3.9l11.9-8.1l1.1-2l1.4-4.6l1.1-2.4l4.3-6.8l0.8-2.5l0-4.8l-3.3-0.3l-4.7 1.3l-3.6-0.4zM1205 566.9l-1.1 0.4l-2.8 2.1l-1.5 0.4l-1.1 0l-3.2 0.9l-1.4 1.2l-1.5 2l-1.1 2.5l-0.3 2.5l0.3 1.4l1.1 1.6l0 4.1l0.7 2.2l0 1.7l0.4 1.3l1.1 1.2l1.1 0.4l3.6-3.6l1.8-3l0.3-3.2l0-3.2l0.7-3.6l3.3-5l1.1-2.8l-1.5-1.5zM1781 382.6l-2.1-1.2l-8.7-1.6l13 6.5l-1.5 1.2l-2.8 1.4l-1.1 1.1l-0.4 2.4l1.1 0.5l1.1-0.5l0.7-1.9l1.1-0.9l3.6-0.9l1.4-0.9l-0.3-1.2l-1.5-1.7l-3.6-2.3zM1382.8 161.7l-3.6-5l-2.5-2.7l-3.2-2.2l-3.3-1.2l-2.1 0.7l-1.4 0.8l-3.6 4.1l1.4 2.8l-1.4 2.9l1.8 3.3l3.2 2.9l5.4 3.4l1.8 0.5l1.4-0.3l3.6-2.6l0.7-0.7l0.7-2l1.1-1.4l0.7-1.4l-0.7-1.9zM1355.1 122l-1.4 0.5l-1.8 1l-1.1 0l-2.1-3.8l-0.8-0.3l-1 0.7l2.8 4.8l0.4 1.5l-0.7 6.9l0.3 3l1.5 3.3l2.5 5.1l-0.7 1.2l0 0.7l0.7 1.9l1.4-4.1l0.8-4.1l1.4-14.6l-0.4-2.5l-1.8-1.2zM271.9 2034.1l-1.8-1.2l-1.1 0.6l-2.5-1.6l-2.2 0l0.7 1.4l1.5 1l0.7 1.7l1.8-0.8l0.4 1l0 1.6l1.8 2.1l2.1-0.3l0.7-1.4l2.2 0l0-1.4l-1.8-1.9l-2.5-0.8zM686.6 1549.7l-1.1 0l-3.6 0.9l-3.6 0.3l-1 0.4l-4.4 2.7l-2.5 0.9l-2.9-1.1l-0.3 1.4l0 2.7l-1.1 0.8l1.1 1.7l1.4 0l1.8-0.6l1.8-0.3l2.2 1.1l0.3 1.4l-0.3 4.3l1.8-0.4l1.4-1.8l0.7-2.1l1.5-1.4l2.1-0.6l1.1 0.8l-0.3 1l-2.3 0.4l0 0.6l1.5 0l1.4 0.2l0.7 0.7l0.8 1l2.1-6.6l0.4-3.5l-0.7-2.8l-0.3-1.1l0.3-1zM244.5 1990.7l-0.4-0.6l-1.1-0.4l-1.3 1.2l-0.8 0.4l-0.4 0.6l0.4 1.4l1.8 1l1.1 0l1-0.7l1.1-1.1l0-1l-1.4-0.8zM1212.2 1630.6l-1.1-1.4l-1.8 0.1l-1.4 1.9l0.4 2l1 1l1.8 0.3l1.1-0.5l0.7-1l0-0.8l-0.7-1.6zM1187.4 663.7l-1.8 0l-1.5-0.3l-0.3 0.7l0 1.1l0.3 1.8l0.4 0.5l2.9-1.3l0.7-1.4l-0.7-1.1zM243.5 1870.9l-0.8-0.2l-1.5 0.2l-0.3 0.5l0.3 1.3l-0.3 0.7l-0.7-0.4l-3.6-3.1l-2.1-0.6l-1.2 0.8l-1.1 1.3l-0.3 1.3l0 0.7l0.3 0.5l1.1-0.2l0.7-1.3l1.1-0.4l-0.3 0.9l0 0.8l0.7 0.9l0.8 1.8l0.6 0.2l0.7 0.8l1.5 0.2l1.1-1l1-0.2l1.1 0l0.7-0.8l0-1.2l-0.3-0.4l0-0.7l0.3-0.9l-0.3-0.5l0-0.6l0.8-0.4zM274.4 1819.6l-1.1 0.4l-0.3 0.6l-0.8 0.3l-1 1.7l0 2.4l0.3 0.4l0.7-0.6l1.1-0.1l1.1-0.5l1.1-1l1.1-2l-0.4-0.7l-1.8-0.9zM294.6 1784.6l0.6-1.6l-0.6-0.8l-0.7-0.4l-1.1 0.4l-0.7 0.6l-0.8-0.1l-1.4 2.3l0 0.9l1.1 0.6l0.3 1l-0.7 1.3l0.4 1.4l1.1 1.1l0.3-0.6l0.7-0.5l1.5-0.4l0.6-1.2l0-3.2l-0.6-0.8zM506.3 1767.4l-0.4-0.4l-1.1-0.6l-0.4 0.6l-0.3 1.4l0 1.4l0.3 1.6l0.4 0.4l1.5-0.6l0.7-0.8l0.3-1l-0.3-1l-0.7-1zM140.1 1758.3l-0.7-0.5l-2.5-1.9l-0.7 0.4l0.3 1.2l0.8 1l0 1l0.3 0.5l-0.7 0.4l-0.4-0.9l0-1.2l-0.7-1.4l-1.1-0.6l-1 0.2l0 5.5l0.3 1.2l2.5 1.4l1.1 0.2l0.7-0.2l1.1-1.9l1.5-1.6l0-0.7l-0.8-1.6l0-0.5zM145.2 1751.7l-0.7-0.2l-0.5 1.2l-0.3 0.6l-0.7-0.6l-0.3 0.4l0.3 1.4l-0.7-0.2l-1.4-1.8l-1.8-0.4l-1.1 1l0.3 0.8l0.8-0.4l0.7 0.2l1.1 1.9l0.7 0.3l0.7 1l0 1.4l1.1 0.2l0.3 0.4l0.3 1.1l0.5 0l0.3-1.1l0-0.7l-0.3-0.4l0.3-0.6l0.7-0.3l0.3-1.3l-0.3-2.7l-0.3-1.2zM152.7 1748.7l-0.7-2l-1.1-1l-1.8-0.6l-0.7 0l0 0.8l-0.3 0.8l0.3 0.4l0 0.8l0.4 0.6l0.6 0.6l-0.3 0.6l-1.8-1l-0.7 0.2l0 1l0.4 1.8l0.6 1.2l0.8 0.2l1.5-0.6l0.7 0.2l1.1 1l0 1l0.7 0l0.3-0.8l0.3-4l-0.3-1.2zM163.5 1700.9l-0.7-0.2l-1.5 1.2l-1.1 0.3l-1.3 0.6l-1.2 1.7l-0.3 1.1l1 0l1.8 1.4l2.6 0.2l0.7-1.5l1.4-1.2l0-1l-0.6-0.7l-0.8-1.9zM205.7 1677.7l0-0.8l-0.4-0.9l-1.1 0l-1.8 1.2l-1.8 1.7l-0.4 1.2l1.5 0l0.3-0.6l0.8-0.2l1 0.6l1.5 0.2l1.4-0.6l1.1-1.2l-0.3-1.1l-1.8 0.5zM514.2 1615.1l-0.4 0.6l-1.4 1.2l-1.8 1.1l-1.1 1l-0.7 1.4l0 1.7l1.4 0.7l1.8-0.6l1.5-1.2l0-1.2l0.7-1l0-0.8l0.3-1.3l0-1.4l-0.3-0.2zM559.5 1595.7l-1.1-0.1l-1.4-1.5l-1.5-0.8l-2.1 0.6l-0.8 1.7l1.1 2.6l-1.1 0l-0.7 0.4l-0.3 1.6l0 2.2l1 0.9l1.8-0.9l5.1-5l0.7-1.2l-0.7-0.5zM523.8 1592.9l-2.8-0.6l-1.4 0.4l-0.7 1.2l1 1.1l2.6 1.2l1.3 0.1l0 1.1l0.8-0.2l1-0.6l0.5-1.3l-0.5-1.4l-1.8-1zM542.3 1583.3l-1.5 1.6l-1.1 0.9l-1 0l-3 1.2l-1.1 0.8l-0.3 1.4l0.8 1.6l1.3 0.8l1.8-0.2l2.3-0.4l1-1l0.3-1.4l1.1-2.2l0.4-2.9l-0.4-1l-0.6 0.8zM483.9 1580l-1.1-0.2l-1.4 0.6l-1.5 1.1l-1.4 1.6l-1.8 3l0 1.1l1.1 0.8l1.8-0.6l5-4.7l0-0.6l-0.7-2.1zM621.4 1568.7l-0.7 0l-1.5 2.3l-0.3 1.4l0.7 1.5l0.7 0.4l1.1-1l0.7-0.4l0.4-1.1l0-1.6l-1.1-1.5zM770.5 1564.7l0.7 1l1.1 0.6l3.6-2.2l-1.8-2.3l-3.6 2.9zM654.9 1559.3l1.8 0.8l1.1 0.9l0.7 0.2l1.8-2.7l0-1.2l-0.7 0l-1.1-1l-1.4 0.2l-1.4 1.2l-1.1 0l-0.8 0.6l0 0.6l1.1 0.4zM939.3 1556.7l-2.2 0.6l0.8 1l0.3 1l0.7-0.6l1.5-0.8l0.3-1l0-0.8l-0.7-0.3l-0.7 0.9zM938.9 1552.4l-2.5 1.2l-1.4 0.8l0.7 0.6l1.8-0.4l1.4-1l1.5-0.4l0-0.8l0.7-1.1l-1.4 0.3l-0.8 0.8zM929.9 1510.5l0.8 4.5l0.7 0l0-0.8l1.1-0.4l0-1.4l-1.5-1.9l-1.1 0zM954.8 1229l-0.7-0.8l-1.5 0.4l-1 1.5l-0.8 0.4l-1 0.2l-0.8-0.8l-1-0.7l-1.5-0.2l-1.4 1.1l-1.1 0l-0.7 0.2l-0.4 0.6l-0.7-0.4l-0.4-0.8l-0.7-0.5l-0.7 0.9l1.1 2.1l2.1 2.4l0.8 1.4l1.8-0.6l1 0l1.5-0.8l1.8-0.7l1.8 0l1.4-0.8l0.8-0.9l0-2.3l0.3-0.9z","nb":"M-313 852l2 6l-2 15l-5 3l12 11l12 2l2 11l6 8l8 3l4-14l10 5l4 7l6 0l8 6l18 3l6 9l15-7l-3 10l-6 5l4 9l6 1l-1 11l-4 7l-11 12l1 6l-9 15l-4 12l-2 11l5 9l9 4l16-4l6 7l-16-1l-20 8l-8 7l-6 13l-5 3l-6 12l-1 13l-6 9l-14 9l12 1l11-3l11 8l12-5l-3 13l-12 6l-1 4l12 6l7 1l7-8l6 4l3 11l5-4l1-6l5-4l7 3l-6 9l-9 9l3 5l8-2l3-6l12 2l1-17l5-7l-10-7l1-3l22 5l11 19l6 1l8-4l0 8l5 8l5 1l-2-11l26-9l4 5l14 10l9-7l-3 8l-11 1l3 19l5 7l-2 14l8 6l6 11l10 1l-3 8l-9-3l0 7l-4 3l5 6l3 10l11 1l-2 8l10 10l-8 3l-10-13l-20-2l-4 5l-5 0l-4-7l-6 3l5 8l-3 8l-18 0l-5 12l9 6l8 2l3 8l8-1l6 28l7 14l-7 18l9 3l10 17l-17 3l9 5l0 5l12 1l-14 21l-12 9l5 8l-10 19l-6 20l0 9l9 14l-13-2l6 9l-8 4l3 6l6-1l3 6l-3 13l0 6l10 1l7 7l-3 5l-21-15l-4 5l-1 8l6 9l6 4l8-1l0 13l5 3l-4 7l13 4l2-8l14-11l-2-9l6 0l0 12l8 4l2-5l9-10l1-9l14-9l5 0l5-9l4 6l7 3l-9 11l-14 6l2 4l7-3l9 12l13-12l-8-1l3-6l6 3l5-2l-3-8l-6-5l-2-7l5-9l10 1l4 9l-2 8l8 0l2-6l8 1l4-13l-8-2l-6 4l-6-10l6 0l10-8l15 2l3-5l10-2l4 10l8 4l7 0l1-5l9 2l3 5l10 3l0-14l6-6l-4-7l2-4l10 1l12-6l6 8l16 0l11 2l3-7l13-5l6-11l2-8l9-5l0-11l10-9l1-10l-3-4l6-15l3-23l6-9l-5-6l-10 8l-6-5l4-5l-4-15l1-18l5-8l1-11l-2-15l4-9l0-11l-3-10l-3-22l2-5l-5-7l-4-15l-6-10l-9-18l-3-2l-5-14l-4-2l-1-8l-13-16l-24-33l-6-10l-7-19l-9-17l-3-10l-7-16l-1-7l-8-9l-7 3l-12-15l-8-2l-9-13l-7-5l-8-14l-10-1l-6-4l-8 1l-9-4l-7-9l5-19l6-6l10-21l-7-8l1-11l11-11l14-3l1-4l10-2l1-8l5-2l7-9l13 2l17-1l6-8l4 0l10-5l8-6l7-2l-2-15l22-8l11-12l10-1l10-13l5-16l5-2l16-10l13-4l1-4l15 1l3-10l-1-8l-3-20l5-23l5-11l-15-12l3-24l6-6l3-9l6 0l4-9l2-11l7 1l12-25l6 2l5-4l0-10l9-8l6 3l3-10l13-7l8 5l11 1l5-8l3-14l6-4l0-10l-6-3l-12-11l16-5l3 5l28 2l5 7l7-21l5-5l5 2l8-22l7-1l2-9l7-6l7-10l3-11l6-3l5-12l10-1l15 4l-5 7l-9 6l-6 13l11 4l8-7l5-8l14-6l8-13l4 5l-4 5l2 10l-1 11l-3 7l0 22l12-8l9 2l2 8l5 4l21-5l3 15l6 2l3-9l6-1l11 10l-3 8l12 0l6-6l8-4l14-2l9-6l9-3l11 0l12-7l8 2l12-13l5-2l8-11l25-11l13-11l21-11l7-9l13-11l18-8l7-16l6-8l7-4l14-16l0-6l5-18l8-4l4-9l0-9l6-10l7-3l10-20l24-10l6-6l5-10l2-14l8-4l1-10l8 2l2-7l11-10l1-8l9-12l12-11l4-13l11-7l16-14l6-3l7-12l5-4l13-20l13-9l14-15l11-22l23-27l9-14l2-10l-422 0l-990 0l0 889l9-5l2 3l9-7l16-18l1-10zM-56 1679l-4-5l-11-5l-31 5l-2 3l-15 4l-11 11l-4 9l1 3l11 9l5-5l14 1l14-1l3-3l20-5l4-8l6-7l0-6zM-112 1556l-3-5l-13 3l-11 10l10 9l13-6l4-11zM57 1518l-11 1l-5-8l-8 0l4 19l8-5l2 7l9-1l1-13zM125 1511l-1-8l-5-6l-8 4l-2 5l-8 3l-2 5l10 7l1 10l9-12l6-8zM-100 1173l3-3l-1-18l-10-8l-5 5l0 9l5 8l-1 7l9 0zM1478 0l-38 0l4 29l0 9l10 16l6 3l2-12l7-5l6-21l3-19zM1938 346l-11 0l-17 7l0 10l8 3l5-4l18-8l-3-8zM1897 266l-10 2l-12-7l-6-5l-7 0l-10 16l-5 14l-10 8l-7 10l-5 14l-9 10l-17 13l-6 12l1 11l13 0l1-15l8-9l12-4l3-11l7-4l4-11l14-12l8-9l14-1l9-6l3-7l13-1l4-11l-10 3zM2130 127l5-7l-5-8l-8-1l-10 5l-15 13l-16 18l-24 4l-7-10l-5-16l-7 7l-1 16l2 7l-11 3l-13 17l-15 0l-3 16l-11 9l-10 4l-4 10l-6-5l-4 9l9 3l-2 5l-32 32l1 7l8 3l4-9l12-12l10-2l5-8l11-14l18-12l9-14l-2-7l7-5l7 9l14-2l8-7l23-27l13-6l9-1l12-8l22-2l7-8l-5-6zM2250 69l0-34l-8 9l-11 17l-15 3l-10 21l-8 6l-2 10l7 2l10-4l12-10l9-11l16-9z"};
+
+</script>
+<script>
+/* JPCore — perhitungan murni (tanpa DOM): lokasi, rute harian, budget, diagram rute, insight.
+ * Dipakai oleh app (browser) dan oleh tes Node. Semua input = tabel yang sudah digabung overlay. */
+(function (root) {
+'use strict';
+
+/* ---------- katalog koordinat [lat, lng, perkiraan?] ----------
+ * Koordinat landmark = perkiraan titik tengah lokasi (akurasi ±100–500 m), cukup untuk peta rute.
+ * Versi Apps Script menimpa ini dengan hasil Geocoder Google bila tersedia. */
+var GAZ_SRC = {
+  'Haneda Airport Terminal 3':[35.5440,139.7686],'Haneda Airport Terminal 2':[35.5510,139.7885],'Haneda Airport':[35.5494,139.7798],
+  'Azumabashi Bridge Tokyo':[35.7106,139.7978],'Sumida Park':[35.7132,139.8010],'Tokyo Skytree':[35.7101,139.8107],
+  'Tokyo Solamachi East Yard':[35.7103,139.8130],'Kirby Cafe Tokyo Solamachi':[35.7100,139.8118],'Tokyo Solamachi':[35.7100,139.8118],
+  'Kaminarimon':[35.7111,139.7964],'Nakamise-dori':[35.7125,139.7963],'Senso-ji':[35.7148,139.7967],'Sensoji':[35.7148,139.7967],
+  'Ookini Kimono Asakusa':[35.7128,139.7950,1],'Halal restaurant Asakusa':[35.7120,139.7955,1],'Asakusa':[35.7118,139.7966],
+  'Omotesando':[35.6653,139.7121],'Daimon Station Tokyo':[35.6566,139.7556],'Zojo-ji Temple':[35.6575,139.7483],'Zojo-ji':[35.6575,139.7483],
+  'Shiba Park Tokyo':[35.6563,139.7476],'Tokyo Tower':[35.6586,139.7454],'Azabudai Hills Mori JP Tower':[35.6604,139.7400],'Azabudai Hills':[35.6605,139.7405],
+  'Tokyo Station Yaesu':[35.6800,139.7690],'Tokyo Station':[35.6812,139.7671],'Ueno Park':[35.7156,139.7745],'Ueno':[35.7138,139.7773],
+  'Meiji-jingumae Station':[35.6686,139.7055],'Meiji Jingu':[35.6764,139.6993],'Takeshita Street':[35.6716,139.7036],'Harajuku':[35.6702,139.7027],
+  'Shibuya Station':[35.6580,139.7016],'Shibuya Crossing':[35.6595,139.7005],'Shibuya Sky':[35.6585,139.7021],'Halal restaurant Shibuya':[35.6600,139.7000,1],'Shibuya':[35.6580,139.7016],
+  'Ameyoko':[35.7101,139.7745],'Okachimachi':[35.7075,139.7748],'Yushima Tenjin':[35.7077,139.7684],'Kanda Myojin':[35.7020,139.7679],
+  'Shinjuku Gyoen':[35.6852,139.7101],'Shinjuku':[35.6896,139.7006],'Akihabara':[35.6984,139.7731],'Ginza':[35.6717,139.7650],
+  'Maihama Station':[35.6365,139.8837],'Tokyo Disneyland':[35.6329,139.8804],'Tokyo DisneySea':[35.6267,139.8851],
+  'Roppongi':[35.6628,139.7314],'Odaiba':[35.6300,139.7753],'Ikebukuro':[35.7295,139.7109],'Shinagawa':[35.6285,139.7388],'Hamamatsucho':[35.6553,139.7571],
+  'teamLab Planets':[35.6491,139.7897],'Tsukiji Outer Market':[35.6655,139.7707],'Imperial Palace Tokyo':[35.6852,139.7528],'Tokyo Dome':[35.7056,139.7519],
+  'Ghibli Museum':[35.6962,139.5704],'Sanrio Puroland':[35.6243,139.4284],'Pokemon Center Mega Tokyo':[35.7289,139.7188],'Narita Airport':[35.7720,140.3929],
+  'Yokohama':[35.4658,139.6223],'Kamakura':[35.3192,139.5467],'Kotoku-in':[35.3167,139.5358],'Hakone':[35.2324,139.1049],'Nikko Toshogu':[36.7581,139.5988],
+  'Oshino Hakkai':[35.4604,138.8330],'Lake Kawaguchi':[35.5150,138.7520],'Kawaguchiko Station':[35.4981,138.7689],'Chureito Pagoda':[35.5012,138.8016],
+  'Fuji Subaru Line 5th Station':[35.3957,138.7327],'Mount Fuji':[35.3606,138.7274],'Gotemba Premium Outlets':[35.3072,138.9667],
+  'Shirakawa-go':[36.2578,136.9060],'Deai Bridge Shirakawa-go':[36.2567,136.9048],'Shirakawago Restaurant Irori':[36.2585,136.9065,1],
+  'Shogawa Gorge Cruise Komaki Dock':[36.5180,136.9435,1],'Kanazawa Station':[36.5781,136.6479],'Kenroku-en':[36.5621,136.6624],'Takayama':[36.1408,137.2519],
+  'Nagoya Station':[35.1709,136.8815],
+  'Atami Station':[35.1037,139.0775],'Itokawa Promenade Atami':[35.0957,139.0737],'Atami Ginza':[35.0975,139.0730],'Kawazu Station':[34.7547,138.9868],
+  'Kyoto Station':[34.9858,135.7588],'Kyoto Tower':[34.9875,135.7593],'Kyoto Ramen Koji':[34.9853,135.7590],'Fushimi Inari Taisha':[34.9671,135.7727],
+  'Sannenzaka':[34.9967,135.7812],'Kiyomizu-dera':[34.9949,135.7850],'Yasaka Shrine':[35.0037,135.7785],'Gion':[35.0037,135.7751],
+  'Arashiyama Bamboo Grove':[35.0170,135.6713],'Arashiyama':[35.0094,135.6668],'Saga-Arashiyama Station':[35.0182,135.6813],'Tenryu-ji':[35.0158,135.6737],
+  'Ginkaku-ji':[35.0270,135.7982],'Kinkaku-ji':[35.0394,135.7292],'Nijo Castle':[35.0142,135.7481],'Nishiki Market':[35.0050,135.7649],
+  'Osaka Station':[34.7025,135.4959],'Umeda':[34.7055,135.4983],'Shin-Osaka Station':[34.7334,135.5001],'Namba Osaka':[34.6664,135.5010],'Namba':[34.6664,135.5010],
+  'Osaka Namba Station':[34.6663,135.4986],'Osaka Castle':[34.6873,135.5262],'Shinsaibashi-suji':[34.6720,135.5013],'Glico Sign Dotonbori':[34.6690,135.5010],'Dotonbori':[34.6687,135.5013],
+  'Kuromon Ichiba Market':[34.6654,135.5066],'Tsutenkaku':[34.6525,135.5063],'Shinsekai':[34.6520,135.5060],'Kaiyukan':[34.6545,135.4290],
+  'Universal City Station':[34.6675,135.4380],'Universal Studios Japan':[34.6654,135.4323],'Osaka Itami Airport':[34.7855,135.4382],'Kansai Airport':[34.4347,135.2441],
+  'Kirby Cafe Osaka':[34.6937,135.5023,1],'Katsuo-ji':[34.8594,135.4907],'Kobe':[34.6948,135.1955],'Himeji Castle':[34.8394,134.6939],
+  'Kintetsu Nara Station':[34.6841,135.8279],'Nakatanidou Nara':[34.6822,135.8253,1],'Higashimuki Shopping Street':[34.6836,135.8272],
+  'Nara Park':[34.6851,135.8430],'Todai-ji':[34.6890,135.8398],
+  'Hiroshima Peace Memorial':[34.3955,132.4536],'Itsukushima Shrine':[34.2959,132.3199],
+  'New Chitose Airport':[42.7875,141.6810],'Odori Park Sapporo':[43.0594,141.3486],'Sapporo Clock Tower':[43.0625,141.3536],'Sapporo TV Tower':[43.0611,141.3564],
+  'Susukino Ice World':[43.0550,141.3531],'Susukino':[43.0556,141.3530],'Sapporo Station':[43.0687,141.3508],'Shiroi Koibito Park':[43.0886,141.2717],
+  'Asahiyama Zoo':[43.7684,142.4799],'Asahikawa Station':[43.7631,142.3583],'Ningle Terrace':[43.3249,142.3552],'Biei':[43.5883,142.4670],'Blue Pond Biei':[43.4938,142.6143],
+  'Alpen Snowland Bibai':[43.3330,141.8530,1],'Otaru Station':[43.1975,140.9937],'Otaru Music Box Museum':[43.1903,141.0057],
+  'Sakaimachi Street Otaru':[43.1918,141.0035],'Otaru Canal':[43.1990,140.9990],'Jozankei':[42.9676,141.1633],'Hakodate':[41.7687,140.7288]
+};
+var CITY = {
+  'Tokyo':[35.6812,139.7671],'Osaka':[34.6937,135.5023],'Kyoto':[35.0116,135.7681],'Sapporo':[43.0621,141.3544],'Fuji':[35.5000,138.7600],
+  'Nara':[34.6851,135.8050],'Otaru':[43.1907,140.9947],'Gifu':[36.2578,136.9060],'Toyama':[36.5180,136.9435],'Atami':[35.0960,139.0720],
+  'Bibai':[43.3330,141.8530],'Kawazu':[34.7547,138.9868],'Asahikawa':[43.7706,142.3650],'Furano':[43.3420,142.3830],'Biei':[43.5883,142.4670],
+  'Hokkaido':[43.0621,141.3544],'Yokohama':[35.4658,139.6223],'Hakone':[35.2324,139.1049],'Kobe':[34.6948,135.1955],'Nagoya':[35.1709,136.8815],
+  'Kanazawa':[36.5781,136.6479],'Takayama':[36.1408,137.2519],'Hiroshima':[34.3955,132.4536],'Hakodate':[41.7687,140.7288],
+  'Jakarta':[-6.1256,106.6559],'Balikpapan':[-1.2683,116.8945]
+};
+var HOTEL_AREA = { 'asakusa':'Asakusa', 'kyoto station':'Kyoto Station', 'namba':'Namba', 'odori':'Odori Park Sapporo', 'susukino':'Susukino',
+  'shinagawa':'Shinagawa', 'hamamatsucho':'Hamamatsucho', 'umeda':'Umeda', 'sapporo station':'Sapporo Station', 'shinjuku':'Shinjuku', 'ueno':'Ueno', 'ginza':'Ginza' };
+
+var REGIONS = [
+  {id:'kanto', label:'Tokyo & sekitar'}, {id:'kansai', label:'Kansai'}, {id:'hokkaido', label:'Hokkaido'}, {id:'chubu', label:'Shirakawa-go'}
+];
+
+function norm(s){ return String(s == null ? '' : s).toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,' ').trim(); }
+var GAZ = {}, GAZ_KEYS = [];
+Object.keys(GAZ_SRC).forEach(function (k) { var v = GAZ_SRC[k]; GAZ[norm(k)] = {lat:v[0], lng:v[1], approx:!!v[2], name:k}; });
+GAZ_KEYS = Object.keys(GAZ).sort(function (a, b) { return b.length - a.length; });
+
+function num(x){ var n = Number(String(x == null ? '' : x).replace(/,/g,'')); return isFinite(n) ? n : 0; }
+function bool(x){ return x === true || /^true$/i.test(String(x)); }
+function hasNum(x){ return x !== '' && x !== null && x !== undefined && isFinite(Number(x)); }
+
+function regionOf(lat, lng){
+  if (lat < 20) return 'id';
+  if (lat > 41.3) return 'hokkaido';
+  if (lng < 136.3) return 'kansai';
+  if (lng < 137.6 && lat > 35.8) return 'chubu';
+  return 'kanto';
+}
+
+/** Cari koordinat dari teks tempat (katalog). */
+function lookup(query){
+  var q = norm(query); if (!q) return null;
+  if (GAZ[q]) return GAZ[q];
+  for (var i = 0; i < GAZ_KEYS.length; i++) {
+    var k = GAZ_KEYS[i];
+    if (k.length >= 4 && (q.indexOf(k) >= 0 || (q.length >= 6 && k.indexOf(q) >= 0))) return GAZ[k];
+  }
+  return null;
+}
+
+/** "35.71, 139.79" atau URL Google Maps berisi @lat,lng / q=lat,lng / !3dLAT!4dLNG. */
+function parseLatLng(text){
+  var s = String(text || ''), m;
+  m = s.match(/!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/) || s.match(/@(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/) ||
+      s.match(/[?&](?:q|query|ll|center)=(-?\d+(?:\.\d+)?)(?:,|%2C)\s*(-?\d+(?:\.\d+)?)/i) || s.match(/^\s*(-?\d{1,2}(?:\.\d+)?)\s*[, ]\s*(-?\d{1,3}(?:\.\d+)?)\s*$/);
+  if (!m) return null;
+  var lat = Number(m[1]), lng = Number(m[2]);
+  if (!isFinite(lat) || !isFinite(lng) || Math.abs(lat) > 90 || Math.abs(lng) > 180) return null;
+  return {lat:lat, lng:lng};
+}
+
+function km(a, b){
+  var R = 6371, toR = Math.PI / 180, dLa = (b.lat - a.lat) * toR, dLo = (b.lng - a.lng) * toR;
+  var h = Math.sin(dLa/2)*Math.sin(dLa/2) + Math.cos(a.lat*toR)*Math.cos(b.lat*toR)*Math.sin(dLo/2)*Math.sin(dLo/2);
+  return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
+}
+
+/* ---------- waktu ---------- */
+function hm(t){ var m = String(t || '').match(/^(\d{1,2}):(\d{2})/); return m ? Number(m[1]) * 60 + Number(m[2]) : null; }
+function fmtHM(mins){ mins = ((mins % 1440) + 1440) % 1440; return ('0' + Math.floor(mins / 60)).slice(-2) + ':' + ('0' + (mins % 60)).slice(-2); }
+function addDays(iso, n){ var d = new Date(iso + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
+
+/* ---------- hotel ---------- */
+function hotelLoc(h){
+  if (!h) return null;
+  if (hasNum(h.lat) && hasNum(h.lng) && String(h.lat) !== '') return mk(num(h.lat), num(h.lng), 'data', false, h.hotel_name || (h.area + ', ' + h.city));
+  var g = lookup(h.hotel_name) || lookup(h.address);
+  if (!g) { var a = norm(h.area); for (var k in HOTEL_AREA) if (a.indexOf(k) === 0 || a === k) { g = GAZ[norm(HOTEL_AREA[k])]; break; } }
+  if (!g) { var a2 = norm(h.area); for (var k2 in HOTEL_AREA) if (a2.indexOf(k2) >= 0) { g = GAZ[norm(HOTEL_AREA[k2])]; break; } }
+  if (g) return mk(g.lat, g.lng, 'katalog', true, h.hotel_name || ('Hotel ' + String(h.area).split('(')[0].trim()));
+  var c = CITY[h.city]; return c ? mk(c[0], c[1], 'kota', true, 'Hotel ' + h.city) : null;
+}
+function mk(lat, lng, src, approx, name){ return {lat:lat, lng:lng, src:src, approx:!!approx, name:name || '', region:regionOf(lat, lng)}; }
+function hotelsSorted(T){ return (T.hotels || []).slice().sort(function (a, b) { return a.check_in < b.check_in ? -1 : 1; }); }
+/** Hotel tempat menginap pada malam tanggal ini. */
+function nightHotel(T, date){ return hotelsSorted(T).filter(function (h) { return h.check_in <= date && date < h.check_out; })[0] || null; }
+/** Hotel malam sebelumnya (tempat bangun pagi ini). */
+function morningHotel(T, date){ return nightHotel(T, addDays(date, -1)); }
+
+/* ---------- lokasi kegiatan ---------- */
+function locate(it, T){
+  if (hasNum(it.lat) && hasNum(it.lng) && String(it.lat) !== '') return mk(num(it.lat), num(it.lng), it.geo_src === 'MANUAL' ? 'manual' : 'data', false, it.place_query || it.title);
+  if (it.place_query) {
+    var g = lookup(it.place_query);
+    if (g) return mk(g.lat, g.lng, 'katalog', g.approx, it.place_query);
+    var c = CITY[it.city];
+    if (c) return mk(c[0], c[1], 'kota', true, it.place_query);
+    return null;
+  }
+  // tanpa tempat: kegiatan hotel/istirahat/pulang → lokasi hotel di kota yang sama
+  var t = norm(it.title), cat = String(it.category || '');
+  if (cat === 'Hotel & logistik' || (cat === 'Transport' && /kembali|pulang/.test(t))) {
+    var cands = [morningHotel(T, it.date), nightHotel(T, it.date)].filter(Boolean);
+    var h = cands.filter(function (x) { return x.city === it.city; })[0] || (/check out/.test(t) ? cands[0] : cands[cands.length - 1]);
+    if (h) { var hl = hotelLoc(h); if (hl) { hl.hotel = true; hl.name = h.hotel_name || ('Hotel ' + String(h.area).split('(')[0].trim()); return hl; } }
+  }
+  return null;
+}
+
+/* ---------- urutan kegiatan per hari ---------- */
+function ordered(items){
+  var list = items.slice().sort(function (a, b) { return num(a.seq) - num(b.seq); }), last = '00:00';
+  list.forEach(function (it) { if (it.start_time) { it._k = it.start_time; if (bool(it.is_active)) last = it.start_time; } else it._k = bool(it.is_active) ? last : '99:99'; });
+  return list.sort(function (a, b) { return a._k < b._k ? -1 : a._k > b._k ? 1 : num(a.seq) - num(b.seq); });
+}
+function isAirport(loc){ return !!loc && /airport|bandara/i.test(loc.name || ''); }
+
+/** Rute satu hari: titik berurutan, segmen, km darat vs udara, rentang jam. */
+function dayRoute(T, dayNo){
+  var day = (T.days || []).filter(function (d) { return num(d.day) === num(dayNo); })[0];
+  if (!day) return null;
+  var items = ordered((T.itinerary || []).filter(function (it) { return num(it.day) === num(dayNo) && bool(it.is_active); }));
+  var stops = [], unlocated = [];
+  items.forEach(function (it) {
+    var loc = locate(it, T);
+    if (loc && loc.region !== 'id') stops.push({item:it, loc:loc}); else if (!loc) unlocated.push(it);
+  });
+  var start = morningHotel(T, day.date), end = nightHotel(T, day.date);
+  var sLoc = hotelLoc(start), eLoc = hotelLoc(end);
+  var seq = [];
+  if (sLoc && sLoc.region !== 'id' && stops.length) seq.push({hotel:true, loc:sLoc});
+  stops.forEach(function (s) { seq.push(s); });
+  if (eLoc && eLoc.region !== 'id' && stops.length) seq.push({hotel:true, loc:eLoc});
+  var segs = [], ground = 0, air = 0;
+  for (var i = 1; i < seq.length; i++) {
+    var a = seq[i - 1].loc, b = seq[i].loc, d = km(a, b);
+    if (d < 0.05) continue;
+    var isAir = isAirport(a) && isAirport(b) && d > 150;
+    segs.push({a:a, b:b, km:d, air:isAir}); if (isAir) air += d; else ground += d;
+  }
+  var st = null, en = null;
+  items.forEach(function (it) {
+    if (it.category === 'Hotel & logistik' && /istirahat|tidur/i.test(it.title) && !it.end_time) return;
+    var s = hm(it.start_time), e = hm(it.end_time);
+    if (s !== null) { st = st === null ? s : Math.min(st, s); en = en === null ? s : Math.max(en, s); }
+    if (e !== null && s !== null && e >= s) en = Math.max(en, e);
+  });
+  var base = (eLoc && eLoc.region !== 'id') ? eLoc : (sLoc && sLoc.region !== 'id') ? sLoc : null, far = 0;
+  if (base) stops.forEach(function (s) { if (!(isAirport(s.loc) && km(base, s.loc) > 150)) far = Math.max(far, km(base, s.loc)); });
+  return {day:day, items:items, stops:stops, seq:seq, segs:segs, groundKm:ground, airKm:air, unlocated:unlocated,
+          start:st, end:en, hours:(st !== null && en !== null) ? (en - st) / 60 : 0, farKm:far, startHotel:start, endHotel:end};
+}
+
+/* ---------- budget ---------- */
+function setting(T, k, d){ var r = (T.settings || []).filter(function (s) { return s.key === k; })[0]; return r && r.value !== '' ? r.value : d; }
+function pax(T){ return {a:num(setting(T,'pax_adult',2)), c:num(setting(T,'pax_child',2))}; }
+function fx(T){ return num(setting(T,'fx_idr_per_jpy',112.84)) || 112.84; }
+function itemCost(T, it){ var p = pax(T); return num(it.cost_adult_jpy) * p.a + num(it.cost_child_jpy) * p.c + num(it.cost_lump_jpy); }
+function toJPY(T, a, c){ return String(c).toUpperCase() === 'IDR' ? num(a) / fx(T) : num(a); }
+
+var BUDGET_CATS = [
+  {id:'hotel', label:'Hotel'}, {id:'flight_id', label:'Tiket pesawat Indonesia'}, {id:'transport', label:'Transport di Jepang'},
+  {id:'fun', label:'Atraksi & tur'}, {id:'food', label:'Makan'}, {id:'other', label:'Lain-lain'}, {id:'cont', label:'Kontingensi'}
+];
+function budget(T){
+  var act = (T.itinerary || []).filter(function (x) { return bool(x.is_active); });
+  var c = {hotel:0, flight_id:0, transport:0, fun:0, food:0, other:0, cont:0};
+  var itTot = 0;
+  act.forEach(function (x) {
+    var v = itemCost(T, x); itTot += v;
+    var k = x.category;
+    if (k === 'Transport' || k === 'Penerbangan') c.transport += v;
+    else if (k === 'Wisata' || k === 'Aktivitas' || k === 'Tour' || k === 'Belanja') c.fun += v;
+    else if (k === 'Makan') c.food += v; else c.other += v;
+  });
+  var ho = (T.hotels || []).reduce(function (s, r) { return s + toJPY(T, num(r.rate_per_night) * num(r.nights), r.currency); }, 0);
+  c.hotel = ho;
+  var ot = 0;
+  (T.budget_other || []).filter(function (r) { return bool(r.is_active); }).forEach(function (r) {
+    var v = toJPY(T, r.amount, r.currency); ot += v;
+    if (/tiket (internasional|domestik)|pesawat/i.test(r.category + ' ' + r.item)) c.flight_id += v; else c.other += v;
+  });
+  var sub = itTot + ho + ot, pct = num(setting(T,'contingency_pct',0.1));
+  c.cont = sub * pct;
+  var byDay = (T.days || []).map(function (d) { return {day:num(d.day), date:d.date, v:act.filter(function (x) { return num(x.day) === num(d.day); }).reduce(function (s, x) { return s + itemCost(T, x); }, 0)}; });
+  var byCat = {}; act.forEach(function (x) { byCat[x.category] = (byCat[x.category] || 0) + itemCost(T, x); });
+  return {a:itTot, ho:ho, ot:ot, cont:c.cont, pct:pct, total:sub + c.cont, target:num(setting(T,'budget_target_jpy',1000000)),
+          cats:BUDGET_CATS.map(function (k) { return {id:k.id, label:k.label, v:c[k.id]}; }), byDay:byDay, byCat:byCat};
+}
+
+/* ---------- diagram rute (blok = hotel/kota, penghubung = transport) ---------- */
+function legs(T){
+  var hs = hotelsSorted(T), start = setting(T, 'trip_start', ''), end = setting(T, 'trip_end', '');
+  var moves = (T.bookings || []).filter(function (b) { return /FLIGHT|TRAIN|BUS|FERRY|CAR/i.test(b.type); });
+  var out = [];
+  function conn(from, to, fromCity, toCity){
+    var bs = moves.filter(function (b) { return b.date >= from && b.date <= to && !(/TOUR/i.test(b.type)); })
+      .sort(function (a, b) { return (a.date + (a.dep_time || '')) < (b.date + (b.dep_time || '')) ? -1 : 1; });
+    var guess = '';
+    if (!bs.length) {
+      var tr = (T.itinerary || []).filter(function (it) { return it.date === to && bool(it.is_active) && it.category === 'Transport' && it.transport && it.city === toCity; })[0];
+      guess = tr ? tr.transport : '';
+    }
+    return {kind:'move', date:to, from:fromCity, to:toCity, bookings:bs, guess:guess};
+  }
+  var homeCity = 'Balikpapan';
+  if (hs.length) out.push({kind:'home', city:homeCity, date:start});
+  hs.forEach(function (h, i) {
+    var prev = hs[i - 1];
+    out.push(conn(prev ? prev.check_out : start, h.check_in, prev ? prev.city : homeCity, h.city));
+    var trips = [];
+    var d = h.check_in;
+    while (d < h.check_out) {
+      var r = dayRoute(T, (T.days || []).filter(function (x) { return x.date === d; }).map(function (x) { return x.day; })[0]);
+      if (r) {
+        var cities = {};
+        r.items.forEach(function (it) {
+          var c = it.city; if (!c || c === h.city || c === 'Jakarta' || c === 'Balikpapan' || c === 'Hokkaido') return;
+          if (d === h.check_in && prev && c === prev.city) return;
+          var loc = locate(it, T); if (loc && hotelLoc(h) && km(loc, hotelLoc(h)) < 25) return;
+          cities[c] = true;
+        });
+        var names = Object.keys(cities);
+        if (names.length) trips.push({date:d, day:num(r.day.day), cities:names, labels:names.map(cityLabel), farKm:r.farKm, hours:r.hours});
+      }
+      d = addDays(d, 1);
+    }
+    out.push({kind:'stay', hotel:h, city:h.city, loc:hotelLoc(h), trips:trips});
+  });
+  var last = hs[hs.length - 1];
+  if (last) { out.push(conn(last.check_out, end || last.check_out, last.city, homeCity)); out.push({kind:'home', city:homeCity, date:end, end:true}); }
+  return out;
+}
+
+/* ---------- kesiapan ---------- */
+function readiness(T){
+  var hs = T.hotels || [], nights = hs.reduce(function (s, h) { return s + num(h.nights); }, 0);
+  var bookedN = hs.filter(function (h) { return /BOOKED|PAID/.test(h.status); }).reduce(function (s, h) { return s + num(h.nights); }, 0);
+  var bk = (T.bookings || []).filter(function (b) { return b.status !== 'BATAL'; });
+  var bkOk = bk.filter(function (b) { return /BOOKED|PAID/.test(b.status); }).length;
+  var ck = T.checklist || [], ckOk = ck.filter(function (r) { return r.status === 'SELESAI' || r.status === 'NA'; }).length;
+  var p1 = (T.findings || []).filter(function (f) { return f.priority === 'P1'; }), p1Ok = p1.filter(function (f) { return f.status !== 'OPEN'; }).length;
+  var parts = [
+    {id:'hotel', label:'Malam hotel terkonfirmasi', done:bookedN, total:nights, tab:'persiapan', sub:'booking'},
+    {id:'booking', label:'Tiket & reservasi terkonfirmasi', done:bkOk, total:bk.length, tab:'persiapan', sub:'booking'},
+    {id:'checklist', label:'Checklist persiapan', done:ckOk, total:ck.length, tab:'persiapan', sub:'checklist'},
+    {id:'p1', label:'Temuan P1 diputuskan', done:p1Ok, total:p1.length, tab:'persiapan', sub:'temuan'}
+  ];
+  var score = parts.reduce(function (s, p) { return s + (p.total ? p.done / p.total : 1); }, 0) / parts.length;
+  return {parts:parts, score:score};
+}
+
+/* ---------- tenggat checklist (teks bebas → tanggal) ---------- */
+var MONTHS = {jan:1, feb:2, mar:3, apr:4, mei:5, may:5, jun:6, jul:7, agu:8, aug:8, sep:9, okt:10, oct:10, nov:11, des:12, dec:12};
+function dueDate(text, today){
+  var s = String(text || '').toLowerCase();
+  if (/segera|sekarang/.test(s)) return today;
+  var m = s.match(/(\d{1,2})?\s*(jan|feb|mar|apr|mei|may|jun|jul|agu|aug|sep|okt|oct|nov|des|dec)[a-z]*\s*(\d{4})?/);
+  if (!m) return null;
+  var mo = MONTHS[m[2]], y = m[3] ? Number(m[3]) : (mo >= 9 ? 2026 : 2027), d = m[1] ? Number(m[1]) : 1;
+  return y + '-' + ('0' + mo).slice(-2) + '-' + ('0' + d).slice(-2);
+}
+function daysBetween(a, b){ return Math.round((new Date(b + 'T00:00:00Z') - new Date(a + 'T00:00:00Z')) / 86400000); }
+
+/** b berada di dalam a, dan a adalah blok panjang (tour/transport/≥4 jam) → bukan konflik. */
+function nested(a, b){
+  var as = hm(a.start_time), ae = hm(a.end_time), bs = hm(b.start_time), be = hm(b.end_time);
+  return as <= bs && be <= ae && (/Tour|Transport/.test(a.category) || ae - as >= 240);
+}
+var CITY_LABEL = {Gifu:'Shirakawa-go', Toyama:'Gokayama', Asahikawa:'Asahiyama', Fuji:'Fuji', Furano:'Furano', Bibai:'Bibai', Otaru:'Otaru', Nara:'Nara', Atami:'Atami', Kawazu:'Kawazu'};
+function cityLabel(c){ return CITY_LABEL[c] || c; }
+
+/* ---------- insight & rekomendasi (dihitung ulang tiap data berubah) ----------
+ * sev: 1 Kritis · 2 Penting · 3 Perhatian · 4 Info */
+function insights(T, today){
+  var out = [], start = setting(T, 'trip_start', '2027-01-25'), toGo = daysBetween(today, start);
+  var p = pax(T), kids = p.c > 0;
+  var tripDays = (T.days || []).map(function (d) { return num(d.day); }).filter(function (n) { return n >= 1 && n <= 16; });
+  var routes = tripDays.map(function (n) { return dayRoute(T, n); }).filter(Boolean);
+
+  // 1. Hotel
+  var hs = T.hotels || [], open = hs.filter(function (h) { return !/BOOKED|PAID/.test(h.status); });
+  var openN = open.reduce(function (s, h) { return s + num(h.nights); }, 0), allN = hs.reduce(function (s, h) { return s + num(h.nights); }, 0);
+  if (openN) out.push({id:'hotel', sev: toGo < 150 ? 1 : 2, title: openN + ' dari ' + allN + ' malam belum ada hotel',
+    body:'Belum terkonfirmasi: ' + open.map(function (h) { return h.city + ' (' + h.nights + ' mlm)'; }).join(', ') + '. Keberangkatan ' + toGo + ' hari lagi; periode Imlek & Sapporo Snow Festival (awal Feb) cepat penuh.',
+    rec:'Kunci hotel Sapporo & Tokyo lebih dulu dengan tarif bisa-batal, lalu isi nama & kode booking di tab Persiapan.', action:{tab:'persiapan', sub:'booking'}});
+
+  // 2. Beban hari (jam & jarak)
+  var heavy = routes.filter(function (r) { return r.hours >= 14.5 || r.groundKm >= 250; });
+  if (heavy.length) {
+    heavy.sort(function (a, b) { return (b.hours + b.groundKm / 40) - (a.hours + a.groundKm / 40); });
+    var h0 = heavy[0];
+    out.push({id:'heavy', sev: heavy.some(function (r) { return r.hours >= 16 || r.groundKm >= 400; }) ? 1 : 2,
+      title: heavy.length + ' hari sangat panjang (≥14,5 jam atau ≥250 km)' + (kids ? ' untuk anak' : ''),
+      body: heavy.slice(0, 4).map(function (r) { return 'H' + num(r.day.day) + ' ' + Math.round(r.hours) + ' jam · ±' + Math.round(r.groundKm) + ' km darat'; }).join('; ') + '.',
+      rec:'Pecah hari terpadat (H' + num(h0.day.day) + ') atau ganti dengan opsi lebih dekat; sisipkan jeda hotel 2 jam di tengah hari untuk anak.', action:{tab:'ringkasan', anchor:'beban'}});
+  }
+
+  // 3. Waktu istirahat malam
+  var shortRest = [];
+  for (var i = 1; i < routes.length; i++) {
+    var a = routes[i - 1], b = routes[i];
+    if (a.end !== null && b.start !== null) { var gap = (1440 - a.end) + b.start; if (gap < 9 * 60) shortRest.push({a:a, b:b, gap:gap}); }
+  }
+  if (shortRest.length) out.push({id:'rest', sev: shortRest.some(function (s) { return s.gap < 6 * 60; }) ? 1 : 2,
+    title:'Istirahat malam terlalu pendek (' + shortRest.length + ' malam)',
+    body: shortRest.slice(0, 4).map(function (s) { return 'H' + num(s.a.day.day) + '→H' + num(s.b.day.day) + ': ' + fmtHM(s.a.end) + ' s/d ' + fmtHM(s.b.start) + ' (' + (s.gap / 60).toFixed(1) + ' jam)'; }).join('; ') + '.',
+    rec:'Target ≥ 9 jam antara kegiatan terakhir dan pertama berikutnya; sopir/pengemudi juga butuh istirahat cukup (risiko keselamatan).', action:{tab:'jadwal', day:num(shortRest[0].b.day.day)}});
+
+  // 4. Tumpang tindih jam
+  var overlaps = [];
+  routes.forEach(function (r) {
+    var its = r.items.filter(function (x) { return hm(x.start_time) !== null && hm(x.end_time) !== null && hm(x.end_time) > hm(x.start_time) && x.category !== 'Hotel & logistik'; });
+    for (var i2 = 0; i2 < its.length; i2++) for (var j = i2 + 1; j < its.length; j++) {
+      var x = its[i2], y = its[j];
+      if (!(hm(x.start_time) < hm(y.end_time) && hm(y.start_time) < hm(x.end_time))) continue;
+      if (nested(x, y) || nested(y, x)) continue;
+      overlaps.push({day:num(r.day.day), x:x, y:y});
+    }
+  });
+  if (overlaps.length) out.push({id:'overlap', sev:3, title: overlaps.length + ' pasang kegiatan jamnya bertabrakan',
+    body: overlaps.slice(0, 3).map(function (o) { return 'H' + o.day + ': "' + o.x.title + '" ' + o.x.start_time + '–' + o.x.end_time + ' vs "' + o.y.title + '" ' + o.y.start_time + '–' + o.y.end_time; }).join('; ') + (overlaps.length > 3 ? '; …' : '.'),
+    rec:'Tentukan mana yang dipakai, nonaktifkan sisanya (hapus centang "Masuk rencana") agar budget & jadwal jujur.', action:{tab:'jadwal', day:overlaps[0].day}});
+
+  // 5. Mulai sebelum matahari terbit
+  var dark = routes.filter(function (r) { var sr = hm(r.day.sunrise); return sr !== null && r.start !== null && r.start < sr - 30; });
+  if (dark.length) out.push({id:'dark', sev:3, title:'Mulai sebelum matahari terbit di ' + dark.length + ' hari',
+    body: dark.map(function (r) { return 'H' + num(r.day.day) + ' mulai ' + fmtHM(r.start) + ' (terbit ' + r.day.sunrise + ')'; }).join('; ') + '.',
+    rec:'Pagi musim dingin gelap & bisa di bawah 0 °C (terutama Hokkaido): siapkan lapisan hangat, alas sepatu anti-licin, sarapan di kamar.', action:{tab:'jadwal', day:num(dark[0].day.day)}});
+
+  // 6. Budget vs target
+  var b = budget(T), over = b.total - b.target;
+  if (b.target && over > 0) {
+    var cats = b.cats.filter(function (c) { return c.id !== 'cont'; }).sort(function (x, y) { return y.v - x.v; });
+    out.push({id:'budget', sev: over / b.target > 0.25 ? 1 : 2, title:'Budget melebihi target ' + Math.round(over * 100 / b.target) + '%',
+      body:'Estimasi ¥' + Math.round(b.total).toLocaleString('id-ID') + ' vs target ¥' + Math.round(b.target).toLocaleString('id-ID') + '. Tiga pos terbesar: ' +
+        cats.slice(0, 3).map(function (c) { return c.label + ' ' + Math.round(c.v * 100 / b.total) + '%'; }).join(', ') + '.',
+      rec:'Putuskan: naikkan target secara sadar, atau pangkas pos terbesar (mis. 1 day tour/mobil sewaan, kelas hotel). Kontingensi ' + Math.round(b.pct * 100) + '% jangan dipotong.', action:{tab:'budget'}});
+  }
+
+  // 7. Transportasi antarkota belum pasti
+  var mv = (T.bookings || []).filter(function (x) { return /FLIGHT|TRAIN/.test(x.type) && !/BOOKED|PAID|BATAL/.test(x.status); });
+  var bad = mv.filter(function (x) { return /KONFLIK|CEK/.test(x.status); });
+  if (mv.length) out.push({id:'moves', sev: bad.length ? 2 : 3, title: mv.length + ' tiket pesawat/kereta belum terkonfirmasi',
+    body: mv.map(function (x) { return x.title + ' (' + x.status + ')'; }).join('; ') + '.',
+    rec:'Catat nomor penerbangan & PNR; untuk Hokkaido pilih penerbangan pagi & sisakan buffer 1 hari sebelum pulang (badai salju).', action:{tab:'persiapan', sub:'booking'}});
+
+  // 8. Temuan P1 terbuka
+  var p1 = (T.findings || []).filter(function (f) { return f.priority === 'P1' && f.status === 'OPEN'; });
+  if (p1.length) out.push({id:'p1', sev:1, title: p1.length + ' temuan P1 belum diputuskan',
+    body: p1.map(function (f) { return f.finding_id + ' ' + f.category; }).join(' · ') + '.',
+    rec:'Rapat keluarga 30 menit untuk memutuskan P1 (visa/durasi, hotel, jadwal Fuji–Shirakawa-go, Ramadan, budget), lalu catat keputusannya.', action:{tab:'persiapan', sub:'temuan'}});
+
+  // 9. Checklist jatuh tempo ≤ 30 hari
+  var due = (T.checklist || []).filter(function (r) { if (r.status === 'SELESAI' || r.status === 'NA') return false; var d = dueDate(r.due, today); return d && daysBetween(today, d) <= 30; });
+  if (due.length) out.push({id:'due', sev:2, title: due.length + ' persiapan jatuh tempo ≤ 30 hari',
+    body: due.slice(0, 5).map(function (r) { return r.item + ' (' + r.due + ')'; }).join('; ') + (due.length > 5 ? '; …' : '.'),
+    rec:'Kerjakan urut dari yang berlabel SEGERA; tandai status agar skor kesiapan naik.', action:{tab:'persiapan', sub:'checklist'}});
+
+  // 10. Kepadatan per kota
+  var st = legs(T).filter(function (l) { return l.kind === 'stay'; });
+  st.forEach(function (l) {
+    var n = (T.itinerary || []).filter(function (it) { return bool(it.is_active) && it.city === l.city && it.category !== 'Hotel & logistik' && it.category !== 'Makan'; }).length;
+    var nights = num(l.hotel.nights);
+    if (nights && nights <= 1 && n >= 6) out.push({id:'dense-' + l.city, sev:3, title:l.city + ': ' + n + ' kegiatan untuk ' + nights + ' malam',
+      body:'Rasio kegiatan per malam tinggi; waktu jalan kaki & antre akan memakan porsi besar.',
+      rec:'Pilih 3–4 kegiatan inti di ' + l.city + ', sisanya jadikan opsional.', action:{tab:'peta', region:l.loc ? l.loc.region : ''}});
+  });
+
+  // 11. Kualitas data lokasi
+  var unloc = 0, approx = 0;
+  routes.forEach(function (r) { unloc += r.unlocated.filter(function (x) { return x.category !== 'Makan' && x.category !== 'Penerbangan'; }).length; r.stops.forEach(function (s) { if (s.loc.approx && s.loc.src === 'kota') approx++; }); });
+  if (unloc || approx) out.push({id:'geo', sev:4, title:'Lokasi peta: ' + unloc + ' kegiatan tanpa tempat' + (approx ? ', ' + approx + ' hanya titik kota' : ''),
+    body:'Titik dan jarak di peta dihitung dari kolom tempat/koordinat. Kegiatan tanpa tempat tidak ikut dihitung.',
+    rec:'Buka kegiatan di tab Peta → "Ubah lokasi", isi nama tempat atau tempel link Google Maps.', action:{tab:'peta'}});
+
+  out.sort(function (x, y) { return x.sev - y.sev; });
+  return out;
+}
+
+root.JPCore = {
+  norm:norm, lookup:lookup, parseLatLng:parseLatLng, km:km, regionOf:regionOf, REGIONS:REGIONS, CITY:CITY, GAZ:GAZ,
+  hm:hm, fmtHM:fmtHM, addDays:addDays, daysBetween:daysBetween, dueDate:dueDate,
+  locate:locate, hotelLoc:hotelLoc, nightHotel:nightHotel, morningHotel:morningHotel, ordered:ordered, dayRoute:dayRoute,
+  cityLabel:cityLabel, budget:budget, BUDGET_CATS:BUDGET_CATS, legs:legs, readiness:readiness, insights:insights,
+  itemCost:itemCost, toJPY:toJPY, pax:pax, fx:fx, setting:setting, num:num, bool:bool
+};
+})(typeof window !== 'undefined' ? window : module.exports);
+
+</script>
+<script>
+(function(){
+'use strict';
+var C = window.JPCore, M = window.JPMAP;
+var num = C.num, bool = C.bool;
+
+/* ================= data: Artifact (tertanam + localStorage) atau Apps Script (Google Sheet) ================= */
+var HAS_GAS = !!(window.google && window.google.script && window.google.script.run);
+var OV_KEY = HAS_GAS ? 'jp27_gas_pending_v1' : 'jp27_overlay_v1', UI_KEY = 'jp27_ui_v2', CACHE_KEY = 'jp27_gas_cache_v2';
+var KEYS = {itinerary:'item_id',days:'day',hotels:'hotel_id',bookings:'booking_id',checklist:'check_id',findings:'finding_id',budget_other:'cost_id',settings:'key',luggage:'bag_id'};
+var TZ = 'Asia/Tokyo';
+
+function $(id){ return document.getElementById(id); }
+function lsGet(k){ try{ return JSON.parse(localStorage.getItem(k)||'null'); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; }catch(e){ return false; } }
+
+var BASE = null;
+try { var raw = ($('db') && $('db').textContent || '').trim(); if (raw.charAt(0) === '{') BASE = JSON.parse(raw); } catch(e) { BASE = null; }
+var SYNC = {state: HAS_GAS ? 'loading' : 'local', at: null, msg: ''};
+if (HAS_GAS) { var cache = lsGet(CACHE_KEY); if (cache && cache.tables) { BASE = cache.tables; SYNC.at = cache.at; } }
+var OV = lsGet(OV_KEY) || {edits:{}, added:[]};
+if (!OV.edits) OV.edits = {}; if (!OV.added) OV.added = [];
+var UI = lsGet(UI_KEY) || {};
+var S = {tab: UI.tab || 'ringkasan', sub: UI.sub || 'checklist', day: null, mapAll: UI.mapAll !== false, showOff: !!UI.showOff,
+         prio: 'ALL', allIns: false, region: null, pin: null, focus: null, slice: -1};
+if (/^(checklist|booking|temuan)$/.test(S.tab)) { S.sub = S.tab; S.tab = 'persiapan'; }
+if (!/^(ringkasan|peta|jadwal|persiapan|budget)$/.test(S.tab)) S.tab = 'ringkasan';
+
+function T(name){
+  var rows = (BASE && BASE[name]) || [];
+  if (name === 'itinerary' && !HAS_GAS) rows = rows.concat(OV.added || []);
+  var k = KEYS[name];
+  return rows.map(function(r){ var e = OV.edits[name+'|'+r[k]]; return e ? Object.assign({}, r, e) : r; });
+}
+function DB(){ var o = {}; Object.keys(KEYS).forEach(function(k){ o[k] = T(k); }); return o; }
+function find(table, id){ var k = KEYS[table]; return T(table).filter(function(r){ return String(r[k]) === String(id); })[0]; }
+
+function save(table, id, patch, msg){
+  var key = table + '|' + id;
+  OV.edits[key] = Object.assign({}, OV.edits[key] || {}, patch);
+  var ok = lsSet(OV_KEY, OV);
+  render();
+  if (!HAS_GAS) { toast(ok ? (msg || 'Tersimpan di perangkat ini') : 'Tidak bisa menyimpan: penyimpanan browser diblokir'); return; }
+  toast('Menyimpan ke Google Sheet…');
+  push(table, id, patch).then(function(){ toast(msg || 'Tersimpan ke Google Sheet'); })
+    .catch(function(e){ toast('Belum tersimpan ke Sheet: ' + e.message); });
+}
+
+/* ---- Apps Script ---- */
+function gas(fn){
+  var args = [].slice.call(arguments, 1);
+  return new Promise(function(res, rej){
+    var r = window.google.script.run.withSuccessHandler(res).withFailureHandler(function(e){ rej(e instanceof Error ? e : new Error(String((e && e.message) || e))); });
+    r[fn].apply(r, args);
+  });
+}
+function applyBase(table, id, patch){
+  if (!BASE) return;
+  var k = KEYS[table];
+  (BASE[table] || []).forEach(function(r){ if (String(r[k]) === String(id)) Object.keys(patch).forEach(function(f){ r[f] = patch[f]; }); });
+  var key = table + '|' + id, pend = OV.edits[key];
+  if (pend) { Object.keys(patch).forEach(function(f){ if (String(pend[f]) === String(patch[f])) delete pend[f]; }); if (!Object.keys(pend).length) delete OV.edits[key]; }
+  lsSet(OV_KEY, OV); lsSet(CACHE_KEY, {tables: BASE, at: SYNC.at});
+}
+function push(table, id, patch){
+  return gas('updateRecord', table, id, patch).then(function(res){ applyBase(table, id, patch); return res; }, function(e){
+    if (/tidak boleh|tidak ditemukan|Kolom tidak ada/i.test(e.message)) { var key = table + '|' + id; delete OV.edits[key]; lsSet(OV_KEY, OV); render(); setTimeout(loadGAS, 400); }
+    throw e;
+  });
+}
+function flushPending(){
+  var keys = Object.keys(OV.edits);
+  return keys.reduce(function(p, key){
+    return p.then(function(){ var i = key.indexOf('|'); var patch = OV.edits[key]; if (!patch) return; return push(key.slice(0, i), key.slice(i + 1), patch).catch(function(){}); });
+  }, Promise.resolve());
+}
+function loadGAS(){
+  SYNC.state = 'loading'; renderSync();
+  gas('getAppData').then(function(txt){
+    var d = typeof txt === 'string' ? JSON.parse(txt) : txt;
+    BASE = d.tables; SYNC.at = new Date().toISOString(); SYNC.state = 'ok';
+    lsSet(CACHE_KEY, {tables: BASE, at: SYNC.at});
+    if (S.day === null) initDay();
+    render();
+    return flushPending().then(function(){ renderSync(); geoLoop(0); });
+  }).catch(function(e){ SYNC.state = BASE ? 'off' : 'err'; SYNC.msg = e.message; render(); });
+}
+function geoLoop(n){
+  if (!HAS_GAS || n >= 8) return;
+  gas('refreshGeo').then(function(r){
+    if (r && r.updated && r.updated.length) {
+      r.updated.forEach(function(u){ applyBase(u.table, u.id, {lat:u.lat, lng:u.lng, geo_src:u.geo_src, geo_query:u.geo_query}); });
+      if (S.tab === 'peta' || S.tab === 'ringkasan') render();
+    }
+    if (r && r.remaining > 0) geoLoop(n + 1);
+  }).catch(function(){});
+}
+
+/* ================= util ================= */
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function yen(n){ return '¥' + Math.round(n).toLocaleString('id-ID'); }
+function rp(n){ return 'Rp' + Math.round(n).toLocaleString('id-ID'); }
+function yenShort(n){ return n >= 1e6 ? '¥' + (n / 1e6).toFixed(2).replace('.', ',') + ' jt' : n >= 1e4 ? '¥' + Math.round(n / 1e3).toLocaleString('id-ID') + ' rb' : yen(n); }
+function dm(iso){ var p = String(iso).split('-'); return p.length === 3 ? Number(p[2]) + '/' + Number(p[1]) : iso; }
+var MON = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+function dmy(iso){ var p = String(iso).split('-'); return p.length === 3 ? Number(p[2]) + ' ' + MON[Number(p[1]) - 1] : iso; }
+function todayISO(){ try{ return new Intl.DateTimeFormat('en-CA',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()); }catch(e){ return new Date().toISOString().slice(0,10); } }
+function nowHM(){ try{ return new Intl.DateTimeFormat('en-GB',{timeZone:TZ,hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date()); }catch(e){ return ''; } }
+function mapsUrl(it){ return it.maps_url || (it.place_query ? 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(it.place_query) : ''); }
+function toast(m){ var t = $('toast'); t.textContent = m; t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(function(){ t.classList.remove('show'); }, 2600); }
+function persistUI(){ lsSet(UI_KEY, {tab:S.tab, sub:S.sub, day:S.day, showOff:S.showOff, mapAll:S.mapAll}); }
+function setting(k, d){ return C.setting(DB(), k, d); }
+function kmTxt(k){ return k >= 10 ? Math.round(k).toLocaleString('id-ID') : k.toFixed(1).replace('.', ','); }
+var REG_LABEL = {}; C.REGIONS.forEach(function(r){ REG_LABEL[r.id] = r.label; });
+var ICON = {
+  plane:'<svg viewBox="0 0 24 24"><path d="M10.5 13.5L3 11l1.5-1.5 7 1 4.5-4.5c1-1 2.5-1.2 3-.7s.3 2-.7 3L13.8 12.8l1 7L13.3 21l-2.5-7.5"/></svg>',
+  train:'<svg viewBox="0 0 24 24"><rect x="6" y="3.5" width="12" height="13" rx="3"/><path d="M6 11h12M9 20l-2 1.5M15 20l2 1.5M9.5 14h.01M14.5 14h.01"/></svg>',
+  car:'<svg viewBox="0 0 24 24"><path d="M5 16v-4l2-5h10l2 5v4z"/><path d="M5 12h14M7.5 19.5v-3.5M16.5 19.5v-3.5"/></svg>',
+  crit:'<svg viewBox="0 0 16 16"><path d="M8 1l7.5 13h-15z"/><path d="M7.2 5.5h1.6v4.2H7.2zM7.2 11h1.6v1.6H7.2z" fill="var(--surface)"/></svg>',
+  info:'<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7"/><path d="M7.2 7h1.6v5H7.2zM7.2 4h1.6v1.6H7.2z" fill="var(--surface)"/></svg>'
+};
+var SEV = {1:['Kritis','crit'], 2:['Penting','crit'], 3:['Perhatian','info'], 4:['Info','info']};
+
+/* ================= hari ================= */
+function initDay(){
+  var t = todayISO(), hit = T('days').filter(function(d){ return d.date === t; })[0];
+  S.day = hit ? num(hit.day) : (UI.day != null ? UI.day : 1);
+}
+function renderHeader(D){
+  var start = C.setting(D, 'trip_start', '2027-01-25'), diff = C.daysBetween(todayISO(), start);
+  var hit = D.days.filter(function(d){ return d.date === todayISO(); })[0];
+  $('countdown').textContent = diff > 0 ? diff + ' hari lagi' : (hit ? 'Hari ke-' + hit.day : '');
+  var stays = C.legs(D).filter(function(l){ return l.kind === 'stay' && l.loc && l.loc.region !== 'id'; }).map(function(l){ return l.city; });
+  $('route').textContent = stays.join(' · ');
+  var t = todayISO(), h = '';
+  var showDays = S.tab === 'jadwal' || S.tab === 'peta';
+  if (S.tab === 'peta') h += '<button class="day-chip" data-day="all" aria-pressed="' + S.mapAll + '"><b>Semua</b><span>' + D.days.length + ' hari</span><i>rute</i></button>';
+  D.days.forEach(function(d){
+    var n = num(d.day), on = n === S.day && !(S.tab === 'peta' && S.mapAll);
+    h += '<button class="day-chip' + (d.date === t ? ' is-today' : '') + '" data-day="' + n + '" aria-pressed="' + on + '"><b>H' + n + '</b><span>' + esc(dm(d.date)) + '</span><i>' + esc(String(d.weekday || '').slice(0,3)) + '</i></button>';
+  });
+  var el = $('days'); el.innerHTML = h; el.hidden = !showDays;
+  var on = el.querySelector('[aria-pressed="true"]'); if (on) el.scrollLeft = Math.max(0, on.offsetLeft - (el.clientWidth - on.offsetWidth) / 2);
+  renderSync();
+}
+function renderSync(){
+  var el = $('sync'); if (!el) return;
+  if (!HAS_GAS) { el.hidden = true; return; }
+  el.hidden = false;
+  var at = SYNC.at ? new Date(SYNC.at) : null, when = at ? at.toLocaleString('id-ID', {day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'}) : '';
+  var pend = Object.keys(OV.edits).length;
+  var txt = SYNC.state === 'loading' ? 'Memuat dari Google Sheet…' : SYNC.state === 'ok' ? 'Tersambung ke Google Sheet · ' + when : SYNC.state === 'off' ? 'Offline — data tersimpan ' + when : 'Gagal memuat: ' + SYNC.msg;
+  if (pend) txt += ' · ' + pend + ' perubahan menunggu';
+  el.className = 'syncbar' + (SYNC.state === 'off' ? ' off' : SYNC.state === 'err' ? ' err' : '');
+  el.innerHTML = '<span class="led"></span><span>' + esc(txt) + '</span><button class="btn ghost" data-act="reload">Muat ulang</button><button class="btn ghost pwa-gear" data-pwa="settings" aria-label="Pengaturan">⚙︎</button>';
+}
+
+/* ================= RINGKASAN ================= */
+function lvl(p){ return p < 0.34 ? 'crit' : p < 0.67 ? 'warn' : 'good'; }
+function tripRoutes(D){ return D.days.filter(function(d){ var n = num(d.day); return n >= 1 && n <= 16; }).map(function(d){ return C.dayRoute(D, num(d.day)); }).filter(Boolean); }
+function isHeavy(r){ return r.hours >= 14.5 || r.groundKm >= 250; }
+
+function vRingkasan(D){
+  var today = todayISO(), start = C.setting(D,'trip_start','2027-01-25'), end = C.setting(D,'trip_end','2027-02-11');
+  var toGo = C.daysBetween(today, start), p = C.pax(D), b = C.budget(D), rd = C.readiness(D), ins = C.insights(D, today);
+  var routes = tripRoutes(D), ground = routes.reduce(function(s, r){ return s + r.groundKm; }, 0);
+  var nights = D.hotels.reduce(function(s, h){ return s + num(h.nights); }, 0);
+  var bases = {}; D.hotels.forEach(function(h){ if (C.CITY[h.city] && C.CITY[h.city][0] > 20) bases[h.city] = 1; });
+  var during = today >= start && today <= end, dayNow = D.days.filter(function(d){ return d.date === today; })[0];
+  var h = '<section class="hero"><div class="eyebrow">' + esc(dmy(start)) + ' – ' + esc(dmy(end)) + ' 2027 · ' + p.a + ' dewasa + ' + p.c + ' anak</div>';
+  if (during && dayNow) h += '<div class="heroNum">Hari ' + esc(dayNow.day) + '<small>' + esc(dayNow.title) + '</small></div>';
+  else if (toGo > 0) h += '<div class="heroNum">' + toGo + '<small>hari lagi berangkat</small></div>';
+  else h += '<div class="heroNum">Selesai<small>perjalanan sudah lewat</small></div>';
+  h += '<div class="stats"><div><b>' + nights + '</b><span>malam</span></div><div><b>' + Object.keys(bases).length + '</b><span>kota basis</span></div>'
+    + '<div><b>±' + kmTxt(ground) + ' km</b><span>jalan darat (garis lurus)</span></div><div><b>' + yenShort(b.total) + '</b><span>estimasi total</span></div></div></section>';
+  if (during && dayNow) h += '<section class="sec"><div class="card today"><b>Hari ini:</b> ' + esc(dayNow.title) + '<div class="acts"><button class="btn primary" data-act="goday" data-id="' + esc(dayNow.day) + '">Buka jadwal hari ini</button><button class="btn" data-act="mapday" data-id="' + esc(dayNow.day) + '">Lihat di peta</button></div></div></section>';
+
+  // kesiapan
+  h += '<section class="sec"><h2>Kesiapan<span class="pct">' + Math.round(rd.score * 100) + '%</span></h2><div class="card meters">';
+  rd.parts.forEach(function(pt){
+    var f = pt.total ? pt.done / pt.total : 1;
+    h += '<button class="meter lv-' + lvl(f) + '" data-act="gosub" data-id="' + pt.sub + '"><span class="ml">' + esc(pt.label) + '</span><span class="mv">' + pt.done + ' / ' + pt.total + '</span><span class="mt"><i style="width:' + Math.round(f * 100) + '%"></i></span></button>';
+  });
+  h += '</div></section>';
+
+  // insight
+  var cnt = {1:0,2:0,3:0,4:0}; ins.forEach(function(i){ cnt[i.sev]++; });
+  h += '<section class="sec" id="insight"><h2>Evaluasi & rekomendasi<small>dihitung ulang tiap data berubah</small></h2><div class="sevsum">'
+    + [1,2,3,4].filter(function(s){ return cnt[s]; }).map(function(s){ return '<span class="sv' + s + '"><span class="sev">' + ICON[SEV[s][1]] + SEV[s][0] + '</span> <b>' + cnt[s] + '</b></span>'; }).join('') + '</div>';
+  var show = S.allIns ? ins : ins.slice(0, 4);
+  show.forEach(function(it, i){
+    h += '<article class="ins sv' + it.sev + '"><span class="sev">' + ICON[SEV[it.sev][1]] + SEV[it.sev][0] + '</span><h3>' + esc(it.title) + '</h3>'
+      + '<p class="body">' + esc(it.body) + '</p><p class="rec"><b>Rekomendasi:</b> ' + esc(it.rec) + '</p>'
+      + (it.action ? '<div class="acts"><button class="btn" data-act="insgo" data-id="' + i + '">Buka →</button></div>' : '') + '</article>';
+  });
+  if (!ins.length) h += '<div class="card">Tidak ada catatan. Rencana terlihat siap.</div>';
+  if (ins.length > 4) h += '<button class="btn" data-act="allins">' + (S.allIns ? 'Tampilkan lebih sedikit' : 'Tampilkan semua (' + ins.length + ')') + '</button>';
+  h += '</section>';
+
+  h += '<section class="sec"><h2>Rute perjalanan<small>blok = kota menginap</small></h2>' + flowDiagram(D) + '</section>';
+  h += '<section class="sec"><h2>Komposisi budget</h2><div class="card">' + donutBlock(b, 'd1') + '</div></section>';
+  h += '<section class="sec" id="beban"><h2>Beban per hari</h2>' + loadChart(D, routes) + '</section>';
+  return h;
+}
+
+/* ---- diagram blok rute ---- */
+function flowDiagram(D){
+  var lg = C.legs(D), h = '<figure class="flowcard"><ol class="flow" aria-label="Urutan kota dan perpindahan">';
+  lg.forEach(function(l){
+    if (l.kind === 'home') {
+      h += '<li class="home"><div class="rail"><span class="pt"></span></div><div class="lbl"><b>' + esc(l.city) + '</b> · ' + esc(dmy(l.date)) + (l.end ? ' · tiba di rumah' : ' · berangkat') + '</div></li>';
+    } else if (l.kind === 'move') {
+      var air = l.bookings.some(function(b){ return /FLIGHT/.test(b.type); }), train = l.bookings.some(function(b){ return /TRAIN/.test(b.type); });
+      var ico = air ? ICON.plane : train ? ICON.train : ICON.car;
+      h += '<li class="conn"><div class="rail"><span class="ico">' + ico + '</span></div><div class="lbl">';
+      if (l.bookings.length) l.bookings.forEach(function(b){
+        h += '<button class="bk" data-act="booking" data-id="' + esc(b.booking_id) + '"><span class="when">' + esc(dm(b.date)) + (b.dep_time ? ' ' + esc(b.dep_time) : '') + '</span><span>' + esc(b.title) + (b.ref_no ? ' · ' + esc(b.ref_no) : '') + '</span><span class="st st-' + esc(b.status) + '">' + esc(b.status) + '</span></button>';
+      });
+      else h += '<span class="none">' + esc(dm(l.date)) + ' · ' + esc(l.from) + ' → ' + esc(l.to) + ': belum ada tiket' + (l.guess ? ' (rencana: ' + esc(l.guess) + ')' : '') + '</span>';
+      h += '</div></li>';
+    } else {
+      var hh = l.hotel, reg = l.loc ? l.loc.region : 'id';
+      h += '<li class="stay r-' + reg + '"><div class="rail"><span class="pt"></span></div><button class="blk" data-act="' + (reg === 'id' ? 'gosub' : 'region') + '" data-id="' + (reg === 'id' ? 'booking' : reg) + '">'
+        + '<span class="bh"><b>' + esc(l.city) + '</b><span class="n">' + esc(hh.nights) + ' malam · ' + esc(dm(hh.check_in)) + '–' + esc(dm(hh.check_out)) + '</span></span>'
+        + '<span class="sub">' + esc(hh.hotel_name || hh.area) + '</span>'
+        + '<span class="hs"><span class="st st-' + esc(hh.status) + '">' + esc(String(hh.status).replace('_', ' ')) + '</span>' + (hh.currency === 'IDR' ? rp(num(hh.rate_per_night)) : yen(num(hh.rate_per_night))) + ' / malam</span>';
+      if (l.trips.length) h += '<span class="trips">' + l.trips.map(function(t){ return '<span class="trip' + (t.farKm >= 150 ? ' far' : '') + '">' + esc(dm(t.date)) + ' <b>' + esc(t.labels.join(' + ')) + '</b> · ' + Math.round(t.farKm) + ' km</span>'; }).join('') + '</span>';
+      h += '</button></li>';
+    }
+  });
+  return h + '</ol><figcaption>Blok = kota tempat menginap (warna = wilayah, status = booking hotel). Ikon di antara blok = perpindahan antarkota dengan status tiketnya; ketuk untuk mengisi. Chip = day trip, angka km = jarak garis lurus terjauh dari hotel (merah bila ≥150 km).</figcaption></figure>';
+}
+
+/* ---- donut budget ---- */
+var CAT_COLOR = {hotel:'s1', flight_id:'s2', transport:'s3', fun:'s4', food:'s5', other:'s6', cont:'s0'};
+function arcPath(cx, cy, R, r, a0, a1){
+  if (a1 - a0 >= Math.PI * 2 - 1e-4) a1 = a0 + Math.PI * 2 - 1e-4;
+  var L = (a1 - a0) > Math.PI ? 1 : 0;
+  function p(rad, a){ return (cx + rad * Math.cos(a)).toFixed(2) + ' ' + (cy + rad * Math.sin(a)).toFixed(2); }
+  return 'M' + p(R, a0) + 'A' + R + ' ' + R + ' 0 ' + L + ' 1 ' + p(R, a1) + 'L' + p(r, a1) + 'A' + r + ' ' + r + ' 0 ' + L + ' 0 ' + p(r, a0) + 'Z';
+}
+function donutBlock(b, id){
+  var cats = b.cats, tot = b.total || 1, a = -Math.PI / 2;
+  var svg = '<svg class="donut" viewBox="0 0 200 200" role="img" aria-label="Komposisi estimasi biaya total ' + esc(yen(b.total)) + '">';
+  cats.forEach(function(c, i){
+    if (c.v <= 0) return;
+    var a1 = a + Math.PI * 2 * c.v / tot;
+    svg += '<path data-slice="' + i + '" tabindex="0" style="fill:var(--' + CAT_COLOR[c.id] + ')" d="' + arcPath(100, 100, 94, 60, a, a1) + '"><title>' + esc(c.label) + ': ' + esc(yen(c.v)) + ' (' + Math.round(c.v * 100 / tot) + '%)</title></path>';
+    a = a1;
+  });
+  svg += '<text class="c1" x="100" y="97" text-anchor="middle">' + esc(yenShort(b.total)) + '</text><text class="c2" x="100" y="116" text-anchor="middle">estimasi total</text></svg>';
+  var tb = '<table class="legend"><tbody>';
+  cats.forEach(function(c, i){
+    tb += '<tr data-slice="' + i + '"><td class="sw"><i style="background:var(--' + CAT_COLOR[c.id] + ')"></i></td><td>' + esc(c.label) + '</td><td class="v">' + esc(yen(c.v)) + '</td><td class="p">' + Math.round(c.v * 100 / tot) + '%</td></tr>';
+  });
+  tb += '</tbody><tfoot><tr><td></td><td>Total</td><td class="v">' + esc(yen(b.total)) + '</td><td class="p">100%</td></tr></tfoot></table>';
+  var over = b.total - b.target;
+  var note = b.target ? '<p class="warnline">Target ' + esc(yen(b.target)) + ' → ' + (over > 0 ? '<b style="color:var(--crit)">lebih ' + esc(yen(over)) + ' (' + Math.round(over * 100 / b.target) + '%)</b>' : '<b style="color:var(--good)">sisa ' + esc(yen(-over)) + '</b>') + '. Tiket pesawat Indonesia & hotel memakai kurs Rp' + C.fx({settings:T('settings')}).toLocaleString('id-ID') + '/¥.</p>' : '';
+  return '<div class="donutwrap" data-donut="' + id + '">' + svg + tb + '</div>' + note;
+}
+function hlSlice(wrap, i){
+  if (!wrap) return;
+  var svg = wrap.querySelector('svg'), b = C.budget(DB()), c = b.cats[i];
+  svg.classList.toggle('hl', i >= 0);
+  Array.prototype.forEach.call(wrap.querySelectorAll('[data-slice]'), function(el){ el.classList.toggle('on', Number(el.getAttribute('data-slice')) === i); });
+  var t1 = svg.querySelector('.c1'), t2 = svg.querySelector('.c2');
+  if (i >= 0 && c) { t1.textContent = Math.round(c.v * 100 / b.total) + '% · ' + yenShort(c.v); t2.textContent = c.label; }
+  else { t1.textContent = yenShort(b.total); t2.textContent = 'estimasi total'; }
+}
+
+/* ---- beban per hari (rentang jam vs terang hari) ---- */
+function loadChart(D, routes){
+  var h = '<div class="card load"><div class="axis"><span></span><span class="sc"><span style="left:0">00</span><span style="left:25%">06</span><span style="left:50%">12</span><span style="left:75%">18</span><span style="left:100%">24</span></span><span></span></div>';
+  routes.forEach(function(r){
+    var d = r.day, sr = C.hm(d.sunrise), ss = C.hm(d.sunset), heavy = isHeavy(r);
+    var bar = (r.start !== null) ? '<span class="bar" style="left:' + (r.start / 14.4).toFixed(2) + '%;width:' + Math.max(1, (r.end - r.start) / 14.4).toFixed(2) + '%"></span>' : '';
+    h += '<button class="lrow' + (heavy ? ' heavy' : '') + '" data-act="goday" data-id="' + num(d.day) + '" aria-label="Hari ' + num(d.day) + ': ' + Math.round(r.hours) + ' jam, ' + Math.round(r.groundKm) + ' km darat">'
+      + '<span class="lab">H' + num(d.day) + ' ' + esc(dm(d.date)) + '</span><span class="tr">'
+      + (sr !== null && ss !== null ? '<span class="dl" style="left:' + (sr / 14.4).toFixed(2) + '%;width:' + ((ss - sr) / 14.4).toFixed(2) + '%"></span>' : '') + bar + '</span>'
+      + '<span class="n">' + (heavy ? '▲ ' : '') + Math.round(r.hours) + ' j · ' + kmTxt(r.groundKm) + ' km' + (r.airKm ? ' ✈' : '') + '</span></button>';
+  });
+  return h + '<div class="loadkey"><span><i style="background:var(--day)"></i>terang (terbit–terbenam)</span><span><i style="background:var(--indigo)"></i>rentang kegiatan</span><span><i style="background:var(--serious)"></i>▲ ≥14,5 jam atau ≥250 km</span><span>km = jarak darat garis lurus (jalan asli ±1,2–1,4×); ✈ = ada penerbangan</span></div></div>';
+}
+
+/* ================= PETA ================= */
+var Y0 = merc(M.latTop);
+function merc(l){ return Math.log(Math.tan(Math.PI / 4 + l * Math.PI / 360)) * 180 / Math.PI; }
+function P(lat, lng){ return {x:(lng - M.lon0) * M.k, y:(Y0 - merc(lat)) * M.k}; }
+var MV = {vb:null, key:'', model:null, raf:0};
+
+function mapKey(){ return (S.mapAll ? 'all' : 'd' + S.day) + '|' + (S.region || ''); }
+function mapModel(D){
+  var m = {all:S.mapAll, dots:[], hotels:[], bb:[], labels:[], pins:[], segs:[], ghosts:[], route:null, unloc:[]};
+  var lg = C.legs(D), lastStay = null, lastMove = null, hseen = {}, cityN = {};
+  lg.forEach(function(l){
+    if (l.kind === 'move') { lastMove = l; return; }
+    if (l.kind !== 'stay' || !l.loc || l.loc.region === 'id') return;
+    var p = P(l.loc.lat, l.loc.lng), k = Math.round(p.x) + ',' + Math.round(p.y);
+    if (!hseen[k]) { hseen[k] = {x:p.x, y:p.y, region:l.loc.region, legs:[]}; m.hotels.push(hseen[k]); }
+    hseen[k].legs.push(l);
+    cityN[l.city] = cityN[l.city] || {n:0, x:p.x, y:p.y, region:l.loc.region}; cityN[l.city].n += num(l.hotel.nights);
+    if (lastStay) {
+      var a = P(lastStay.loc.lat, lastStay.loc.lng), air = lastMove && lastMove.bookings.some(function(b){ return /FLIGHT/.test(b.type); });
+      m.bb.push({a:a, b:p, air:!!air});
+    }
+    lastStay = l; lastMove = null;
+  });
+  Object.keys(cityN).forEach(function(c){ var v = cityN[c]; m.labels.push({x:v.x, y:v.y, t:c + ' · ' + v.n + ' mlm', region:v.region}); });
+  D.itinerary.forEach(function(it){
+    if (!bool(it.is_active)) return;
+    var loc = C.locate(it, D); if (!loc || loc.region === 'id' || loc.hotel) return;
+    var p = P(loc.lat, loc.lng); m.dots.push({x:p.x, y:p.y, region:loc.region, it:it, loc:loc});
+  });
+  if (!S.mapAll) {
+    var r = C.dayRoute(D, S.day); m.route = r;
+    if (r) {
+      var groups = {}, n = 0;
+      r.seq.forEach(function(s){
+        var p = P(s.loc.lat, s.loc.lng);
+        if (s.hotel) { m.pins.push({x:p.x, y:p.y, hotel:true, loc:s.loc, items:[], nums:[]}); return; }
+        n++; s.no = n;
+        var k = s.loc.lat.toFixed(4) + ',' + s.loc.lng.toFixed(4);
+        if (!groups[k]) { groups[k] = {x:p.x, y:p.y, loc:s.loc, items:[], nums:[]}; m.pins.push(groups[k]); }
+        groups[k].items.push(s.item); groups[k].nums.push(n);
+      });
+      r.segs.forEach(function(sg){ m.segs.push({a:P(sg.a.lat, sg.a.lng), b:P(sg.b.lat, sg.b.lng), air:sg.air, km:sg.km}); });
+      m.unloc = r.unlocated;
+      var dayIds = {}; r.stops.forEach(function(s){ dayIds[s.item.item_id] = 1; });
+      m.ghosts = m.dots.filter(function(d){ return !dayIds[d.it.item_id]; });
+    }
+  }
+  return m;
+}
+function fitPoints(pts, svg){
+  var box = svg.getBoundingClientRect(), ew = box.width || 358, eh = box.height || 420;
+  if (!pts.length) return {x:0, y:0, w:M.w, h:M.w * eh / ew};
+  var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  pts.forEach(function(p){ x0 = Math.min(x0, p.x); y0 = Math.min(y0, p.y); x1 = Math.max(x1, p.x); y1 = Math.max(y1, p.y); });
+  var w = Math.max(x1 - x0, 4), h = Math.max(y1 - y0, 4), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  // ruang layar yang dipakai titik: sisakan kiri 24px, kanan 64px (tombol zoom), atas 24px, bawah 36px
+  var aw = ew - 88, ah = eh - 60, sc = Math.min(aw / (w * 1.12), ah / (h * 1.12));
+  var W = ew / sc, H = eh / sc;
+  return {x:cx - (24 + aw / 2) / sc, y:cy - (24 + ah / 2) / sc, w:W, h:H};
+}
+function currentFitPoints(m){
+  if (S.region) return m.dots.concat(m.hotels).filter(function(p){ return p.region === S.region; });
+  if (!m.all && m.pins.length) return m.pins;
+  return m.dots.concat(m.hotels);
+}
+function vPeta(D){
+  var m = mapModel(D); MV.model = m;
+  var regs = {}; m.dots.concat(m.hotels).forEach(function(p){ regs[p.region] = 1; });
+  var h = '<div class="mapctl" aria-label="Zoom ke wilayah"><button data-act="region" data-id="" aria-pressed="' + !S.region + '">' + (S.mapAll ? 'Seluruh rute' : 'Hari ' + S.day) + '</button>';
+  C.REGIONS.forEach(function(r){ if (regs[r.id]) h += '<button class="r-' + r.id + '" data-act="region" data-id="' + r.id + '" aria-pressed="' + (S.region === r.id) + '"><i></i>' + esc(r.label) + '</button>'; });
+  h += '</div><div class="mapwrap"><svg id="map" class="map" viewBox="0 0 ' + M.w + ' ' + M.h + '" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Peta Jepang: titik kegiatan dan rute; daftar teks ada di bawah peta">'
+    + '<rect class="sea" x="-4000" y="-4000" width="' + (M.w + 8000) + '" height="' + (M.h + 8000) + '"/><path class="nb" d="' + M.nb + '"/><path class="land" d="' + M.jp + '"/><g id="ov"></g></svg>'
+    + '<div class="zoom"><button data-act="zin" aria-label="Perbesar">+</button><button data-act="zout" aria-label="Perkecil">−</button><button data-act="zfit" aria-label="Pas ke rute">⤢</button></div>'
+    + '<span class="maphint">geser / cubit untuk zoom</span></div>';
+  if (m.all) {
+    h += '<div class="mapkey">' + C.REGIONS.filter(function(r){ return regs[r.id]; }).map(function(r){ return '<span class="r-' + r.id + '"><i></i>' + esc(r.label) + '</span>'; }).join('')
+      + '<span><i class="sq"></i>hotel</span><span><i class="ln" style="border-top-color:var(--ink)"></i>kereta/darat</span><span><i class="ln air" style="border-top-color:var(--ink)"></i>pesawat</span><span>angka = jumlah titik (ketuk untuk zoom)</span></div>';
+  } else {
+    h += '<div class="mapkey"><span><i style="background:var(--route)"></i>urutan kunjungan</span><span><i class="sq"></i>hotel</span><span><i class="ln"></i>perpindahan (garis lurus)</span><span><i class="ln air"></i>pesawat</span><span><i class="ghost" style="background:var(--muted);opacity:.4"></i>hari lain</span></div>';
+  }
+  h += '<div id="pininfo" class="pininfo"></div>';
+  if (m.all) {
+    h += '<section class="sec"><h2>Per hari<small>ketuk untuk lihat rute hari itu</small></h2><div class="daysum">';
+    tripRoutes(D).forEach(function(r){
+      h += '<button data-act="mapday" data-id="' + num(r.day.day) + '"><span class="lab">H' + num(r.day.day) + ' ' + esc(dm(r.day.date)) + '</span><span class="t">' + esc(r.day.title) + '</span><span class="k">' + r.stops.length + ' titik · ' + kmTxt(r.groundKm) + ' km' + (r.airKm ? ' ✈' : '') + '</span></button>';
+    });
+    h += '</div></section>';
+  } else if (m.route) {
+    var r = m.route, prev = null;
+    h += '<section class="sec"><h2>Rute H' + num(r.day.day) + '<small>' + esc(r.day.title) + ' · ' + kmTxt(r.groundKm) + ' km darat' + (r.airKm ? ' + ' + kmTxt(r.airKm) + ' km terbang' : '') + '</small></h2><ol class="stops">';
+    r.seq.forEach(function(s, i){
+      var d = prev ? C.km(prev, s.loc) : 0; prev = s.loc;
+      if (s.hotel) { h += '<li><button data-act="pinh" data-id="' + i + '"><span class="no h">H</span><span class="tm">' + (i === 0 ? 'pagi' : 'malam') + '</span><span class="ti">' + esc(s.loc.name) + '</span><span class="km">' + (i ? '+' + kmTxt(d) + ' km' : '') + '</span></button></li>'; return; }
+      h += '<li><button data-act="pinitem" data-id="' + esc(s.item.item_id) + '" aria-pressed="' + (S.pin === s.item.item_id) + '"><span class="no">' + s.no + '</span><span class="tm">' + esc(s.item.start_time || '··') + '</span><span class="ti">' + esc(s.item.title) + (s.loc.src === 'kota' ? ' <span class="muted">(titik kota)</span>' : '') + '</span><span class="km">' + (i ? '+' + kmTxt(d) + ' km' : '') + '</span></button></li>';
+    });
+    h += '</ol>';
+    var un = m.unloc.filter(function(x){ return !/Penerbangan/.test(x.category); });
+    if (un.length) h += '<p class="warnline">Tanpa lokasi (tidak dihitung): ' + un.map(function(x){ return '<button class="btn ghost" data-act="loc" data-id="' + esc(x.item_id) + '">' + esc(x.title) + ' · set</button>'; }).join(' ') + '</p>';
+    h += '</section>';
+  }
+  h += '<p class="help">Titik berasal dari kolom tempat / koordinat itinerary' + (HAS_GAS ? ' (dicari otomatis dengan Google Geocoder, lalu disimpan di Sheet)' : ' dan katalog ±100 lokasi Jepang') + '. Ubah lokasi dari kartu titik → titik & jarak langsung dihitung ulang.</p>';
+  return h;
+}
+
+function unit(svg){ var r = svg.getBoundingClientRect(); return MV.vb.w / (r.width || 358); }
+function drawOverlay(){
+  MV.raf = 0;
+  var svg = $('map'), ov = $('ov'), m = MV.model; if (!svg || !ov || !m || !MV.vb) return;
+  svg.setAttribute('viewBox', MV.vb.x.toFixed(2) + ' ' + MV.vb.y.toFixed(2) + ' ' + MV.vb.w.toFixed(2) + ' ' + MV.vb.h.toFixed(2));
+  var u = unit(svg), h = '';
+  function f(n){ return n.toFixed(2); }
+  function line(a, b, cls){ return '<line class="ln ' + cls + '" x1="' + f(a.x) + '" y1="' + f(a.y) + '" x2="' + f(b.x) + '" y2="' + f(b.y) + '"/>'; }
+  function arc(a, b, cls){ var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, dx = b.x - a.x, dy = b.y - a.y; return '<path class="ln ' + cls + '" d="M' + f(a.x) + ' ' + f(a.y) + 'Q' + f(mx - dy * 0.18) + ' ' + f(my + dx * 0.18) + ' ' + f(b.x) + ' ' + f(b.y) + '"/>'; }
+  function hotel(p, i){ var s = 7 * u; return '<rect class="htl r-' + p.region + '" x="' + f(p.x - s) + '" y="' + f(p.y - s) + '" width="' + f(2 * s) + '" height="' + f(2 * s) + '" rx="' + f(3 * u) + '"/><text class="htl-t" x="' + f(p.x) + '" y="' + f(p.y) + '" font-size="' + f(9 * u) + '">H</text><circle class="hit" data-htl="' + i + '" cx="' + f(p.x) + '" cy="' + f(p.y) + '" r="' + f(16 * u) + '"/>'; }
+  if (m.all) {
+    var bbh = ''; m.bb.forEach(function(e){ bbh += e.air ? arc(e.a, e.b, 'bb air') : line(e.a, e.b, 'bb'); });
+    var cl = cluster(m.dots, 15 * u); MV.clusters = cl;
+    cl.forEach(function(c, i){
+      if (c.pts.length === 1) h += '<circle class="dot r-' + c.region + '" cx="' + f(c.x) + '" cy="' + f(c.y) + '" r="' + f(5 * u) + '"/>';
+      else { var rr = (8 + Math.min(8, Math.sqrt(c.pts.length) * 1.6)) * u; h += '<circle class="cl r-' + c.region + '" cx="' + f(c.x) + '" cy="' + f(c.y) + '" r="' + f(rr) + '"/><text class="cl-t" x="' + f(c.x) + '" y="' + f(c.y) + '" font-size="' + f(10 * u) + '">' + c.pts.length + '</text>'; }
+      h += '<circle class="hit" data-cl="' + i + '" cx="' + f(c.x) + '" cy="' + f(c.y) + '" r="' + f(16 * u) + '"/>';
+    });
+    m.hotels.forEach(function(p, i){
+      var near = cl.some(function(c){ return Math.abs(c.x - p.x) < 16 * u && Math.abs(c.y - p.y) < 16 * u; });
+      if (near) { var q = {x:p.x - 20 * u, y:p.y - 20 * u, region:p.region}; h = '<line class="ln bb" x1="' + f(p.x) + '" y1="' + f(p.y) + '" x2="' + f(q.x) + '" y2="' + f(q.y) + '"/>' + hotel(q, i) + h; }
+      else h = hotel(p, i) + h;
+    });
+    h = bbh + h + placeLabels(m.labels, u);
+  } else {
+    m.ghosts.forEach(function(g){ h += '<circle class="ghost" cx="' + f(g.x) + '" cy="' + f(g.y) + '" r="' + f(2.6 * u) + '"/>'; });
+    m.segs.forEach(function(s){ h += s.air ? arc(s.a, s.b, 'route air') : line(s.a, s.b, 'route'); });
+    var hi = 0, hotels = m.pins.filter(function(p){ return p.hotel; });
+    hotels.forEach(function(p){ h += hotel({x:p.x, y:p.y, region:p.loc.region}, 'd' + (hi++)); });
+    var groups = mergePins(m.pins.filter(function(p){ return !p.hotel; }), 20 * u);
+    MV.pinGroups = groups;
+    groups.forEach(function(p, i){
+      if (hotels.some(function(hh){ return Math.abs(hh.x - p.x) < 12 * u && Math.abs(hh.y - p.y) < 12 * u; })) { p.x += 15 * u; p.y -= 15 * u; }
+      var lab = numLabel(p.nums), sel = S.pin && p.items.some(function(it){ return it.item_id === S.pin; });
+      var rr = (lab.length > 2 ? 11 + lab.length * 1.6 : 10) * u;
+      h += '<circle class="pin' + (sel ? ' sel' : '') + '" cx="' + f(p.x) + '" cy="' + f(p.y) + '" r="' + f(rr) + '"/><text class="pin-t" x="' + f(p.x) + '" y="' + f(p.y) + '" font-size="' + f((lab.length > 2 ? 8.5 : 10) * u) + '">' + esc(lab) + '</text>'
+        + '<circle class="hit" data-pin="' + i + '" cx="' + f(p.x) + '" cy="' + f(p.y) + '" r="' + f(Math.max(16 * u, rr)) + '"/>';
+    });
+  }
+  ov.innerHTML = h;
+}
+function numLabel(ns){
+  ns = ns.slice().sort(function(a, b){ return a - b; });
+  var runs = [], s = ns[0], e = ns[0];
+  for (var i = 1; i <= ns.length; i++) { if (ns[i] === e + 1) { e = ns[i]; continue; } runs.push(s === e ? String(s) : s + (e === s + 1 ? '·' : '–') + e); s = e = ns[i]; }
+  var t = runs.join('·'); return t.length > 6 ? ns[0] + '…' + ns[ns.length - 1] : t;
+}
+function mergePins(pins, rad){
+  var out = [];
+  pins.forEach(function(p){
+    var g = null;
+    for (var i = 0; i < out.length; i++) if (Math.abs(out[i].x0 - p.x) < rad && Math.abs(out[i].y0 - p.y) < rad) { g = out[i]; break; }
+    if (!g) { g = {x0:p.x, y0:p.y, x:p.x, y:p.y, loc:p.loc, items:[], nums:[]}; out.push(g); }
+    g.items = g.items.concat(p.items); g.nums = g.nums.concat(p.nums);
+  });
+  return out;
+}
+function placeLabels(labels, u){
+  var svg = $('map'), vb = MV.vb, placed = [], h = '', fs = 12 * u;
+  var obst = (MV.model.hotels || []).map(function(p){ return {x0:p.x - 9 * u, y0:p.y - 9 * u, x1:p.x + 9 * u, y1:p.y + 9 * u}; });
+  var right = vb.x + vb.w - 54 * u, left = vb.x + 6 * u, top = vb.y + 6 * u, bottom = vb.y + vb.h - 26 * u;
+  labels.slice().sort(function(a, b){ return a.y - b.y; }).forEach(function(l){
+    var w = l.t.length * fs * 0.56, cands = [[12, -12, 'start'], [12, 18, 'start'], [-12, -12, 'end'], [-12, 18, 'end'], [0, -20, 'middle'], [0, 28, 'middle']];
+    var pick = null;
+    for (var i = 0; i < cands.length && !pick; i++) {
+      var c = cands[i], x = l.x + c[0] * u, y = l.y + c[1] * u;
+      var x0 = c[2] === 'start' ? x : c[2] === 'end' ? x - w : x - w / 2, b = {x0:x0, y0:y - fs, x1:x0 + w, y1:y + fs * 0.25};
+      if (b.x0 < left || b.x1 > right || b.y0 < top || b.y1 > bottom) continue;
+      if (placed.concat(obst).some(function(o){ return !(b.x1 < o.x0 || b.x0 > o.x1 || b.y1 < o.y0 || b.y0 > o.y1); })) continue;
+      pick = {x:x, y:y, a:c[2], b:b};
+    }
+    if (!pick) return;
+    placed.push(pick.b);
+    h += '<text class="lbl" x="' + pick.x.toFixed(2) + '" y="' + pick.y.toFixed(2) + '" text-anchor="' + pick.a + '" font-size="' + fs.toFixed(2) + '" stroke-width="' + (3 * u).toFixed(2) + '">' + esc(l.t) + '</text>';
+  });
+  return h;
+}
+function cluster(pts, rad){
+  var out = [];
+  pts.forEach(function(p){
+    var c = null;
+    for (var i = 0; i < out.length; i++) { var o = out[i]; if (Math.abs(o.x - p.x) < rad && Math.abs(o.y - p.y) < rad) { c = o; break; } }
+    if (!c) { c = {x:p.x, y:p.y, pts:[], reg:{}}; out.push(c); }
+    c.pts.push(p); c.reg[p.region] = (c.reg[p.region] || 0) + 1;
+    c.x = c.pts.reduce(function(s, q){ return s + q.x; }, 0) / c.pts.length; c.y = c.pts.reduce(function(s, q){ return s + q.y; }, 0) / c.pts.length;
+  });
+  out.forEach(function(c){ c.region = Object.keys(c.reg).sort(function(a, b){ return c.reg[b] - c.reg[a]; })[0]; });
+  return out;
+}
+function schedule(){ if (!MV.raf) MV.raf = requestAnimationFrame(drawOverlay); }
+function zoomAt(cx, cy, fct){
+  var svg = $('map'); if (!svg) return; var r = svg.getBoundingClientRect(), vb = MV.vb;
+  var nw = Math.min(Math.max(vb.w * fct, 3), M.w * 1.4); fct = nw / vb.w;
+  var px = vb.x + (cx - r.left) / r.width * vb.w, py = vb.y + (cy - r.top) / r.height * vb.h;
+  vb.x = px - (px - vb.x) * fct; vb.y = py - (py - vb.y) * fct; vb.w *= fct; vb.h *= fct; schedule();
+}
+function afterMap(){
+  var svg = $('map'); if (!svg) return;
+  var key = mapKey();
+  if (!MV.vb || MV.key !== key || MV.fresh) { MV.vb = fitPoints(currentFitPoints(MV.model), svg); MV.key = key; MV.fresh = false; }
+  if (S.focus) {
+    var p = MV.model.pins.filter(function(q){ return q.items && q.items.some(function(it){ return it.item_id === S.focus; }); })[0];
+    if (p) { S.pin = S.focus; showPin(p); }
+    S.focus = null;
+  } else if (S.pin) {
+    var p2 = MV.model.pins.filter(function(q){ return q.items && q.items.some(function(it){ return it.item_id === S.pin; }); })[0];
+    if (p2) showPin(p2);
+  }
+  drawOverlay();
+  var pts = {}, moved = 0, tgt = null, pinch = null;
+  svg.addEventListener('pointerdown', function(e){
+    tgt = e.target.closest ? e.target.closest('[data-pin],[data-cl],[data-htl]') : null;
+    pts[e.pointerId] = {x:e.clientX, y:e.clientY}; moved = 0;
+    try { svg.setPointerCapture(e.pointerId); } catch(err) {}
+    var ids = Object.keys(pts);
+    if (ids.length === 2) { var a = pts[ids[0]], b = pts[ids[1]]; pinch = {d:Math.hypot(a.x - b.x, a.y - b.y)}; }
+  });
+  svg.addEventListener('pointermove', function(e){
+    var p = pts[e.pointerId]; if (!p) return;
+    var dx = e.clientX - p.x, dy = e.clientY - p.y; pts[e.pointerId] = {x:e.clientX, y:e.clientY};
+    var ids = Object.keys(pts);
+    if (ids.length === 1) {
+      moved += Math.abs(dx) + Math.abs(dy);
+      if (moved > 4) { var u = unit(svg); MV.vb.x -= dx * u; MV.vb.y -= dy * u; schedule(); }
+    } else if (ids.length === 2 && pinch) {
+      var a = pts[ids[0]], b = pts[ids[1]], d = Math.hypot(a.x - b.x, a.y - b.y); moved = 99;
+      if (d > 0) { zoomAt((a.x + b.x) / 2, (a.y + b.y) / 2, pinch.d / d); pinch.d = d; }
+    }
+  });
+  function up(e){
+    var wasTap = Object.keys(pts).length === 1 && moved <= 6;
+    delete pts[e.pointerId]; if (Object.keys(pts).length < 2) pinch = null;
+    if (wasTap && tgt) tap(tgt);
+    tgt = null;
+  }
+  svg.addEventListener('pointerup', up); svg.addEventListener('pointercancel', function(e){ delete pts[e.pointerId]; pinch = null; tgt = null; });
+  svg.addEventListener('wheel', function(e){ e.preventDefault(); zoomAt(e.clientX, e.clientY, e.deltaY > 0 ? 1.18 : 1 / 1.18); }, {passive:false});
+}
+function tap(el){
+  var m = MV.model;
+  if (el.hasAttribute('data-cl')) {
+    var c = MV.clusters[Number(el.getAttribute('data-cl'))]; if (!c) return;
+    var spread = c.pts.some(function(p){ return Math.abs(p.x - c.pts[0].x) > 0.3 || Math.abs(p.y - c.pts[0].y) > 0.3; });
+    if (c.pts.length > 1 && spread) { MV.vb = fitPoints(c.pts, $('map')); schedule(); }
+    showDots(c.pts); return;
+  }
+  if (el.hasAttribute('data-htl')) {
+    var id = el.getAttribute('data-htl'), hp;
+    if (id.charAt(0) === 'd') { var hs = m.pins.filter(function(p){ return p.hotel; }); hp = hs[Number(id.slice(1))]; showHotel(hp ? hp.loc : null, null); }
+    else { hp = m.hotels[Number(id)]; showHotel(null, hp); }
+    return;
+  }
+  if (el.hasAttribute('data-pin')) { var p = (MV.pinGroups || [])[Number(el.getAttribute('data-pin'))]; if (p) { S.pin = p.items[0] ? p.items[0].item_id : null; showPin(p); schedule(); } }
+}
+function srcTxt(loc){ return loc.src === 'manual' ? 'koordinat manual' : loc.src === 'data' ? 'koordinat dari Sheet' : loc.src === 'katalog' ? (loc.approx ? 'katalog (perkiraan area)' : 'katalog lokasi') : 'titik tengah kota (perkiraan)'; }
+function itemCard(it, loc){
+  return '<div class="card"><div class="row" style="align-items:flex-start"><h3 class="grow">' + esc(it.title) + '</h3>' + (it.status && it.status !== 'OK' ? '<span class="st st-' + esc(it.status) + '">' + esc(String(it.status).replace('_', ' ')) + '</span>' : '') + '</div>'
+    + '<div class="small muted">H' + esc(it.day) + ' ' + esc(dm(it.date)) + (it.start_time ? ' · ' + esc(it.start_time) + (it.end_time ? '–' + esc(it.end_time) : '') : '') + ' · ' + esc(it.place_query || it.city) + '</div>'
+    + '<div class="src">Titik: ' + esc(srcTxt(loc)) + '</div>'
+    + '<div class="acts">' + (mapsUrl(it) ? '<a class="btn" href="' + esc(mapsUrl(it)) + '" target="_blank" rel="noopener">Google Maps ↗</a>' : '')
+    + '<button class="btn" data-act="loc" data-id="' + esc(it.item_id) + '">Ubah lokasi</button><button class="btn ghost" data-act="goto" data-id="' + esc(it.item_id) + '">Jadwal</button></div></div>';
+}
+function showPin(p){
+  var el = $('pininfo'); if (!el) return;
+  el.innerHTML = '<div class="sec">' + p.items.map(function(it){ return itemCard(it, p.loc); }).join('') + '</div>';
+  Array.prototype.forEach.call(document.querySelectorAll('.stops [data-act="pinitem"]'), function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-id') === S.pin)); });
+}
+function showDots(pts){
+  var el = $('pininfo'); if (!el) return;
+  var list = pts.slice().sort(function(a, b){ return num(a.it.day) - num(b.it.day) || String(a.it.start_time).localeCompare(String(b.it.start_time)); });
+  el.innerHTML = '<div class="card"><h3 style="margin:0 0 6px">' + list.length + ' kegiatan di area ini</h3><ol class="stops">' + list.slice(0, 30).map(function(p){
+    return '<li><button data-act="mapfocus" data-id="' + esc(p.it.item_id) + '"><span class="no" style="background:var(--' + ({kanto:'s1',kansai:'s2',hokkaido:'s3',chubu:'s4'}[p.region] || 's0') + ')">' + esc(p.it.day) + '</span><span class="tm">' + esc(p.it.start_time || '··') + '</span><span class="ti">' + esc(p.it.title) + '</span><span class="km">' + esc(dm(p.it.date)) + '</span></button></li>';
+  }).join('') + '</ol>' + (list.length > 30 ? '<p class="small muted">… ' + (list.length - 30) + ' lainnya — perbesar peta.</p>' : '') + '<p class="small muted">Angka bulat = nomor hari. Ketuk untuk membuka rute hari itu.</p></div>';
+}
+function showHotel(loc, hp){
+  var el = $('pininfo'); if (!el) return;
+  var legs = hp ? hp.legs : C.legs(DB()).filter(function(l){ return l.kind === 'stay' && l.loc && loc && Math.abs(l.loc.lat - loc.lat) < 1e-4 && Math.abs(l.loc.lng - loc.lng) < 1e-4; });
+  el.innerHTML = '<div class="sec">' + legs.map(function(l){
+    var h = l.hotel;
+    return '<div class="card" style="border-left-color:var(--indigo)"><div class="row"><h3 class="grow">' + esc(h.hotel_name || ('Hotel ' + h.area)) + '</h3><span class="st st-' + esc(h.status) + '">' + esc(String(h.status).replace('_', ' ')) + '</span></div>'
+      + '<div class="small muted">' + esc(h.city) + ' · ' + esc(dmy(h.check_in)) + ' → ' + esc(dmy(h.check_out)) + ' · ' + esc(h.nights) + ' malam</div><div class="src">Titik: ' + esc(srcTxt(l.loc)) + '</div>'
+      + '<div class="acts"><button class="btn" data-act="hotel" data-id="' + esc(h.hotel_id) + '">Isi / ubah hotel</button></div></div>';
+  }).join('') + '</div>';
+}
+
+/* ================= JADWAL ================= */
+function vJadwal(D){
+  var day = D.days.filter(function(d){ return num(d.day) === S.day; })[0];
+  if (!day) return '<p class="empty">Pilih hari di atas.</p>';
+  var items = C.ordered(D.itinerary.filter(function(it){ return num(it.day) === S.day; }));
+  var act = items.filter(function(it){ return bool(it.is_active); });
+  var sub = act.reduce(function(s, it){ return s + C.itemCost(D, it); }, 0), doneN = act.filter(function(it){ return bool(it.done); }).length;
+  var r = C.dayRoute(D, S.day);
+  var h = '<section class="dayhead"><div class="eyebrow">Hari ' + esc(day.day) + ' · ' + esc(day.weekday) + ', ' + esc(dmy(day.date)) + ' 2027</div>'
+    + '<h2>' + esc(day.title) + '</h2><div class="facts">'
+    + (day.hotel_night ? '<span>Menginap <b>' + esc(day.hotel_night) + '</b></span>' : '')
+    + (day.sunrise ? '<span>Terbit <b>' + esc(day.sunrise) + '</b></span><span>Terbenam <b>' + esc(day.sunset) + '</b></span>' : '')
+    + '<span>Biaya <b>' + yen(sub) + '</b></span><span>Selesai <b>' + doneN + '/' + act.length + '</b></span>'
+    + (r && r.stops.length ? '<span>Jarak <b>' + kmTxt(r.groundKm) + ' km</b></span>' : '') + '</div>'
+    + (day.notes ? '<div class="note">' + esc(day.notes) + '</div>' : '')
+    + '<div class="row"><button class="btn" data-act="add">+ Tambah kegiatan</button>' + (r && r.stops.length ? '<button class="btn" data-act="mapday" data-id="' + esc(day.day) + '">Rute di peta</button>' : '') + '</div></section>';
+  var off = items.length - act.length;
+  if (off) h += '<label class="switch"><input type="checkbox" id="showOff" ' + (S.showOff ? 'checked' : '') + '> Tampilkan usulan hapus / opsional (' + off + ')</label>';
+  var isToday = day.date === todayISO(), nh = nowHM();
+  h += '<div class="line">';
+  items.forEach(function(it){
+    var on = bool(it.is_active); if (!on && !S.showOff) return;
+    var now = on && isToday && it.start_time && it.start_time <= nh && (!it.end_time || nh < it.end_time);
+    var url = mapsUrl(it), c = C.itemCost(D, it), loc = C.locate(it, D);
+    h += '<article class="stop' + (on ? '' : ' off') + (bool(it.done) ? ' done' : '') + (now ? ' now' : '') + '">'
+      + '<div class="time">' + esc(it.start_time || '··') + (it.end_time ? '<small>' + esc(it.end_time) + '</small>' : '') + (!it.start_time && it.time_note ? '<small>' + esc(it.time_note) + '</small>' : '') + '</div><div class="dot"></div>'
+      + '<div class="card"><div class="row" style="align-items:flex-start"><h3 class="grow">' + esc(it.title) + '</h3>'
+      + (it.status && it.status !== 'OK' ? '<span class="st st-' + esc(it.status) + '">' + esc(String(it.status).replace('_', ' ')) + '</span>' : '') + '</div>'
+      + (it.detail ? '<div class="desc">' + esc(it.detail) + '</div>' : '')
+      + '<div class="tags"><span class="tag cat">' + esc(it.category) + '</span>' + (it.transport ? '<span class="tag">' + esc(it.transport) + '</span>' : '') + (it.city ? '<span class="tag">' + esc(it.city) + '</span>' : '') + '</div>'
+      + '<div class="acts">' + (c ? '<span class="cost">' + yen(c) + '</span>' : '')
+      + (loc && loc.region !== 'id' && on ? '<button class="btn" data-act="mapfocus" data-id="' + esc(it.item_id) + '">Di peta</button>' : '')
+      + (url ? '<a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener">Maps ↗</a>' : '')
+      + '<button class="btn ghost" data-act="edit" data-id="' + esc(it.item_id) + '">Ubah</button>'
+      + '<label class="check"><input type="checkbox" id="done-' + esc(it.item_id) + '" data-act="done" data-id="' + esc(it.item_id) + '" ' + (bool(it.done) ? 'checked' : '') + '> Selesai</label></div>'
+      + (it.user_note ? '<div class="mynote">' + esc(it.user_note) + '</div>' : '')
+      + (it.review_note ? '<details><summary>Catatan review' + (it.finding_ids ? ' · ' + esc(it.finding_ids) : '') + '</summary><p>' + esc(it.review_note) + '</p></details>' : '')
+      + '</div></article>';
+  });
+  h += '</div>';
+  if (!items.length) h += '<p class="empty">Belum ada kegiatan.</p>';
+  return h;
+}
+
+/* ================= PERSIAPAN ================= */
+function vPersiapan(D){
+  var subs = [['checklist','Checklist'],['booking','Booking'],['temuan','Temuan']];
+  var h = '<div class="seg" role="group" aria-label="Bagian persiapan">' + subs.map(function(s){ return '<button data-act="sub" data-id="' + s[0] + '" aria-pressed="' + (S.sub === s[0]) + '">' + s[1] + '</button>'; }).join('') + '</div>';
+  return h + ({checklist:vChecklist, booking:vBooking, temuan:vTemuan}[S.sub] || vChecklist)(D);
+}
+function vChecklist(D){
+  var rows = D.checklist, done = rows.filter(function(r){ return r.status === 'SELESAI' || r.status === 'NA'; }).length;
+  var h = '<section class="dayhead" style="margin-top:10px"><div class="eyebrow">Persiapan sebelum berangkat</div><div class="row"><span class="big">' + done + '<span class="muted" style="font-size:18px"> / ' + rows.length + '</span></span></div>'
+    + '<div class="progress"><i style="width:' + (rows.length ? Math.round(done * 100 / rows.length) : 0) + '%"></i></div><div class="small muted">Ketuk status untuk mengganti: Belum → Proses → Selesai → N/A.</div></section>';
+  var cats = []; rows.forEach(function(r){ if (cats.indexOf(r.category) < 0) cats.push(r.category); });
+  cats.forEach(function(c){
+    h += '<section class="sec"><h2>' + esc(c) + '</h2>';
+    rows.filter(function(r){ return r.category === c; }).forEach(function(r){
+      h += '<div class="card"><div class="row" style="align-items:flex-start"><div class="grow"><div>' + esc(r.item) + '</div><div class="small muted">' + esc(r.reason) + (r.due ? ' · <b>' + esc(r.due) + '</b>' : '') + '</div></div>'
+        + '<button class="st st-' + esc(r.status) + '" style="border:0;padding:4px 9px" data-act="cycle" data-id="' + esc(r.check_id) + '">' + esc(r.status) + '</button></div>'
+        + (r.note ? '<div class="mynote">' + esc(r.note) + '</div>' : '')
+        + '<div class="acts"><button class="btn ghost" data-act="cnote" data-id="' + esc(r.check_id) + '">Catatan</button></div></div>';
+    });
+    h += '</section>';
+  });
+  return h;
+}
+function vBooking(D){
+  var h = '<section class="sec"><h2>Hotel</h2>';
+  D.hotels.forEach(function(r){
+    var q = (r.hotel_name || '') + ' ' + (r.address || r.area + ' ' + r.city);
+    h += '<div class="card"><div class="row"><h3 class="grow">' + esc(r.city) + ' · ' + esc(r.area) + '</h3><span class="st st-' + esc(r.status) + '">' + esc(String(r.status).replace('_', ' ')) + '</span></div>'
+      + '<div class="small muted">' + esc(dmy(r.check_in)) + ' → ' + esc(dmy(r.check_out)) + ' · ' + esc(r.nights) + ' malam · ' + (r.currency === 'IDR' ? rp(num(r.rate_per_night)) : yen(num(r.rate_per_night))) + ' / malam</div>'
+      + '<div style="margin-top:4px">' + (r.hotel_name ? '<b>' + esc(r.hotel_name) + '</b>' : '<span class="muted">Nama hotel belum diisi</span>') + (r.booking_ref ? ' · kode <span class="cost">' + esc(r.booking_ref) + '</span>' : '') + '</div>'
+      + (r.address ? '<div class="small">' + esc(r.address) + '</div>' : '') + (r.phone ? '<div class="small">Telp: <span class="cost">' + esc(r.phone) + '</span></div>' : '')
+      + '<div class="small muted" style="margin-top:4px">' + esc(r.requirements) + '</div>'
+      + '<div class="acts">' + (r.hotel_name || r.address ? '<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q) + '">Maps ↗</a>' : '')
+      + '<button class="btn" data-act="hotel" data-id="' + esc(r.hotel_id) + '">Isi / ubah</button></div></div>';
+  });
+  h += '</section><section class="sec"><h2>Tiket & reservasi</h2>';
+  D.bookings.slice().sort(function(a, b){ return (a.date + (a.dep_time || '99')) < (b.date + (b.dep_time || '99')) ? -1 : 1; }).forEach(function(r){
+    h += '<div class="card"><div class="row"><span class="tag">' + esc(r.type) + '</span><h3 class="grow">' + esc(r.title) + '</h3><span class="st st-' + esc(r.status) + '">' + esc(r.status) + '</span></div>'
+      + '<div class="small muted">' + esc(dmy(r.date)) + (r.dep_time ? ' · ' + esc(r.dep_time) : '') + (r.arr_time ? '–' + esc(r.arr_time) : '') + (r.from_place || r.to_place ? ' · ' + esc(r.from_place) + (r.to_place ? ' → ' + esc(r.to_place) : '') : '') + '</div>'
+      + '<div style="margin-top:4px">' + (r.provider ? esc(r.provider) : '<span class="muted">Operator belum diisi</span>') + (r.ref_no ? ' · <span class="cost">' + esc(r.ref_no) + '</span>' : '') + (num(r.est_cost_jpy) ? ' · <span class="cost">' + yen(num(r.est_cost_jpy)) + '</span>' : '') + '</div>'
+      + (r.note ? '<div class="small muted">' + esc(r.note) + '</div>' : '')
+      + '<div class="acts"><button class="btn" data-act="booking" data-id="' + esc(r.booking_id) + '">Isi / ubah</button>' + (r.item_id ? '<button class="btn ghost" data-act="goto" data-id="' + esc(r.item_id) + '">Lihat di jadwal</button>' : '') + '</div></div>';
+  });
+  h += '</section><section class="sec"><h2>Rencana koper</h2>';
+  D.luggage.forEach(function(b){ h += '<div class="card"><h3>' + esc(b.bag) + '</h3><div class="small" style="margin-top:4px"><b>Berangkat:</b> ' + esc(b.outbound) + '<br><b>Tengah:</b> ' + esc(b.mid_trip) + '<br><b>Pulang:</b> ' + esc(b.return_trip) + '</div><div class="small muted" style="margin-top:4px">' + esc(b.requirement) + '</div></div>'; });
+  return h + '</section>';
+}
+function vTemuan(D){
+  var rows = D.findings, open = rows.filter(function(r){ return r.status === 'OPEN'; }).length;
+  var h = '<div class="filters" style="margin-top:10px">' + ['ALL','P1','P2','P3','P4'].map(function(p){ return '<button data-act="prio" data-id="' + p + '" aria-pressed="' + (S.prio === p) + '">' + (p === 'ALL' ? 'Semua · ' + open + ' terbuka' : p) + '</button>'; }).join('') + '</div><div class="sec">';
+  rows.filter(function(r){ return S.prio === 'ALL' || r.priority === S.prio; }).forEach(function(r){
+    h += '<div class="card"><div class="row"><span class="prio ' + esc(r.priority) + '">' + esc(r.finding_id) + ' · ' + esc(r.priority) + '</span><h3 class="grow">' + esc(r.category) + '</h3><span class="st st-' + esc(r.status) + '">' + esc(r.status) + '</span></div>'
+      + '<div class="small muted">' + esc(r.days) + '</div><div style="margin-top:6px">' + esc(r.finding) + '</div>'
+      + '<details><summary>Dampak & rekomendasi</summary><p><b>Dampak:</b> ' + esc(r.impact) + '</p><p><b>Rekomendasi:</b> ' + esc(r.recommendation) + '</p>' + (r.source_url ? '<p><a href="' + esc(r.source_url) + '" target="_blank" rel="noopener">Sumber ↗</a></p>' : '') + '</details>'
+      + (r.decision ? '<div class="mynote">' + esc(r.decision) + '</div>' : '')
+      + '<div class="acts"><button class="btn" data-act="finding" data-id="' + esc(r.finding_id) + '">Catat keputusan</button></div></div>';
+  });
+  return h + '</div>';
+}
+
+/* ================= BUDGET ================= */
+function vBudget(D){
+  var b = C.budget(D), p = C.pax(D), over = b.total - b.target, fx = C.fx(D);
+  var h = '<section class="dayhead"><div class="eyebrow">Total perjalanan · ' + p.a + ' dewasa + ' + p.c + ' anak</div><div class="big">' + yen(b.total) + '</div>'
+    + '<div class="small muted">' + rp(b.total * fx) + ' · kurs Rp' + fx.toLocaleString('id-ID') + ' per ¥1</div>'
+    + '<div class="progress"><i style="width:' + Math.min(100, Math.round(b.target * 100 / Math.max(b.total, 1))) + '%;background:' + (over > 0 ? 'var(--bad)' : 'var(--ok)') + '"></i></div>'
+    + '<div class="small">Target ' + yen(b.target) + ': ' + (over > 0 ? '<b style="color:var(--bad)">lebih ' + yen(over) + '</b>' : '<b style="color:var(--ok)">sisa ' + yen(-over) + '</b>') + '</div></section>';
+  h += '<section class="sec"><h2>Komposisi</h2><div class="card">' + donutBlock(b, 'd2') + '</div></section>';
+  h += '<section class="sec"><div class="card kv"><span>Itinerary aktif</span><span class="v">' + yen(b.a) + '</span><span>Hotel</span><span class="v">' + yen(b.ho) + '</span><span>Tiket & lainnya</span><span class="v">' + yen(b.ot) + '</span><span>Kontingensi ' + Math.round(b.pct * 100) + '%</span><span class="v">' + yen(b.cont) + '</span><span class="tot">Total</span><span class="v tot">' + yen(b.total) + '</span></div></section>';
+  var max = Math.max.apply(null, b.byDay.map(function(d){ return d.v; }).concat([1]));
+  h += '<section class="sec"><h2>Biaya itinerary per hari</h2><div class="card bars">';
+  b.byDay.forEach(function(d){ h += '<div class="bar"><span class="lab">H' + d.day + ' ' + esc(dm(d.date)) + '</span><span class="track"><i style="width:' + Math.round(d.v * 100 / max) + '%"></i></span><span class="n">' + yen(d.v) + '</span></div>'; });
+  h += '</div></section><section class="sec"><h2>Itinerary per kategori</h2><div class="card kv">';
+  Object.keys(b.byCat).sort(function(x, y){ return b.byCat[y] - b.byCat[x]; }).forEach(function(k){ h += '<span>' + esc(k) + '</span><span class="v">' + yen(b.byCat[k]) + '</span>'; });
+  h += '</div></section><section class="sec"><h2>Biaya di luar itinerary</h2>';
+  D.budget_other.forEach(function(r){
+    h += '<div class="card"><div class="row"><div class="grow">' + esc(r.item) + '<div class="small muted">' + esc(r.basis) + (r.note ? ' · ' + esc(r.note) : '') + '</div></div><span class="cost">' + (r.currency === 'IDR' ? rp(num(r.amount)) : yen(num(r.amount))) + '</span></div>'
+      + '<div class="acts"><label class="check" style="margin-left:0"><input type="checkbox" id="oth-' + esc(r.cost_id) + '" data-act="othon" data-id="' + esc(r.cost_id) + '" ' + (bool(r.is_active) ? 'checked' : '') + '> Masuk budget</label><span class="grow"></span><button class="btn ghost" data-act="other" data-id="' + esc(r.cost_id) + '">Ubah</button></div></div>';
+  });
+  return h + '</section><p class="banner">Semua angka adalah estimasi perencanaan. Tarif hotel = asumsi reviewer; ganti dengan harga booking aktual di Persiapan → Booking.</p>';
+}
+
+/* ================= render ================= */
+var VIEWS = {ringkasan:vRingkasan, peta:vPeta, jadwal:vJadwal, persiapan:vPersiapan, budget:vBudget};
+function render(){
+  persistUI();
+  Array.prototype.forEach.call(document.querySelectorAll('#tabbar button'), function(b){ if (b.getAttribute('data-tab') === S.tab) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+  if (!BASE) { $('days').hidden = true; renderSync(); $('view').innerHTML = '<p class="loading">' + (SYNC.state === 'err' ? 'Tidak bisa memuat data: ' + esc(SYNC.msg) : 'Memuat data perjalanan…') + '</p>'; return; }
+  var D = DB();
+  if (S.day === null) initDay();
+  renderHeader(D);
+  $('view').innerHTML = VIEWS[S.tab](D);
+  if (S.tab === 'peta') afterMap();
+}
+function go(tab){ S.tab = tab; render(); window.scrollTo(0, 0); }
+
+/* ================= form lembar bawah ================= */
+function openSheet(title, fields, onSave, help){
+  var h = '<h3>' + esc(title) + '</h3><form id="sheetForm">';
+  fields.forEach(function(f){
+    var id = 'f-' + f.name;
+    if (f.type === 'checkbox') { h += '<label class="field inline" for="' + id + '"><input type="checkbox" id="' + id + '" name="' + f.name + '" ' + (bool(f.value) ? 'checked' : '') + '> ' + esc(f.label) + '</label>'; return; }
+    h += '<label class="field" for="' + id + '">' + esc(f.label);
+    if (f.type === 'select') h += '<select id="' + id + '" name="' + f.name + '">' + f.options.map(function(o){ return '<option' + (String(o) === String(f.value) ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join('') + '</select>';
+    else if (f.type === 'textarea') h += '<textarea id="' + id + '" name="' + f.name + '">' + esc(f.value) + '</textarea>';
+    else h += '<input id="' + id + '" name="' + f.name + '" type="' + (f.type || 'text') + '" value="' + esc(f.value) + '"' + (f.type === 'number' ? ' inputmode="decimal" step="any"' : '') + (f.ph ? ' placeholder="' + esc(f.ph) + '"' : '') + '>';
+    h += '</label>';
+  });
+  if (help) h += '<p class="help">' + help + '</p>';
+  h += '<div class="acts" style="margin-top:16px"><button type="button" class="btn" data-act="close">Batal</button><span class="grow"></span><button type="submit" class="btn primary">Simpan</button></div></form>';
+  $('panel').innerHTML = h; $('sheet').hidden = false;
+  var first = $('panel').querySelector('input,select,textarea'); if (first) setTimeout(function(){ first.focus(); }, 50);
+  $('sheetForm').addEventListener('submit', function(e){
+    e.preventDefault(); var out = {}, form = e.target;
+    fields.forEach(function(f){ var el = form.elements[f.name]; out[f.name] = f.type === 'checkbox' ? el.checked : (f.type === 'number' ? num(el.value) : el.value); });
+    if (onSave(out) !== false) $('sheet').hidden = true;
+  });
+}
+function coordValue(r){ return (r && r.lat !== '' && r.lat != null && r.lng !== '' && r.lng != null) ? r.lat + ', ' + r.lng : ''; }
+function locPatch(r, v){
+  var patch = {}, ll = null, c = String(v.coord || '').trim();
+  if (c) {
+    ll = C.parseLatLng(c);
+    if (!ll) { toast(/goo\.gl|maps\.app/.test(c) ? 'Link pendek tidak berisi koordinat — buka link, lalu salin URL panjang yang ada "@lat,lng"' : 'Format koordinat tidak dikenali. Contoh: 35.7148, 139.7967'); return null; }
+    if (ll.lat < 20 || ll.lat > 46.5 || ll.lng < 122 || ll.lng > 154) { toast('Koordinat di luar Jepang — periksa urutan lat, lng'); return null; }
+    patch.lat = ll.lat; patch.lng = ll.lng; patch.geo_src = 'MANUAL';
+  } else if (coordValue(r)) { patch.lat = ''; patch.lng = ''; patch.geo_src = ''; }
+  return patch;
+}
+var ST_IT = ['OK','REVISI','CEK','KONFLIK','DIPINDAH','USUL_HAPUS','OPSIONAL','BARU','FINAL'];
+var LOC_HELP = 'Koordinat opsional: tempel "35.7148, 139.7967" atau link Google Maps panjang (yang berisi @lat,lng). ' + (HAS_GAS ? 'Kosongkan agar dicari otomatis dari nama tempat oleh Google.' : 'Kosongkan agar dicari dari katalog lokasi; bila tidak ketemu, titik diletakkan di tengah kota.');
+var ACTIONS = {
+  edit:function(id){ var it = find('itinerary', id); openSheet(it.title, [
+      {name:'title', label:'Judul', value:it.title}, {name:'start_time', label:'Jam mulai', type:'time', value:it.start_time}, {name:'end_time', label:'Jam selesai', type:'time', value:it.end_time},
+      {name:'user_note', label:'Catatan keluarga', type:'textarea', value:it.user_note},
+      {name:'status', label:'Status', type:'select', options:ST_IT, value:it.status},
+      {name:'is_active', label:'Masuk rencana & budget', type:'checkbox', value:it.is_active}], function(v){ if (!v.title) { toast('Judul wajib diisi'); return false; } save('itinerary', id, v); }); },
+  loc:function(id){ var it = find('itinerary', id); openSheet('Lokasi · ' + it.title, [
+      {name:'place_query', label:'Nama tempat', value:it.place_query, ph:'mis. Senso-ji'}, {name:'coord', label:'Koordinat / link Google Maps (opsional)', value:coordValue(it), ph:'35.7148, 139.7967'}],
+      function(v){
+        var patch = locPatch(it, v); if (!patch) return false;
+        patch.place_query = v.place_query;
+        var probe = Object.assign({}, it, patch), loc = C.locate(probe, DB());
+        save('itinerary', id, patch, !loc ? 'Tersimpan — lokasi belum ditemukan' : loc.src === 'kota' && !HAS_GAS ? 'Tersimpan — tempat tidak ada di katalog, titik di tengah kota' : 'Lokasi diperbarui');
+        if (HAS_GAS && !patch.lat && v.place_query) setTimeout(function(){ geoLoop(0); }, 1500);
+        S.pin = id;
+      }, esc(LOC_HELP)); },
+  add:function(){ var d = T('days').filter(function(x){ return num(x.day) === S.day; })[0]; openSheet('Tambah kegiatan · ' + dmy(d.date), [
+      {name:'title', label:'Judul', value:''}, {name:'start_time', label:'Jam mulai', type:'time', value:''}, {name:'end_time', label:'Jam selesai', type:'time', value:''},
+      {name:'category', label:'Kategori', type:'select', options:['Wisata','Makan','Transport','Hotel & logistik','Aktivitas','Belanja','Tour','Penerbangan'], value:'Wisata'},
+      {name:'place_query', label:'Tempat (untuk peta & Google Maps)', value:''}, {name:'detail', label:'Detail', type:'textarea', value:''},
+      {name:'cost_adult_jpy', label:'Biaya per dewasa (¥)', type:'number', value:0}, {name:'cost_child_jpy', label:'Biaya per anak (¥)', type:'number', value:0}],
+      function(v){
+        if (!v.title) { toast('Judul wajib diisi'); return false; }
+        if (HAS_GAS) {
+          toast('Menambahkan ke Google Sheet…');
+          gas('addItineraryItem', Object.assign({date:d.date}, v)).then(function(rec){ BASE.itinerary.push(rec); lsSet(CACHE_KEY, {tables:BASE, at:SYNC.at}); render(); toast('Ditambahkan ' + rec.item_id); geoLoop(0); })
+            .catch(function(e){ toast('Gagal menambah: ' + e.message); });
+          return;
+        }
+        var n = T('itinerary').filter(function(x){ return num(x.day) === num(d.day); }).reduce(function(m, x){ return Math.max(m, num(String(x.item_id).split('-')[1])); }, 0) + 1;
+        var rec = Object.assign({item_id:'D' + ('0' + d.day).slice(-2) + '-' + ('0' + n).slice(-2), day:num(d.day), date:d.date, seq:n, time_note:'', city:d.base_city, transport:'', maps_url:'', cost_lump_jpy:0, status:'BARU', is_active:true, done:false, review_note:'', finding_ids:'', user_note:''}, v);
+        OV.added = (OV.added || []).concat([rec]); lsSet(OV_KEY, OV); render(); toast('Ditambahkan ' + rec.item_id);
+      }); },
+  cycle:function(id){ var r = find('checklist', id), seq = ['BELUM','PROSES','SELESAI','NA']; save('checklist', id, {status:seq[(seq.indexOf(r.status) + 1) % seq.length]}); },
+  cnote:function(id){ var r = find('checklist', id); openSheet(r.item, [{name:'note', label:'Catatan (nama hotel, kode booking, dll.)', type:'textarea', value:r.note}], function(v){ save('checklist', id, v); }); },
+  hotel:function(id){ var r = find('hotels', id); openSheet('Hotel ' + r.city + ' · ' + dm(r.check_in) + '–' + dm(r.check_out), [
+      {name:'hotel_name', label:'Nama hotel', value:r.hotel_name}, {name:'address', label:'Alamat', type:'textarea', value:r.address}, {name:'phone', label:'Telepon', type:'tel', value:r.phone},
+      {name:'booking_ref', label:'Kode booking', value:r.booking_ref}, {name:'rate_per_night', label:'Tarif per malam (' + r.currency + ')', type:'number', value:r.rate_per_night},
+      {name:'status', label:'Status', type:'select', options:['BELUM_BOOKING','BOOKED','PAID','BATAL'], value:r.status}, {name:'note', label:'Catatan', type:'textarea', value:r.note},
+      {name:'coord', label:'Koordinat / link Google Maps hotel (opsional)', value:coordValue(r), ph:'35.7118, 139.7966'}],
+      function(v){ var lp = locPatch(r, v); if (!lp) return false; delete v.coord; save('hotels', id, Object.assign(v, lp)); if (HAS_GAS && !lp.lat && (v.hotel_name || v.address)) setTimeout(function(){ geoLoop(0); }, 1500); }, esc(LOC_HELP)); },
+  booking:function(id){ var r = find('bookings', id); openSheet(r.title, [
+      {name:'provider', label:'Maskapai / operator', value:r.provider}, {name:'ref_no', label:'No. penerbangan / kode booking', value:r.ref_no},
+      {name:'dep_time', label:'Jam berangkat / mulai', type:'time', value:r.dep_time}, {name:'arr_time', label:'Jam tiba / selesai', type:'time', value:r.arr_time},
+      {name:'status', label:'Status', type:'select', options:['BELUM','CEK','KONFLIK','BOOKED','PAID','BATAL'], value:r.status}, {name:'note', label:'Catatan', type:'textarea', value:r.note}], function(v){ save('bookings', id, v); }); },
+  finding:function(id){ var r = find('findings', id); openSheet(r.finding_id + ' · ' + r.category, [
+      {name:'status', label:'Status', type:'select', options:['OPEN','DECIDED','CLOSED'], value:r.status}, {name:'decision', label:'Keputusan keluarga', type:'textarea', value:r.decision}], function(v){ save('findings', id, v); }); },
+  other:function(id){ var r = find('budget_other', id); openSheet(r.item, [{name:'amount', label:'Jumlah (' + r.currency + ')', type:'number', value:r.amount}, {name:'note', label:'Catatan', type:'textarea', value:r.note}], function(v){ save('budget_other', id, v); }); },
+  prio:function(id){ S.prio = id; render(); },
+  sub:function(id){ S.sub = id; render(); },
+  gosub:function(id){ S.tab = 'persiapan'; S.sub = id; render(); window.scrollTo(0, 0); },
+  goday:function(id){ S.tab = 'jadwal'; S.day = num(id); render(); window.scrollTo(0, 0); },
+  mapday:function(id){ S.tab = 'peta'; S.mapAll = false; S.day = num(id); S.region = null; S.pin = null; MV.fresh = true; render(); window.scrollTo(0, 0); },
+  mapfocus:function(id){ var it = find('itinerary', id); if (!it) return; S.tab = 'peta'; S.mapAll = false; S.day = num(it.day); S.region = null; S.focus = id; MV.fresh = true; render(); window.scrollTo(0, 0); },
+  pinitem:function(id){ S.pin = id; var p = MV.model && MV.model.pins.filter(function(q){ return q.items && q.items.some(function(it){ return it.item_id === id; }); })[0]; if (p) { showPin(p); var svg = $('map'); if (svg) { var cx = p.x, cy = p.y; MV.vb.x = cx - MV.vb.w / 2; MV.vb.y = cy - MV.vb.h / 2; schedule(); } var mw = document.querySelector('.mapwrap'); if (mw) mw.scrollIntoView({behavior:'smooth', block:'start'}); } },
+  pinh:function(i){ var r = MV.model && MV.model.route; if (r && r.seq[i]) showHotel(r.seq[i].loc, null); },
+  region:function(id){ S.tab = 'peta'; S.region = id || null; MV.fresh = true; render(); if (!id) return; },
+  zin:function(){ var r = $('map').getBoundingClientRect(); zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1 / 1.6); },
+  zout:function(){ var r = $('map').getBoundingClientRect(); zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1.6); },
+  zfit:function(){ MV.vb = fitPoints(currentFitPoints(MV.model), $('map')); schedule(); },
+  insgo:function(i){ var it = C.insights(DB(), todayISO())[Number(i)]; if (!it || !it.action) return; var a = it.action;
+    if (a.tab === 'persiapan') { S.sub = a.sub || S.sub; }
+    if (a.day) S.day = a.day;
+    if (a.tab === 'peta') { S.mapAll = true; S.region = a.region || null; MV.fresh = true; }
+    S.tab = a.tab; render();
+    if (a.anchor) { var el = $(a.anchor); if (el) el.scrollIntoView({behavior:'smooth', block:'start'}); } else window.scrollTo(0, 0); },
+  allins:function(){ S.allIns = !S.allIns; render(); if (!S.allIns) { var el = $('insight'); if (el) el.scrollIntoView({block:'start'}); } },
+  reload:function(){ if (HAS_GAS) loadGAS(); },
+  close:function(){ $('sheet').hidden = true; },
+  goto:function(id){ var it = find('itinerary', id); if (it) { S.tab = 'jadwal'; S.day = num(it.day); render(); window.scrollTo(0, 0); } }
+};
+
+document.addEventListener('click', function(e){
+  var el = e.target.closest('[data-tab],[data-day],[data-act],[data-slice]');
+  if (!el) { if (e.target.id === 'sheet') $('sheet').hidden = true; return; }
+  if (el.hasAttribute('data-tab')) { go(el.getAttribute('data-tab')); return; }
+  if (el.hasAttribute('data-day')) {
+    var v = el.getAttribute('data-day');
+    if (v === 'all') { S.mapAll = true; S.pin = null; S.region = null; }
+    else { S.day = num(v); if (S.tab === 'peta') { S.mapAll = false; S.pin = null; S.region = null; } }
+    MV.fresh = true; render(); window.scrollTo(0, 0); return;
+  }
+  if (el.hasAttribute('data-slice') && !el.hasAttribute('data-act')) {
+    var w = el.closest('[data-donut]'), i = Number(el.getAttribute('data-slice'));
+    hlSlice(w, el.classList.contains('on') ? -1 : i); return;
+  }
+  var a = el.getAttribute('data-act'); if (a === 'done' || a === 'othon') return;
+  if (ACTIONS[a]) ACTIONS[a](el.getAttribute('data-id'));
+});
+document.addEventListener('pointerover', function(e){
+  if (e.pointerType === 'touch') return;
+  var el = e.target.closest && e.target.closest('[data-slice]'); if (el) hlSlice(el.closest('[data-donut]'), Number(el.getAttribute('data-slice')));
+});
+document.addEventListener('pointerout', function(e){
+  if (e.pointerType === 'touch') return;
+  var w = e.target.closest && e.target.closest('[data-donut]'); if (w && !(e.relatedTarget && w.contains(e.relatedTarget))) hlSlice(w, -1);
+});
+document.addEventListener('focusin', function(e){ var el = e.target.closest && e.target.closest('path[data-slice]'); if (el) hlSlice(el.closest('[data-donut]'), Number(el.getAttribute('data-slice'))); });
+document.addEventListener('change', function(e){
+  var el = e.target;
+  if (el.id === 'showOff') { S.showOff = el.checked; render(); return; }
+  var a = el.getAttribute('data-act'), id = el.getAttribute('data-id');
+  if (a === 'done') save('itinerary', id, {done:el.checked}, el.checked ? 'Ditandai selesai' : 'Tanda selesai dihapus');
+  if (a === 'othon') save('budget_other', id, {is_active:el.checked});
+});
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') $('sheet').hidden = true; });
+var rsz = 0; window.addEventListener('resize', function(){ clearTimeout(rsz); rsz = setTimeout(function(){ if (S.tab === 'peta' && MV.vb) { var svg = $('map'); if (svg) { var r = svg.getBoundingClientRect(); MV.vb.h = MV.vb.w * r.height / (r.width || 1); schedule(); } } }, 150); });
+
+if (BASE) initDay();
+render();
+if (HAS_GAS) loadGAS(); else $('view').innerHTML = '<p class="loading">Hubungkan app ke Google Sheet lewat layar setup.</p>';
+window.__jp = {S:S, MV:MV, render:render, DB:DB, loadGAS:loadGAS};
+if (HAS_GAS) {
+  window.addEventListener('online', function(){ if (SYNC.state !== 'loading') loadGAS(); });
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState !== 'visible' || SYNC.state === 'loading') return;
+    var age = SYNC.at ? Date.now() - new Date(SYNC.at).getTime() : Infinity;
+    if (age > 5 * 60 * 1000 || SYNC.state !== 'ok' || Object.keys(OV.edits).length) loadGAS();
+  });
+}
+})();
+
+</script>
+
+
+</body>
+</html>
